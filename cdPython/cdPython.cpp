@@ -50,19 +50,22 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 		init_zeolite(); // SWIG generated method
 		break;
 	case DLL_PROCESS_DETACH:
+		// Free windows console
 		fclose(fpStdErr);
 		fclose(fpStdOut);
 		FreeConsole();
 		Py_Finalize();
 		break;
 	}
-    return TRUE;
+	return TRUE;
 }
 
 #ifdef _MANAGED
 #pragma managed(pop)
 #endif
 
+
+// Initialize zeolite API
 bool __stdcall ExtInitPlugin(FARPROC pFunc, LPVOID hID) 
 {
 
@@ -87,10 +90,17 @@ bool __stdcall ExtInitPlugin(FARPROC pFunc, LPVOID hID)
 	return true;
 }
 
-
+// Show the version number etc
 bool __stdcall ExtAbout(ZVAR hReturnVar, ZLIST hArgList) 
 {
-	MessageBox(NULL, "cdPython allows you to run Python scripts and provides the zeolite Python module.\r\n\r\nCopyright (C) 2007 A. Carl Douglas.", "Python Extension", MB_ICONINFORMATION);
+	static const char title[] =
+		"Python Extension Version " CDPYTHON_VERSION;
+	static const char msg[] =
+		"cdPython Version " CDPYTHON_VERSION "\r\n\r\n"
+		"cdPython allows you to run Python scripts and provides the zeolite Python module.\r\n\r\n"
+		"Copyright (C) 2007 A. Carl Douglas.";
+
+	MessageBox(NULL, msg, title, MB_OK);
 	return true;
 }
 
