@@ -1,0 +1,8 @@
+LIBRARY	"cdPython"
+
+EXPORTS
+    ; Explicit exports can go here
+    
+ExtInitPlugin @1
+ExtAbout @2
+ExtLoadScript @3
