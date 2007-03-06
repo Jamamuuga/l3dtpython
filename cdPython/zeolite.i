@@ -1,4 +1,4 @@
-// Copyright (C) 2007 A. Carl Douglas
+// Copyright (C) 2007 A. Carl Douglas   carl.douglas@gmail.com
 
 %module zeolite 
 

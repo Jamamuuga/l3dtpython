@@ -1,8 +1,9 @@
-// Copyright (C) 2007 A. Carl Douglas
+// Copyright (C) 2007 A. Carl Douglas   carl.douglas@gmail.com
 // All rights reserved.
 //
 // An extension DLL for L3DT to provide Python scripting.
 //
+
 
 #include "stdafx.h"
 #include "cdPython.h"
@@ -29,6 +30,7 @@ extern "C" void init_zeolite(void); // from SWIG generated file
 #pragma managed(push, off)
 #endif
 
+
 BOOL APIENTRY DllMain( HMODULE hModule,
                        DWORD  ul_reason_for_call,
                        LPVOID lpReserved
@@ -43,8 +45,8 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 		// Allocate a windows console and redirect stdout and stderr
 		// so we can see the python interpreter output and errors.
 		AllocConsole();
-		fpStdOut = freopen( "CONOUT$", "wt", stdout);
-		fpStdErr = freopen( "CONOUT$", "wt", stderr);
+		fpStdOut = freopen( "CONOUT$", "w", stdout);
+		fpStdErr = freopen( "CONOUT$", "w", stderr);
 		fprintf(stdout, "Console opened by cdPython\n");
 		Py_Initialize();
 		init_zeolite(); // SWIG generated method
@@ -109,8 +111,6 @@ bool __stdcall ExtLoadScript(ZVAR hReturnVar, ZLIST hArgList)
 {
 	OPENFILENAME ofn;       // common dialog box structure
 	char szFile[MAX_PATH];  // buffer for file name
-	HWND hwnd;              // owner window
-	HANDLE hf;              // file handle
 
 	// Initialize OPENFILENAME
 	ZeroMemory(&ofn, sizeof(ofn));
@@ -143,6 +143,10 @@ bool __stdcall ExtLoadScript(ZVAR hReturnVar, ZLIST hArgList)
 			return false;
 		}
 
+		// Because microsoft C runtimes are not binary compatible, we can't
+		// just call fopen to get a FILE * and pass that FILE * to another application
+		// or library (Python25.dll in this case) that uses a different version 
+		// of the C runtime that this DLL uses. Using PyFile_AsFile is a work-around...
 		if (PyRun_SimpleFile(PyFile_AsFile(PyFileObject), ofn.lpstrFile) == -1)
 		{
 			PyErr_Print();

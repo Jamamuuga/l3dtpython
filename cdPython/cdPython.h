@@ -1,4 +1,4 @@
-// Copyright (C) 2007 A. Carl Douglas
+// Copyright (C) 2007 A. Carl Douglas   carl.douglas@gmail.com
 // All rights reserved.
 
 // The following ifdef block is the standard way of creating macros which make exporting 
