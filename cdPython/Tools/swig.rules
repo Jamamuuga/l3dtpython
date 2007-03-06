@@ -7,7 +7,7 @@
 		<CustomBuildRule
 			Name="SWIG"
 			DisplayName="SWIG"
-			CommandLine="D:\Projects\swig\swigwin-1.3.31\swig.exe -c++ -python -Fmicrosoft -o [inputs].cpp [inputs]"
+			CommandLine="D:\Projects\swig\swigwin-1.3.31\swig.exe -c++ -python -Fmicrosoft -nodefault -v -o [inputs].cpp [inputs]"
 			Outputs="$(InputName).cpp"
 			FileExtensions="*.i"
 			ExecutionDescription="SWIG is generating wrapper..."
