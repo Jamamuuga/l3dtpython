@@ -80,10 +80,6 @@ bool __stdcall ExtInitPlugin(FARPROC pFunc, LPVOID hID)
 
 	func.LoadFunc("ExtAbout", VarID_void, NULL);
 	func.LoadFunc("ExtLoadScript", VarID_void, NULL);
-
-	//CzList args;
-	//args.CreateItem(VarID_varlist, "SettingsList");
-	//func.LoadFunc("ExtMultiLM", VarID_void, args);
 	
 	// add menu options
 	theAPI.menu_InsertItemEx("ExtAbout", "About", false);
