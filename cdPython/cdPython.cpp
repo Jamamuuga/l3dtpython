@@ -42,12 +42,22 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
+
 		// Allocate a windows console and redirect stdout and stderr
 		// so we can see the python interpreter output and errors.
+
 		AllocConsole();
+
+		// Important note:
+		// If PythonXX.dll links to a different version of the c runtime (msvcrXX.dll)
+		// to this DLL, then stderr/stdout redirection will not work properly, and
+		// you will need see the Python errors in the console.
+
 		fpStdOut = freopen( "CONOUT$", "w", stdout);
 		fpStdErr = freopen( "CONOUT$", "w", stderr);
+
 		fprintf(stdout, "Console opened by cdPython\n");
+
 		Py_Initialize();
 		init_zeolite(); // SWIG generated method
 		break;
@@ -143,8 +153,28 @@ bool __stdcall ExtLoadScript(ZVAR hReturnVar, ZLIST hArgList)
 		// just call fopen to get a FILE * and pass that FILE * to another application
 		// or library (Python25.dll in this case) that uses a different version 
 		// of the C runtime that this DLL uses. Using PyFile_AsFile is a work-around...
+
 		if (PyRun_SimpleFile(PyFile_AsFile(PyFileObject), ofn.lpstrFile) == -1)
 		{
+			//if (PyErr_Occurred() != NULL) 
+			//{
+			//	printf("exception!!\n");
+			//	PyObject* ptype;
+			//	PyObject* pvalue;
+			//	PyObject* ptraceback;
+			//	PyErr_Fetch(&ptype, &pvalue, &ptraceback);
+			//	printf("Error occurred on line: %d\n", ((PyTracebackObject*)ptraceback)->tb_lineno);
+			//	// Now you have two options, restoring the exception or disposing it.
+			//	PyErr_Restore(ptype, pvalue, ptraceback);
+			//	PyErr_Print();
+
+			//	//---->
+
+			//	Py_XDECREF(ptype);
+			//	Py_XDECREF(pvalue);
+			//	Py_XDECREF(ptraceback);
+			//}
+
 			PyErr_Print();
 			PyErr_Clear();
 		}

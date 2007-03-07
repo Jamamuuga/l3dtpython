@@ -102,7 +102,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying plugin to L3DT extensions folder..."
-				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;"
+				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;&#x0D;&#x0A;cp &quot;$(ProjectDir)\zeolite.py&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\&quot;"
 			/>
 		</Configuration>
 		<Configuration
@@ -192,7 +192,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying plugin to L3DT extensions folder..."
-				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;"
+				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;&#x0D;&#x0A;cp &quot;$(ProjectDir)\zeolite.py&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\&quot;"
 			/>
 		</Configuration>
 	</Configurations>

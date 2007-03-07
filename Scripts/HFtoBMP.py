@@ -3,17 +3,17 @@
 
 import zeolite
 
-str = zeolite.CzStr()
-str.Create(None)
-str.EditUI("Enter filename")
+string = zeolite.CzStr()
+string.Create(None)
+string.EditUI("Enter filename")
 
-map = zeolite.CzMap()
+hmap = zeolite.CzMap()
 hf = zeolite.cvar.theAPI.project_GetMap("HF")
-map.Attach(zeolite.zmap_to_zvar(hf))
+hmap.Attach(zeolite.zmap_to_zvar(hf))
 
 format = zeolite.CzFormat()
 format.GetByExt("HF", 0, "bmp")
 
-filename = str.GetText() + ".bmp"
+filename = string.GetText() + ".bmp"
 
-map.SaveFile(filename, format, True, True)
+hmap.SaveFile(filename, zeolite.zvar_to_zformat(format.GetZVAR()), True, True)

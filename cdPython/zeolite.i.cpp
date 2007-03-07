@@ -3028,6 +3028,11 @@ ZVAR zmap_to_zvar(ZMAP x) {
    return static_cast< ZVAR >(x);
 }
 
+
+ZFORMAT zvar_to_zformat(ZVAR x) {
+   return static_cast< ZFORMAT >(x);
+}
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -15625,6 +15630,36 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_zvar_to_zformat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZVAR arg1 ;
+  ZFORMAT result;
+  void *argp1 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zvar_to_zformat",&obj0)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_ZVAR,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zvar_to_zformat" "', argument " "1"" of type '" "ZVAR""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "zvar_to_zformat" "', argument " "1"" of type '" "ZVAR""'");
+    } else {
+      ZVAR * temp = reinterpret_cast< ZVAR * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  result = zvar_to_zformat(arg1);
+  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"ExtGetApiVersion", _wrap_ExtGetApiVersion, METH_VARARGS, NULL},
 	 { (char *)"new_CExtAPI", _wrap_new_CExtAPI, METH_VARARGS, NULL},
@@ -15911,6 +15946,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CzBuffer_SetValue", _wrap_CzBuffer_SetValue, METH_VARARGS, NULL},
 	 { (char *)"CzBuffer_swigregister", CzBuffer_swigregister, METH_VARARGS, NULL},
 	 { (char *)"zmap_to_zvar", _wrap_zmap_to_zvar, METH_VARARGS, NULL},
+	 { (char *)"zvar_to_zformat", _wrap_zvar_to_zformat, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
