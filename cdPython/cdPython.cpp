@@ -51,7 +51,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 		// Important note:
 		// If PythonXX.dll links to a different version of the c runtime (msvcrXX.dll)
 		// to this DLL, then stderr/stdout redirection will not work properly, and
-		// you will need see the Python errors in the console.
+		// you will not see the Python errors in the console.
 
 		fpStdOut = freopen( "CONOUT$", "w", stdout);
 		fpStdErr = freopen( "CONOUT$", "w", stderr);
@@ -105,7 +105,7 @@ bool __stdcall ExtAbout(ZVAR hReturnVar, ZLIST hArgList)
 		"Python Extension Version " CDPYTHON_VERSION;
 	static const char msg[] =
 		"cdPython Version " CDPYTHON_VERSION "\r\n\r\n"
-		"cdPython allows you to run Python scripts and provides the zeolite Python module.\r\n\r\n"
+		"cdPython allows you to run Python scripts and provides Python access to the zeolite API.\r\n\r\n"
 		"Copyright (C) 2007 A. Carl Douglas.";
 
 	MessageBox(NULL, msg, title, MB_OK);
@@ -156,25 +156,6 @@ bool __stdcall ExtLoadScript(ZVAR hReturnVar, ZLIST hArgList)
 
 		if (PyRun_SimpleFile(PyFile_AsFile(PyFileObject), ofn.lpstrFile) == -1)
 		{
-			//if (PyErr_Occurred() != NULL) 
-			//{
-			//	printf("exception!!\n");
-			//	PyObject* ptype;
-			//	PyObject* pvalue;
-			//	PyObject* ptraceback;
-			//	PyErr_Fetch(&ptype, &pvalue, &ptraceback);
-			//	printf("Error occurred on line: %d\n", ((PyTracebackObject*)ptraceback)->tb_lineno);
-			//	// Now you have two options, restoring the exception or disposing it.
-			//	PyErr_Restore(ptype, pvalue, ptraceback);
-			//	PyErr_Print();
-
-			//	//---->
-
-			//	Py_XDECREF(ptype);
-			//	Py_XDECREF(pvalue);
-			//	Py_XDECREF(ptraceback);
-			//}
-
 			PyErr_Print();
 			PyErr_Clear();
 		}

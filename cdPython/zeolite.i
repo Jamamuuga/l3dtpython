@@ -3,6 +3,7 @@
 %module zeolite 
 
 %{
+#include "..\Plugin API\ExtAPI_defines.h"
 #include "..\Plugin API\ExtAPI.h"
 #include "..\Plugin API\zVar.h"
 #include "..\Plugin API\zList.h"
@@ -21,6 +22,7 @@ extern CExtAPI theAPI;
 %include "windows.i"
 %include "cpointer.i"
 
+%include "..\Plugin API\ExtAPI_defines.h"
 %include "..\Plugin API\ExtAPI.h"
 %include "..\Plugin API\zVar.h"
 %include "..\Plugin API\zList.h"
@@ -33,7 +35,12 @@ extern CExtAPI theAPI;
 %include "..\Plugin API\zColour.h"
 %include "..\Plugin API\zBuffer.h"
 
-extern CExtAPI theAPI;
-
 %pointer_cast(ZMAP, ZVAR, zmap_to_zvar)
+%pointer_cast(ZLIST, ZVAR, zlist_to_zvar)
+
+%pointer_cast(ZVAR, ZMAP, zvar_to_zmap)
+%pointer_cast(ZVAR, ZLIST, zvar_to_zlist)
+%pointer_cast(ZVAR, ZFUNC, zvar_to_zfunc)
 %pointer_cast(ZVAR, ZFORMAT, zvar_to_zformat)
+
+extern CExtAPI theAPI;

@@ -2465,42 +2465,48 @@ SWIG_Python_MustGetPtr(PyObject *obj, swig_type_info *ty, int argnum, int flags)
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_CExtAPI swig_types[0]
-#define SWIGTYPE_p_COLORREF swig_types[1]
-#define SWIGTYPE_p_CzBuffer swig_types[2]
-#define SWIGTYPE_p_CzColour swig_types[3]
-#define SWIGTYPE_p_CzComboSel swig_types[4]
-#define SWIGTYPE_p_CzFormat swig_types[5]
-#define SWIGTYPE_p_CzFunc swig_types[6]
-#define SWIGTYPE_p_CzList swig_types[7]
-#define SWIGTYPE_p_CzMap swig_types[8]
-#define SWIGTYPE_p_CzProgBox swig_types[9]
-#define SWIGTYPE_p_CzStr swig_types[10]
-#define SWIGTYPE_p_CzVar swig_types[11]
-#define SWIGTYPE_p_FARPROC swig_types[12]
-#define SWIGTYPE_p_ZFORMAT swig_types[13]
-#define SWIGTYPE_p_ZFUNC swig_types[14]
-#define SWIGTYPE_p_ZLIST swig_types[15]
-#define SWIGTYPE_p_ZMAP swig_types[16]
-#define SWIGTYPE_p_ZVAR swig_types[17]
+#define SWIGTYPE_p_AttributesPixel swig_types[0]
+#define SWIGTYPE_p_AuxWaterMapPixel swig_types[1]
+#define SWIGTYPE_p_CExtAPI swig_types[2]
+#define SWIGTYPE_p_COLORREF swig_types[3]
+#define SWIGTYPE_p_ColourPixel swig_types[4]
+#define SWIGTYPE_p_CzBuffer swig_types[5]
+#define SWIGTYPE_p_CzColour swig_types[6]
+#define SWIGTYPE_p_CzComboSel swig_types[7]
+#define SWIGTYPE_p_CzFormat swig_types[8]
+#define SWIGTYPE_p_CzFunc swig_types[9]
+#define SWIGTYPE_p_CzList swig_types[10]
+#define SWIGTYPE_p_CzMap swig_types[11]
+#define SWIGTYPE_p_CzProgBox swig_types[12]
+#define SWIGTYPE_p_CzStr swig_types[13]
+#define SWIGTYPE_p_CzVar swig_types[14]
+#define SWIGTYPE_p_DesignMapPixel swig_types[15]
+#define SWIGTYPE_p_FARPROC swig_types[16]
+#define SWIGTYPE_p_WaterMapPixel swig_types[17]
 #define SWIGTYPE_p___int64 swig_types[18]
 #define SWIGTYPE_p_char swig_types[19]
 #define SWIGTYPE_p_float swig_types[20]
 #define SWIGTYPE_p_int swig_types[21]
 #define SWIGTYPE_p_long swig_types[22]
-#define SWIGTYPE_p_p_char swig_types[23]
-#define SWIGTYPE_p_p_unsigned_long swig_types[24]
-#define SWIGTYPE_p_short swig_types[25]
-#define SWIGTYPE_p_signed___int64 swig_types[26]
-#define SWIGTYPE_p_signed_char swig_types[27]
-#define SWIGTYPE_p_unsigned___int64 swig_types[28]
-#define SWIGTYPE_p_unsigned_char swig_types[29]
-#define SWIGTYPE_p_unsigned_int swig_types[30]
-#define SWIGTYPE_p_unsigned_long swig_types[31]
-#define SWIGTYPE_p_unsigned_short swig_types[32]
-#define SWIGTYPE_p_void swig_types[33]
-static swig_type_info *swig_types[35];
-static swig_module_info swig_module = {swig_types, 34, 0, 0, 0, 0};
+#define SWIGTYPE_p_matrix3x3d swig_types[23]
+#define SWIGTYPE_p_matrix3x3f swig_types[24]
+#define SWIGTYPE_p_p_char swig_types[25]
+#define SWIGTYPE_p_p_unsigned_long swig_types[26]
+#define SWIGTYPE_p_p_void swig_types[27]
+#define SWIGTYPE_p_short swig_types[28]
+#define SWIGTYPE_p_signed___int64 swig_types[29]
+#define SWIGTYPE_p_signed_char swig_types[30]
+#define SWIGTYPE_p_unsigned___int64 swig_types[31]
+#define SWIGTYPE_p_unsigned_char swig_types[32]
+#define SWIGTYPE_p_unsigned_int swig_types[33]
+#define SWIGTYPE_p_unsigned_long swig_types[34]
+#define SWIGTYPE_p_unsigned_short swig_types[35]
+#define SWIGTYPE_p_vector3d swig_types[36]
+#define SWIGTYPE_p_vector3f swig_types[37]
+#define SWIGTYPE_p_vector3sc swig_types[38]
+#define SWIGTYPE_p_void swig_types[39]
+static swig_type_info *swig_types[41];
+static swig_module_info swig_module = {swig_types, 40, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -2590,6 +2596,7 @@ namespace swig {
 }
 
 
+#include "..\Plugin API\ExtAPI_defines.h"
 #include "..\Plugin API\ExtAPI.h"
 #include "..\Plugin API\zVar.h"
 #include "..\Plugin API\zList.h"
@@ -2605,103 +2612,26 @@ namespace swig {
 extern CExtAPI theAPI;
 
 
-SWIGINTERN swig_type_info*
-SWIG_pchar_descriptor(void)
-{
-  static int init = 0;
-  static swig_type_info* info = 0;
-  if (!init) {
-    info = SWIG_TypeQuery("_p_char");
-    init = 1;
-  }
-  return info;
-}
+  #define SWIG_From_long   PyInt_FromLong 
 
 
 SWIGINTERNINLINE PyObject *
-SWIG_FromCharPtrAndSize(const char* carray, size_t size)
-{
-  if (carray) {
-    if (size > INT_MAX) {
-      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
-      return pchar_descriptor ? 
-	SWIG_NewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
-    } else {
-      return PyString_FromStringAndSize(carray, static_cast< int >(size));
-    }
-  } else {
-    return SWIG_Py_Void();
-  }
+SWIG_From_int  (int value)
+{    
+  return SWIG_From_long  (value);
 }
 
 
-SWIGINTERNINLINE PyObject * 
-SWIG_FromCharPtr(const char *cptr)
-{ 
-  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
-}
-
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_bool  (bool value)
-{
-  return PyBool_FromLong(value ? 1 : 0);
-}
-
-
-SWIGINTERN int
-SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
-{
-  if (PyString_Check(obj)) {
-    char *cstr; Py_ssize_t len;
-    PyString_AsStringAndSize(obj, &cstr, &len);
-    if (cptr)  {
-      if (alloc) {
-	/* 
-	   In python the user should not be able to modify the inner
-	   string representation. To warranty that, if you define
-	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
-	   buffer is always returned.
-
-	   The default behavior is just to return the pointer value,
-	   so, be careful.
-	*/ 
-#if defined(SWIG_PYTHON_SAFE_CSTRINGS)
-	if (*alloc != SWIG_OLDOBJ) 
-#else
-	if (*alloc == SWIG_NEWOBJ) 
+#include <limits.h>
+#ifndef LLONG_MIN
+# define LLONG_MIN	LONG_LONG_MIN
 #endif
-	  {
-	    *cptr = reinterpret_cast< char* >(memcpy((new char[len + 1]), cstr, sizeof(char)*(len + 1)));
-	    *alloc = SWIG_NEWOBJ;
-	  }
-	else {
-	  *cptr = cstr;
-	  *alloc = SWIG_OLDOBJ;
-	}
-      } else {
-	*cptr = PyString_AsString(obj);
-      }
-    }
-    if (psize) *psize = len + 1;
-    return SWIG_OK;
-  } else {
-    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
-    if (pchar_descriptor) {
-      void* vptr = 0;
-      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
-	if (cptr) *cptr = (char *) vptr;
-	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
-	if (alloc) *alloc = SWIG_OLDOBJ;
-	return SWIG_OK;
-      }
-    }
-  }
-  return SWIG_TypeError;
-}
-
-
-
+#ifndef LLONG_MAX
+# define LLONG_MAX	LONG_LONG_MAX
+#endif
+#ifndef ULLONG_MAX
+# define ULLONG_MAX	ULONG_LONG_MAX
+#endif
 
 
 SWIGINTERN int
@@ -2823,7 +2753,27 @@ SWIG_AsVal_long (PyObject *obj, long* val)
 }
 
 
-  #define SWIG_From_long   PyInt_FromLong 
+SWIGINTERN int
+SWIG_AsVal_signed_SS_char (PyObject * obj, signed char *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < SCHAR_MIN || v > SCHAR_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< signed char >(v);
+    }
+  }  
+  return res;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_signed_SS_char  (signed char value)
+{    
+  return SWIG_From_long  (value);
+}
 
 
 SWIGINTERN int
@@ -2842,24 +2792,6 @@ SWIG_AsVal_float (PyObject * obj, float *val)
 }
 
 
-SWIGINTERN int
-SWIG_AsVal_bool (PyObject *obj, bool *val)
-{
-  if (obj == Py_True) {
-    if (val) *val = true;
-    return SWIG_OK;
-  } else if (obj == Py_False) {
-    if (val) *val = false;
-    return SWIG_OK;
-  } else {
-    long v = 0;
-    int res = SWIG_AddCast(SWIG_AsVal_long (obj, val ? &v : 0));
-    if (SWIG_IsOK(res) && val) *val = v ? true : false;
-    return res;
-  }
-}
-
-
   #define SWIG_From_double   PyFloat_FromDouble 
 
 
@@ -2870,65 +2802,16 @@ SWIG_From_float  (float value)
 }
 
 
-#include <limits.h>
-#ifndef LLONG_MIN
-# define LLONG_MIN	LONG_LONG_MIN
-#endif
-#ifndef LLONG_MAX
-# define LLONG_MAX	LONG_LONG_MAX
-#endif
-#ifndef ULLONG_MAX
-# define ULLONG_MAX	ULONG_LONG_MAX
-#endif
-
-
 SWIGINTERN int
-SWIG_AsVal_long_SS_long (PyObject *obj, long long *val)
-{
-  int res = SWIG_TypeError;
-  if (PyLong_Check(obj)) {
-    long long v = PyLong_AsLongLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-    }
-  } else {
-    long v;
-    res = SWIG_AsVal_long (obj,&v);
-    if (SWIG_IsOK(res)) {
-      if (val) *val = v;
-      return res;
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    const double mant_max = 1LL << DBL_MANT_DIG;
-    const double mant_min = -mant_max;
-    double d;
-    res = SWIG_AsVal_double (obj,&d);
-    if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, mant_min, mant_max)) {
-      if (val) *val = (long long)(d);
-      return SWIG_AddCast(res);
-    }
-    res = SWIG_TypeError;
-  }
-#endif
-  return res;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
+SWIG_AsVal_short (PyObject * obj, short *val)
 {
   long v;
   int res = SWIG_AsVal_long (obj, &v);
   if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
+    if ((v < SHRT_MIN || v > SHRT_MAX)) {
       return SWIG_OverflowError;
     } else {
-      if (val) *val = static_cast< int >(v);
+      if (val) *val = static_cast< short >(v);
     }
   }  
   return res;
@@ -2936,31 +2819,9 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 
 
 SWIGINTERNINLINE PyObject *
-SWIG_From_int  (int value)
+SWIG_From_short  (short value)
 {    
   return SWIG_From_long  (value);
-}
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_From_char  (char c) 
-{ 
-  return SWIG_FromCharPtrAndSize(&c,1);
-}
-
-
-SWIGINTERNINLINE PyObject* 
-SWIG_From_unsigned_SS_long  (unsigned long value)
-{
-  return (value > LONG_MAX) ?
-    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value)); 
-}
-
-
-SWIGINTERNINLINE PyObject *
-SWIG_From_unsigned_SS_char  (unsigned char value)
-{    
-  return SWIG_From_unsigned_SS_long  (value);
 }
 
 
@@ -3024,8 +2885,243 @@ SWIG_AsVal_unsigned_SS_char (PyObject * obj, unsigned char *val)
 }
 
 
+SWIGINTERNINLINE PyObject* 
+SWIG_From_unsigned_SS_long  (unsigned long value)
+{
+  return (value > LONG_MAX) ?
+    PyLong_FromUnsignedLong(value) : PyInt_FromLong(static_cast< long >(value)); 
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_unsigned_SS_char  (unsigned char value)
+{    
+  return SWIG_From_unsigned_SS_long  (value);
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_unsigned_SS_short (PyObject * obj, unsigned short *val)
+{
+  unsigned long v;
+  int res = SWIG_AsVal_unsigned_SS_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v > USHRT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< unsigned short >(v);
+    }
+  }  
+  return res;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_unsigned_SS_short  (unsigned short value)
+{    
+  return SWIG_From_unsigned_SS_long  (value);
+}
+
+
+SWIGINTERN swig_type_info*
+SWIG_pchar_descriptor(void)
+{
+  static int init = 0;
+  static swig_type_info* info = 0;
+  if (!init) {
+    info = SWIG_TypeQuery("_p_char");
+    init = 1;
+  }
+  return info;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_FromCharPtrAndSize(const char* carray, size_t size)
+{
+  if (carray) {
+    if (size > INT_MAX) {
+      swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+      return pchar_descriptor ? 
+	SWIG_NewPointerObj(const_cast< char * >(carray), pchar_descriptor, 0) : SWIG_Py_Void();
+    } else {
+      return PyString_FromStringAndSize(carray, static_cast< int >(size));
+    }
+  } else {
+    return SWIG_Py_Void();
+  }
+}
+
+
+SWIGINTERNINLINE PyObject * 
+SWIG_FromCharPtr(const char *cptr)
+{ 
+  return SWIG_FromCharPtrAndSize(cptr, (cptr ? strlen(cptr) : 0));
+}
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_bool  (bool value)
+{
+  return PyBool_FromLong(value ? 1 : 0);
+}
+
+
+SWIGINTERN int
+SWIG_AsCharPtrAndSize(PyObject *obj, char** cptr, size_t* psize, int *alloc)
+{
+  if (PyString_Check(obj)) {
+    char *cstr; Py_ssize_t len;
+    PyString_AsStringAndSize(obj, &cstr, &len);
+    if (cptr)  {
+      if (alloc) {
+	/* 
+	   In python the user should not be able to modify the inner
+	   string representation. To warranty that, if you define
+	   SWIG_PYTHON_SAFE_CSTRINGS, a new/copy of the python string
+	   buffer is always returned.
+
+	   The default behavior is just to return the pointer value,
+	   so, be careful.
+	*/ 
+#if defined(SWIG_PYTHON_SAFE_CSTRINGS)
+	if (*alloc != SWIG_OLDOBJ) 
+#else
+	if (*alloc == SWIG_NEWOBJ) 
+#endif
+	  {
+	    *cptr = reinterpret_cast< char* >(memcpy((new char[len + 1]), cstr, sizeof(char)*(len + 1)));
+	    *alloc = SWIG_NEWOBJ;
+	  }
+	else {
+	  *cptr = cstr;
+	  *alloc = SWIG_OLDOBJ;
+	}
+      } else {
+	*cptr = PyString_AsString(obj);
+      }
+    }
+    if (psize) *psize = len + 1;
+    return SWIG_OK;
+  } else {
+    swig_type_info* pchar_descriptor = SWIG_pchar_descriptor();
+    if (pchar_descriptor) {
+      void* vptr = 0;
+      if (SWIG_ConvertPtr(obj, &vptr, pchar_descriptor, 0) == SWIG_OK) {
+	if (cptr) *cptr = (char *) vptr;
+	if (psize) *psize = vptr ? (strlen((char *)vptr) + 1) : 0;
+	if (alloc) *alloc = SWIG_OLDOBJ;
+	return SWIG_OK;
+      }
+    }
+  }
+  return SWIG_TypeError;
+}
+
+
+
+
+
+SWIGINTERN int
+SWIG_AsVal_bool (PyObject *obj, bool *val)
+{
+  if (obj == Py_True) {
+    if (val) *val = true;
+    return SWIG_OK;
+  } else if (obj == Py_False) {
+    if (val) *val = false;
+    return SWIG_OK;
+  } else {
+    long v = 0;
+    int res = SWIG_AddCast(SWIG_AsVal_long (obj, val ? &v : 0));
+    if (SWIG_IsOK(res) && val) *val = v ? true : false;
+    return res;
+  }
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_long_SS_long (PyObject *obj, long long *val)
+{
+  int res = SWIG_TypeError;
+  if (PyLong_Check(obj)) {
+    long long v = PyLong_AsLongLong(obj);
+    if (!PyErr_Occurred()) {
+      if (val) *val = v;
+      return SWIG_OK;
+    } else {
+      PyErr_Clear();
+    }
+  } else {
+    long v;
+    res = SWIG_AsVal_long (obj,&v);
+    if (SWIG_IsOK(res)) {
+      if (val) *val = v;
+      return res;
+    }
+  }
+#ifdef SWIG_PYTHON_CAST_MODE
+  {
+    const double mant_max = 1LL << DBL_MANT_DIG;
+    const double mant_min = -mant_max;
+    double d;
+    res = SWIG_AsVal_double (obj,&d);
+    if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, mant_min, mant_max)) {
+      if (val) *val = (long long)(d);
+      return SWIG_AddCast(res);
+    }
+    res = SWIG_TypeError;
+  }
+#endif
+  return res;
+}
+
+
+SWIGINTERN int
+SWIG_AsVal_int (PyObject * obj, int *val)
+{
+  long v;
+  int res = SWIG_AsVal_long (obj, &v);
+  if (SWIG_IsOK(res)) {
+    if ((v < INT_MIN || v > INT_MAX)) {
+      return SWIG_OverflowError;
+    } else {
+      if (val) *val = static_cast< int >(v);
+    }
+  }  
+  return res;
+}
+
+
+SWIGINTERNINLINE PyObject *
+SWIG_From_char  (char c) 
+{ 
+  return SWIG_FromCharPtrAndSize(&c,1);
+}
+
+
 ZVAR zmap_to_zvar(ZMAP x) {
    return static_cast< ZVAR >(x);
+}
+
+
+ZVAR zlist_to_zvar(ZLIST x) {
+   return static_cast< ZVAR >(x);
+}
+
+
+ZMAP zvar_to_zmap(ZVAR x) {
+   return static_cast< ZMAP >(x);
+}
+
+
+ZLIST zvar_to_zlist(ZVAR x) {
+   return static_cast< ZLIST >(x);
+}
+
+
+ZFUNC zvar_to_zfunc(ZVAR x) {
+   return static_cast< ZFUNC >(x);
 }
 
 
@@ -3036,6 +3132,2281 @@ ZFORMAT zvar_to_zformat(ZVAR x) {
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_vector3sc_x_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3sc *arg1 = (vector3sc *) 0 ;
+  signed char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  signed char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3sc_x_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3sc, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3sc_x_set" "', argument " "1"" of type '" "vector3sc *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3sc * >(argp1);
+  ecode2 = SWIG_AsVal_signed_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3sc_x_set" "', argument " "2"" of type '" "signed char""'");
+  } 
+  arg2 = static_cast< signed char >(val2);
+  if (arg1) (arg1)->x = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3sc_x_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3sc *arg1 = (vector3sc *) 0 ;
+  signed char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3sc_x_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3sc, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3sc_x_get" "', argument " "1"" of type '" "vector3sc *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3sc * >(argp1);
+  result = (signed char) ((arg1)->x);
+  resultobj = SWIG_From_signed_SS_char(static_cast< signed char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3sc_y_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3sc *arg1 = (vector3sc *) 0 ;
+  signed char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  signed char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3sc_y_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3sc, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3sc_y_set" "', argument " "1"" of type '" "vector3sc *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3sc * >(argp1);
+  ecode2 = SWIG_AsVal_signed_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3sc_y_set" "', argument " "2"" of type '" "signed char""'");
+  } 
+  arg2 = static_cast< signed char >(val2);
+  if (arg1) (arg1)->y = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3sc_y_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3sc *arg1 = (vector3sc *) 0 ;
+  signed char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3sc_y_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3sc, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3sc_y_get" "', argument " "1"" of type '" "vector3sc *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3sc * >(argp1);
+  result = (signed char) ((arg1)->y);
+  resultobj = SWIG_From_signed_SS_char(static_cast< signed char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3sc_z_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3sc *arg1 = (vector3sc *) 0 ;
+  signed char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  signed char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3sc_z_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3sc, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3sc_z_set" "', argument " "1"" of type '" "vector3sc *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3sc * >(argp1);
+  ecode2 = SWIG_AsVal_signed_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3sc_z_set" "', argument " "2"" of type '" "signed char""'");
+  } 
+  arg2 = static_cast< signed char >(val2);
+  if (arg1) (arg1)->z = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3sc_z_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3sc *arg1 = (vector3sc *) 0 ;
+  signed char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3sc_z_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3sc, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3sc_z_get" "', argument " "1"" of type '" "vector3sc *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3sc * >(argp1);
+  result = (signed char) ((arg1)->z);
+  resultobj = SWIG_From_signed_SS_char(static_cast< signed char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vector3sc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3sc *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_vector3sc")) SWIG_fail;
+  result = (vector3sc *)new vector3sc();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3sc, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_vector3sc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3sc *arg1 = (vector3sc *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_vector3sc",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3sc, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_vector3sc" "', argument " "1"" of type '" "vector3sc *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3sc * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *vector3sc_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_vector3sc, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_vector3f_x_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3f *arg1 = (vector3f *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3f_x_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3f_x_set" "', argument " "1"" of type '" "vector3f *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3f * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3f_x_set" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  if (arg1) (arg1)->x = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3f_x_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3f *arg1 = (vector3f *) 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3f_x_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3f_x_get" "', argument " "1"" of type '" "vector3f *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3f * >(argp1);
+  result = (float) ((arg1)->x);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3f_y_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3f *arg1 = (vector3f *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3f_y_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3f_y_set" "', argument " "1"" of type '" "vector3f *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3f * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3f_y_set" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  if (arg1) (arg1)->y = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3f_y_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3f *arg1 = (vector3f *) 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3f_y_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3f_y_get" "', argument " "1"" of type '" "vector3f *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3f * >(argp1);
+  result = (float) ((arg1)->y);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3f_z_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3f *arg1 = (vector3f *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3f_z_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3f_z_set" "', argument " "1"" of type '" "vector3f *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3f * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3f_z_set" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  if (arg1) (arg1)->z = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3f_z_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3f *arg1 = (vector3f *) 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3f_z_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3f_z_get" "', argument " "1"" of type '" "vector3f *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3f * >(argp1);
+  result = (float) ((arg1)->z);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vector3f(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3f *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_vector3f")) SWIG_fail;
+  result = (vector3f *)new vector3f();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3f, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_vector3f(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3f *arg1 = (vector3f *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_vector3f",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3f, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_vector3f" "', argument " "1"" of type '" "vector3f *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3f * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *vector3f_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_vector3f, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_vector3d_x_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3d *arg1 = (vector3d *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3d_x_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3d_x_set" "', argument " "1"" of type '" "vector3d *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3d * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3d_x_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->x = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3d_x_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3d *arg1 = (vector3d *) 0 ;
+  double result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3d_x_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3d_x_get" "', argument " "1"" of type '" "vector3d *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3d * >(argp1);
+  result = (double) ((arg1)->x);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3d_y_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3d *arg1 = (vector3d *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3d_y_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3d_y_set" "', argument " "1"" of type '" "vector3d *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3d * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3d_y_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->y = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3d_y_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3d *arg1 = (vector3d *) 0 ;
+  double result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3d_y_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3d_y_get" "', argument " "1"" of type '" "vector3d *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3d * >(argp1);
+  result = (double) ((arg1)->y);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3d_z_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3d *arg1 = (vector3d *) 0 ;
+  double arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  double val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:vector3d_z_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3d_z_set" "', argument " "1"" of type '" "vector3d *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3d * >(argp1);
+  ecode2 = SWIG_AsVal_double(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "vector3d_z_set" "', argument " "2"" of type '" "double""'");
+  } 
+  arg2 = static_cast< double >(val2);
+  if (arg1) (arg1)->z = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_vector3d_z_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3d *arg1 = (vector3d *) 0 ;
+  double result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:vector3d_z_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "vector3d_z_get" "', argument " "1"" of type '" "vector3d *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3d * >(argp1);
+  result = (double) ((arg1)->z);
+  resultobj = SWIG_From_double(static_cast< double >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_vector3d(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3d *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_vector3d")) SWIG_fail;
+  result = (vector3d *)new vector3d();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3d, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_vector3d(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  vector3d *arg1 = (vector3d *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_vector3d",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_vector3d, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_vector3d" "', argument " "1"" of type '" "vector3d *""'"); 
+  }
+  arg1 = reinterpret_cast< vector3d * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *vector3d_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_vector3d, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_matrix3x3f_i_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3f *arg1 = (matrix3x3f *) 0 ;
+  vector3f *arg2 = (vector3f *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:matrix3x3f_i_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3f_i_set" "', argument " "1"" of type '" "matrix3x3f *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3f * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "matrix3x3f_i_set" "', argument " "2"" of type '" "vector3f *""'"); 
+  }
+  arg2 = reinterpret_cast< vector3f * >(argp2);
+  if (arg1) (arg1)->i = *arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3f_i_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3f *arg1 = (matrix3x3f *) 0 ;
+  vector3f *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:matrix3x3f_i_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3f_i_get" "', argument " "1"" of type '" "matrix3x3f *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3f * >(argp1);
+  result = (vector3f *)& ((arg1)->i);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3f, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3f_j_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3f *arg1 = (matrix3x3f *) 0 ;
+  vector3f *arg2 = (vector3f *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:matrix3x3f_j_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3f_j_set" "', argument " "1"" of type '" "matrix3x3f *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3f * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "matrix3x3f_j_set" "', argument " "2"" of type '" "vector3f *""'"); 
+  }
+  arg2 = reinterpret_cast< vector3f * >(argp2);
+  if (arg1) (arg1)->j = *arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3f_j_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3f *arg1 = (matrix3x3f *) 0 ;
+  vector3f *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:matrix3x3f_j_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3f_j_get" "', argument " "1"" of type '" "matrix3x3f *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3f * >(argp1);
+  result = (vector3f *)& ((arg1)->j);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3f, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3f_k_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3f *arg1 = (matrix3x3f *) 0 ;
+  vector3f *arg2 = (vector3f *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:matrix3x3f_k_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3f_k_set" "', argument " "1"" of type '" "matrix3x3f *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3f * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_vector3f, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "matrix3x3f_k_set" "', argument " "2"" of type '" "vector3f *""'"); 
+  }
+  arg2 = reinterpret_cast< vector3f * >(argp2);
+  if (arg1) (arg1)->k = *arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3f_k_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3f *arg1 = (matrix3x3f *) 0 ;
+  vector3f *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:matrix3x3f_k_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3f, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3f_k_get" "', argument " "1"" of type '" "matrix3x3f *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3f * >(argp1);
+  result = (vector3f *)& ((arg1)->k);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3f, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_matrix3x3f(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3f *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_matrix3x3f")) SWIG_fail;
+  result = (matrix3x3f *)new matrix3x3f();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_matrix3x3f, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_matrix3x3f(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3f *arg1 = (matrix3x3f *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_matrix3x3f",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3f, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_matrix3x3f" "', argument " "1"" of type '" "matrix3x3f *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3f * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *matrix3x3f_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_matrix3x3f, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_matrix3x3d_i_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3d *arg1 = (matrix3x3d *) 0 ;
+  vector3d *arg2 = (vector3d *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:matrix3x3d_i_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3d_i_set" "', argument " "1"" of type '" "matrix3x3d *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3d * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "matrix3x3d_i_set" "', argument " "2"" of type '" "vector3d *""'"); 
+  }
+  arg2 = reinterpret_cast< vector3d * >(argp2);
+  if (arg1) (arg1)->i = *arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3d_i_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3d *arg1 = (matrix3x3d *) 0 ;
+  vector3d *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:matrix3x3d_i_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3d_i_get" "', argument " "1"" of type '" "matrix3x3d *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3d * >(argp1);
+  result = (vector3d *)& ((arg1)->i);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3d, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3d_j_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3d *arg1 = (matrix3x3d *) 0 ;
+  vector3d *arg2 = (vector3d *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:matrix3x3d_j_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3d_j_set" "', argument " "1"" of type '" "matrix3x3d *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3d * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "matrix3x3d_j_set" "', argument " "2"" of type '" "vector3d *""'"); 
+  }
+  arg2 = reinterpret_cast< vector3d * >(argp2);
+  if (arg1) (arg1)->j = *arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3d_j_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3d *arg1 = (matrix3x3d *) 0 ;
+  vector3d *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:matrix3x3d_j_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3d_j_get" "', argument " "1"" of type '" "matrix3x3d *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3d * >(argp1);
+  result = (vector3d *)& ((arg1)->j);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3d, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3d_k_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3d *arg1 = (matrix3x3d *) 0 ;
+  vector3d *arg2 = (vector3d *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:matrix3x3d_k_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3d_k_set" "', argument " "1"" of type '" "matrix3x3d *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3d * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_vector3d, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "matrix3x3d_k_set" "', argument " "2"" of type '" "vector3d *""'"); 
+  }
+  arg2 = reinterpret_cast< vector3d * >(argp2);
+  if (arg1) (arg1)->k = *arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_matrix3x3d_k_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3d *arg1 = (matrix3x3d *) 0 ;
+  vector3d *result = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:matrix3x3d_k_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3d, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "matrix3x3d_k_get" "', argument " "1"" of type '" "matrix3x3d *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3d * >(argp1);
+  result = (vector3d *)& ((arg1)->k);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_vector3d, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_matrix3x3d(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3d *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_matrix3x3d")) SWIG_fail;
+  result = (matrix3x3d *)new matrix3x3d();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_matrix3x3d, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_matrix3x3d(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  matrix3x3d *arg1 = (matrix3x3d *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_matrix3x3d",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_matrix3x3d, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_matrix3x3d" "', argument " "1"" of type '" "matrix3x3d *""'"); 
+  }
+  arg1 = reinterpret_cast< matrix3x3d * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *matrix3x3d_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_matrix3x3d, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Alt_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  short arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  short val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_Alt_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Alt_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_short(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_Alt_set" "', argument " "2"" of type '" "short""'");
+  } 
+  arg2 = static_cast< short >(val2);
+  if (arg1) (arg1)->Alt = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Alt_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  short result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_Alt_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Alt_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (short) ((arg1)->Alt);
+  resultobj = SWIG_From_short(static_cast< short >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Peak_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_Peak_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Peak_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_Peak_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->Peak = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Peak_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_Peak_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Peak_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->Peak);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Frac_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_Frac_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Frac_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_Frac_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->Frac = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Frac_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_Frac_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Frac_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->Frac);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Cliffs_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_Cliffs_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Cliffs_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_Cliffs_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->Cliffs = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Cliffs_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_Cliffs_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Cliffs_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->Cliffs);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Erosion_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_Erosion_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Erosion_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_Erosion_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->Erosion = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Erosion_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_Erosion_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Erosion_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->Erosion);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Lakes_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_Lakes_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Lakes_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_Lakes_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->Lakes = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Lakes_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_Lakes_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Lakes_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->Lakes);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Climate_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_Climate_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Climate_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_Climate_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->Climate = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_Climate_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_Climate_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_Climate_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->Climate);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_SpecType_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_SpecType_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_SpecType_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_SpecType_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->SpecType = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_SpecType_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_SpecType_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_SpecType_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->SpecType);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_SpecParam_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:DesignMapPixel_SpecParam_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_SpecParam_set" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "DesignMapPixel_SpecParam_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->SpecParam = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_DesignMapPixel_SpecParam_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:DesignMapPixel_SpecParam_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "DesignMapPixel_SpecParam_get" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->SpecParam);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_DesignMapPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_DesignMapPixel")) SWIG_fail;
+  result = (DesignMapPixel *)new DesignMapPixel();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_DesignMapPixel, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_DesignMapPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  DesignMapPixel *arg1 = (DesignMapPixel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_DesignMapPixel",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_DesignMapPixel, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_DesignMapPixel" "', argument " "1"" of type '" "DesignMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< DesignMapPixel * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *DesignMapPixel_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_DesignMapPixel, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_AttributesPixel_ClimateID_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AttributesPixel *arg1 = (AttributesPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AttributesPixel_ClimateID_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AttributesPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AttributesPixel_ClimateID_set" "', argument " "1"" of type '" "AttributesPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AttributesPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AttributesPixel_ClimateID_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->ClimateID = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AttributesPixel_ClimateID_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AttributesPixel *arg1 = (AttributesPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:AttributesPixel_ClimateID_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AttributesPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AttributesPixel_ClimateID_get" "', argument " "1"" of type '" "AttributesPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AttributesPixel * >(argp1);
+  result = (unsigned char) ((arg1)->ClimateID);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AttributesPixel_LandTypeID_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AttributesPixel *arg1 = (AttributesPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AttributesPixel_LandTypeID_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AttributesPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AttributesPixel_LandTypeID_set" "', argument " "1"" of type '" "AttributesPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AttributesPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AttributesPixel_LandTypeID_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->LandTypeID = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AttributesPixel_LandTypeID_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AttributesPixel *arg1 = (AttributesPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:AttributesPixel_LandTypeID_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AttributesPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AttributesPixel_LandTypeID_get" "', argument " "1"" of type '" "AttributesPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AttributesPixel * >(argp1);
+  result = (unsigned char) ((arg1)->LandTypeID);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_AttributesPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AttributesPixel *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_AttributesPixel")) SWIG_fail;
+  result = (AttributesPixel *)new AttributesPixel();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_AttributesPixel, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AttributesPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AttributesPixel *arg1 = (AttributesPixel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_AttributesPixel",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AttributesPixel, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AttributesPixel" "', argument " "1"" of type '" "AttributesPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AttributesPixel * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AttributesPixel_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_AttributesPixel, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_WaterMapPixel_WaterID_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  WaterMapPixel *arg1 = (WaterMapPixel *) 0 ;
+  unsigned short arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned short val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:WaterMapPixel_WaterID_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterMapPixel_WaterID_set" "', argument " "1"" of type '" "WaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< WaterMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_short(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "WaterMapPixel_WaterID_set" "', argument " "2"" of type '" "unsigned short""'");
+  } 
+  arg2 = static_cast< unsigned short >(val2);
+  if (arg1) (arg1)->WaterID = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_WaterMapPixel_WaterID_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  WaterMapPixel *arg1 = (WaterMapPixel *) 0 ;
+  unsigned short result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:WaterMapPixel_WaterID_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterMapPixel_WaterID_get" "', argument " "1"" of type '" "WaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< WaterMapPixel * >(argp1);
+  result = (unsigned short) ((arg1)->WaterID);
+  resultobj = SWIG_From_unsigned_SS_short(static_cast< unsigned short >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_WaterMapPixel_Type_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  WaterMapPixel *arg1 = (WaterMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:WaterMapPixel_Type_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterMapPixel_Type_set" "', argument " "1"" of type '" "WaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< WaterMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "WaterMapPixel_Type_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->Type = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_WaterMapPixel_Type_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  WaterMapPixel *arg1 = (WaterMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:WaterMapPixel_Type_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterMapPixel_Type_get" "', argument " "1"" of type '" "WaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< WaterMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->Type);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_WaterMapPixel_WaterLevel_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  WaterMapPixel *arg1 = (WaterMapPixel *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:WaterMapPixel_WaterLevel_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterMapPixel_WaterLevel_set" "', argument " "1"" of type '" "WaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< WaterMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "WaterMapPixel_WaterLevel_set" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  if (arg1) (arg1)->WaterLevel = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_WaterMapPixel_WaterLevel_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  WaterMapPixel *arg1 = (WaterMapPixel *) 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:WaterMapPixel_WaterLevel_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "WaterMapPixel_WaterLevel_get" "', argument " "1"" of type '" "WaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< WaterMapPixel * >(argp1);
+  result = (float) ((arg1)->WaterLevel);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_WaterMapPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  WaterMapPixel *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_WaterMapPixel")) SWIG_fail;
+  result = (WaterMapPixel *)new WaterMapPixel();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_WaterMapPixel, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_WaterMapPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  WaterMapPixel *arg1 = (WaterMapPixel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_WaterMapPixel",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_WaterMapPixel, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_WaterMapPixel" "', argument " "1"" of type '" "WaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< WaterMapPixel * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *WaterMapPixel_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_WaterMapPixel, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_AuxWaterMapPixel_Type_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AuxWaterMapPixel *arg1 = (AuxWaterMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AuxWaterMapPixel_Type_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AuxWaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AuxWaterMapPixel_Type_set" "', argument " "1"" of type '" "AuxWaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AuxWaterMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AuxWaterMapPixel_Type_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->Type = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AuxWaterMapPixel_Type_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AuxWaterMapPixel *arg1 = (AuxWaterMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:AuxWaterMapPixel_Type_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AuxWaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AuxWaterMapPixel_Type_get" "', argument " "1"" of type '" "AuxWaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AuxWaterMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->Type);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AuxWaterMapPixel_DoneFlag_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AuxWaterMapPixel *arg1 = (AuxWaterMapPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AuxWaterMapPixel_DoneFlag_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AuxWaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AuxWaterMapPixel_DoneFlag_set" "', argument " "1"" of type '" "AuxWaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AuxWaterMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AuxWaterMapPixel_DoneFlag_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->DoneFlag = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AuxWaterMapPixel_DoneFlag_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AuxWaterMapPixel *arg1 = (AuxWaterMapPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:AuxWaterMapPixel_DoneFlag_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AuxWaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AuxWaterMapPixel_DoneFlag_get" "', argument " "1"" of type '" "AuxWaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AuxWaterMapPixel * >(argp1);
+  result = (unsigned char) ((arg1)->DoneFlag);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AuxWaterMapPixel_WaterLevel_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AuxWaterMapPixel *arg1 = (AuxWaterMapPixel *) 0 ;
+  float arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  float val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:AuxWaterMapPixel_WaterLevel_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AuxWaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AuxWaterMapPixel_WaterLevel_set" "', argument " "1"" of type '" "AuxWaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AuxWaterMapPixel * >(argp1);
+  ecode2 = SWIG_AsVal_float(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "AuxWaterMapPixel_WaterLevel_set" "', argument " "2"" of type '" "float""'");
+  } 
+  arg2 = static_cast< float >(val2);
+  if (arg1) (arg1)->WaterLevel = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_AuxWaterMapPixel_WaterLevel_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AuxWaterMapPixel *arg1 = (AuxWaterMapPixel *) 0 ;
+  float result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:AuxWaterMapPixel_WaterLevel_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AuxWaterMapPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "AuxWaterMapPixel_WaterLevel_get" "', argument " "1"" of type '" "AuxWaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AuxWaterMapPixel * >(argp1);
+  result = (float) ((arg1)->WaterLevel);
+  resultobj = SWIG_From_float(static_cast< float >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_AuxWaterMapPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AuxWaterMapPixel *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_AuxWaterMapPixel")) SWIG_fail;
+  result = (AuxWaterMapPixel *)new AuxWaterMapPixel();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_AuxWaterMapPixel, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_AuxWaterMapPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  AuxWaterMapPixel *arg1 = (AuxWaterMapPixel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_AuxWaterMapPixel",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_AuxWaterMapPixel, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_AuxWaterMapPixel" "', argument " "1"" of type '" "AuxWaterMapPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< AuxWaterMapPixel * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *AuxWaterMapPixel_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_AuxWaterMapPixel, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
+SWIGINTERN PyObject *_wrap_ColourPixel_r_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColourPixel *arg1 = (ColourPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ColourPixel_r_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ColourPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColourPixel_r_set" "', argument " "1"" of type '" "ColourPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< ColourPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ColourPixel_r_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->r = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColourPixel_r_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColourPixel *arg1 = (ColourPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ColourPixel_r_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ColourPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColourPixel_r_get" "', argument " "1"" of type '" "ColourPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< ColourPixel * >(argp1);
+  result = (unsigned char) ((arg1)->r);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColourPixel_g_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColourPixel *arg1 = (ColourPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ColourPixel_g_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ColourPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColourPixel_g_set" "', argument " "1"" of type '" "ColourPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< ColourPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ColourPixel_g_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->g = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColourPixel_g_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColourPixel *arg1 = (ColourPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ColourPixel_g_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ColourPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColourPixel_g_get" "', argument " "1"" of type '" "ColourPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< ColourPixel * >(argp1);
+  result = (unsigned char) ((arg1)->g);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColourPixel_b_set(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColourPixel *arg1 = (ColourPixel *) 0 ;
+  unsigned char arg2 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  unsigned char val2 ;
+  int ecode2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:ColourPixel_b_set",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ColourPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColourPixel_b_set" "', argument " "1"" of type '" "ColourPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< ColourPixel * >(argp1);
+  ecode2 = SWIG_AsVal_unsigned_SS_char(obj1, &val2);
+  if (!SWIG_IsOK(ecode2)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "ColourPixel_b_set" "', argument " "2"" of type '" "unsigned char""'");
+  } 
+  arg2 = static_cast< unsigned char >(val2);
+  if (arg1) (arg1)->b = arg2;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_ColourPixel_b_get(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColourPixel *arg1 = (ColourPixel *) 0 ;
+  unsigned char result;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:ColourPixel_b_get",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ColourPixel, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "ColourPixel_b_get" "', argument " "1"" of type '" "ColourPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< ColourPixel * >(argp1);
+  result = (unsigned char) ((arg1)->b);
+  resultobj = SWIG_From_unsigned_SS_char(static_cast< unsigned char >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_ColourPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColourPixel *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_ColourPixel")) SWIG_fail;
+  result = (ColourPixel *)new ColourPixel();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_ColourPixel, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_ColourPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ColourPixel *arg1 = (ColourPixel *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_ColourPixel",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_ColourPixel, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_ColourPixel" "', argument " "1"" of type '" "ColourPixel *""'"); 
+  }
+  arg1 = reinterpret_cast< ColourPixel * >(argp1);
+  delete arg1;
+  
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *ColourPixel_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O|swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_ColourPixel, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_ExtGetApiVersion(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *result = 0 ;
@@ -3196,8 +5567,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_Create(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_var_Create" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (arg1)->var_Create(arg2,(char const *)arg3);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->var_Create(arg2,(char const *)arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
 fail:
@@ -3229,8 +5600,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_CreateTemp(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CExtAPI_var_CreateTemp" "', argument " "2"" of type '" "long""'");
   } 
   arg2 = static_cast< long >(val2);
-  result = (arg1)->var_CreateTemp(arg2);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->var_CreateTemp(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -3240,12 +5611,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_Delete(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -3255,18 +5625,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_Delete(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_Delete" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_Delete" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_Delete" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_Delete" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->var_Delete(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -3279,13 +5640,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_Rename(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -3299,18 +5659,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_Rename(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_Rename" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_Rename" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_Rename" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_Rename" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -3351,8 +5702,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_GetVar(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetVar" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  result = (arg1)->var_GetVar((char const *)arg2);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->var_GetVar((char const *)arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
@@ -3364,12 +5715,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_GetName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -3379,18 +5729,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_GetName(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_GetName" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetName" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_GetName" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetName" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (char *)(arg1)->var_GetName(arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
@@ -3403,12 +5744,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_GetTypeID(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -3418,18 +5758,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_GetTypeID(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_GetTypeID" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetTypeID" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_GetTypeID" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetTypeID" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (long)(arg1)->var_GetTypeID(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -3442,13 +5773,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_IsType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long arg3 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -3461,18 +5791,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_IsType(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_IsType" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_IsType" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_IsType" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_IsType" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -3490,13 +5811,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_GetValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   void *arg3 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -3508,18 +5828,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_GetValue(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_GetValue" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetValue" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_GetValue" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetValue" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
   if (!SWIG_IsOK(res3)) {
@@ -3536,13 +5847,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_SetValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   void *arg3 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
@@ -3554,18 +5864,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_SetValue(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_SetValue" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_SetValue" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_SetValue" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_SetValue" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
   if (!SWIG_IsOK(res3)) {
@@ -3582,14 +5883,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_GetValueEx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long arg3 ;
   void *arg4 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   int res4 ;
@@ -3604,18 +5904,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_GetValueEx(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_GetValueEx" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetValueEx" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_GetValueEx" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetValueEx" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -3637,14 +5928,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_SetValueEx(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long arg3 ;
   void *arg4 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   int res4 ;
@@ -3659,18 +5949,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_SetValueEx(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_SetValueEx" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_SetValueEx" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_SetValueEx" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_SetValueEx" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -3692,15 +5973,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_CopyValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
-  ZVAR arg3 ;
+  ZVAR arg2 = (ZVAR) 0 ;
+  ZVAR arg3 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 ;
+  int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -3711,31 +5990,13 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_CopyValue(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_CopyValue" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_CopyValue" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_CopyValue" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_CopyValue" "', argument " "2"" of type '" "ZVAR""'"); 
   }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_var_CopyValue" "', argument " "3"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_CopyValue" "', argument " "3"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_var_CopyValue" "', argument " "3"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->var_CopyValue(arg2,arg3);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -3748,15 +6009,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_SetVarRef(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
-  ZVAR arg3 ;
+  ZVAR arg2 = (ZVAR) 0 ;
+  ZVAR arg3 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 ;
+  int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -3767,31 +6026,13 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_SetVarRef(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_SetVarRef" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_SetVarRef" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_SetVarRef" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_SetVarRef" "', argument " "2"" of type '" "ZVAR""'"); 
   }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_var_SetVarRef" "', argument " "3"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_SetVarRef" "', argument " "3"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_var_SetVarRef" "', argument " "3"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->var_SetVarRef(arg2,arg3);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -3804,13 +6045,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_EditUI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -3824,18 +6064,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_EditUI(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_EditUI" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_EditUI" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_EditUI" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_EditUI" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -3855,12 +6086,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_var_GetDataPtr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   void *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -3870,18 +6100,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_var_GetDataPtr(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_var_GetDataPtr" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetDataPtr" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_var_GetDataPtr" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_var_GetDataPtr" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (void *)(arg1)->var_GetDataPtr(arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
@@ -3929,14 +6150,13 @@ SWIGINTERN PyObject *_wrap_CExtAPI_type_GetTypeName(PyObject *SWIGUNUSEDPARM(sel
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
   long arg2 ;
-  ZVAR arg3 ;
+  ZVAR arg3 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
   long val2 ;
   int ecode2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -3952,18 +6172,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_type_GetTypeName(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CExtAPI_type_GetTypeName" "', argument " "2"" of type '" "long""'");
   } 
   arg2 = static_cast< long >(val2);
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_type_GetTypeName" "', argument " "3"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_type_GetTypeName" "', argument " "3"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_type_GetTypeName" "', argument " "3"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->type_GetTypeName(arg2,arg3);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -3976,12 +6187,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_str_GetText(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -3991,18 +6201,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_str_GetText(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_str_GetText" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_str_GetText" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_str_GetText" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_str_GetText" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (char *)(arg1)->str_GetText(arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
@@ -4015,13 +6216,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_str_SetText(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -4035,18 +6235,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_str_SetText(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_str_SetText" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_str_SetText" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_str_SetText" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_str_SetText" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -4066,12 +6257,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_nItems(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4081,18 +6271,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_nItems(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_nItems" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_nItems" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_nItems" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_nItems" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   result = (long)(arg1)->list_nItems(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -4105,14 +6286,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_CreateItem(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   long arg3 ;
   char *arg4 = (char *) 0 ;
   ZLIST result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   int res4 ;
@@ -4129,18 +6309,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_CreateItem(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_CreateItem" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_CreateItem" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_CreateItem" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_CreateItem" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -4152,8 +6323,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_CreateItem(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_list_CreateItem" "', argument " "4"" of type '" "char const *""'");
   }
   arg4 = reinterpret_cast< char * >(buf4);
-  result = (arg1)->list_CreateItem(arg2,arg3,(char const *)arg4);
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->list_CreateItem(arg2,arg3,(char const *)arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
   return resultobj;
 fail:
@@ -4165,13 +6336,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_GetItemI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   long arg3 ;
   ZLIST result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -4184,26 +6354,17 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_GetItemI(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_GetItemI" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_GetItemI" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_GetItemI" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_GetItemI" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CExtAPI_list_GetItemI" "', argument " "3"" of type '" "long""'");
   } 
   arg3 = static_cast< long >(val3);
-  result = (arg1)->list_GetItemI(arg2,arg3);
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->list_GetItemI(arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4213,13 +6374,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_GetItemA(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   char *arg3 = (char *) 0 ;
   ZLIST result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -4233,26 +6393,17 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_GetItemA(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_GetItemA" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_GetItemA" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_GetItemA" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_GetItemA" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_list_GetItemA" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (arg1)->list_GetItemA(arg2,(char const *)arg3);
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->list_GetItemA(arg2,(char const *)arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
 fail:
@@ -4264,13 +6415,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_DelItemI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   long arg3 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -4283,18 +6433,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_DelItemI(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_DelItemI" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_DelItemI" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_DelItemI" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_DelItemI" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -4312,13 +6453,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_DelItemA(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -4332,18 +6472,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_DelItemA(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_DelItemA" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_DelItemA" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_DelItemA" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_DelItemA" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -4363,12 +6494,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_DelAll(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4378,18 +6508,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_DelAll(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_DelAll" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_DelAll" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_DelAll" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_DelAll" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   result = (bool)(arg1)->list_DelAll(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -4402,14 +6523,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_SortI(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   long arg3 ;
   long arg4 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   long val4 ;
@@ -4425,18 +6545,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_SortI(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_SortI" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_SortI" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_SortI" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_SortI" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -4459,14 +6570,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_list_SortA(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   char *arg3 = (char *) 0 ;
   long arg4 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -4483,18 +6593,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_list_SortA(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_list_SortA" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_SortA" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_list_SortA" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_list_SortA" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -4519,7 +6620,7 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long arg3 ;
   long arg4 ;
   long arg5 ;
@@ -4528,8 +6629,7 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_Init(PyObject *SWIGUNUSEDPARM(self), PyOb
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   long val4 ;
@@ -4554,18 +6654,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_Init(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_Init" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_Init" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_Init" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_Init" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -4603,12 +6694,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_Free(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4618,18 +6708,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_Free(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_Free" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_Free" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_Free" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_Free" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (bool)(arg1)->map_Free(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -4642,12 +6723,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMapType(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4657,18 +6737,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMapType(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetMapType" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMapType" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetMapType" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMapType" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (long)(arg1)->map_GetMapType(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -4681,12 +6752,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetPixelSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4696,18 +6766,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetPixelSize(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetPixelSize" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetPixelSize" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetPixelSize" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetPixelSize" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (long)(arg1)->map_GetPixelSize(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -4720,12 +6781,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetWrapFlag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4735,18 +6795,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetWrapFlag(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetWrapFlag" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetWrapFlag" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetWrapFlag" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetWrapFlag" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (bool)(arg1)->map_GetWrapFlag(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -4759,13 +6810,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SetWrapFlag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   bool arg3 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   bool val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -4778,18 +6828,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SetWrapFlag(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SetWrapFlag" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetWrapFlag" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SetWrapFlag" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetWrapFlag" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -4807,12 +6848,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetBusyFlag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4822,18 +6862,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetBusyFlag(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetBusyFlag" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetBusyFlag" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetBusyFlag" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetBusyFlag" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (bool)(arg1)->map_GetBusyFlag(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -4846,13 +6877,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SetBusyFlag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   bool arg3 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   bool val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -4865,18 +6895,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SetBusyFlag(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SetBusyFlag" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetBusyFlag" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SetBusyFlag" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetBusyFlag" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -4894,12 +6915,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetWidth(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4909,18 +6929,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetWidth(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetWidth" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetWidth" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetWidth" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetWidth" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (long)(arg1)->map_GetWidth(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -4933,12 +6944,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetHeight(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -4948,18 +6958,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetHeight(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetHeight" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetHeight" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetHeight" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetHeight" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (long)(arg1)->map_GetHeight(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -4972,15 +6973,14 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long arg3 ;
   long arg4 ;
   void *arg5 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   long val4 ;
@@ -4998,18 +6998,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetPixel(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetPixel" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetPixel" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetPixel" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetPixel" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -5036,15 +7027,14 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SetPixel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long arg3 ;
   long arg4 ;
   void *arg5 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   long val4 ;
@@ -5062,18 +7052,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SetPixel(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SetPixel" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetPixel" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SetPixel" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetPixel" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -5100,14 +7081,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMinMaxAlt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   float *arg3 = 0 ;
   float *arg4 = 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   void *argp4 = 0 ;
@@ -5123,18 +7103,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMinMaxAlt(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetMinMaxAlt" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMinMaxAlt" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetMinMaxAlt" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMinMaxAlt" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_float,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -5163,14 +7134,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SetMinMaxAlt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   float *arg3 = 0 ;
   float *arg4 = 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   void *argp3 = 0 ;
   int res3 = 0 ;
   void *argp4 = 0 ;
@@ -5186,18 +7156,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SetMinMaxAlt(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SetMinMaxAlt" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetMinMaxAlt" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SetMinMaxAlt" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetMinMaxAlt" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_float,  0 );
   if (!SWIG_IsOK(res3)) {
@@ -5226,12 +7187,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetHorizScale(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   float result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5241,18 +7201,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetHorizScale(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetHorizScale" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetHorizScale" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetHorizScale" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetHorizScale" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (float)(arg1)->map_GetHorizScale(arg2);
   resultobj = SWIG_From_float(static_cast< float >(result));
@@ -5265,12 +7216,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicFlag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5280,18 +7230,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicFlag(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetMosaicFlag" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicFlag" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetMosaicFlag" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicFlag" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (bool)(arg1)->map_GetMosaicFlag(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -5304,12 +7245,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicTileSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5319,18 +7259,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicTileSize(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetMosaicTileSize" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicTileSize" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetMosaicTileSize" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicTileSize" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (long)(arg1)->map_GetMosaicTileSize(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -5343,12 +7274,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicTilesX(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5358,18 +7288,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicTilesX(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetMosaicTilesX" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicTilesX" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetMosaicTilesX" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicTilesX" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (long)(arg1)->map_GetMosaicTilesX(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -5382,12 +7303,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicTilesY(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5397,18 +7317,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicTilesY(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetMosaicTilesY" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicTilesY" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetMosaicTilesY" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicTilesY" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (long)(arg1)->map_GetMosaicTilesY(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -5421,13 +7332,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetFlag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long arg3 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -5440,18 +7350,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetFlag(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetFlag" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetFlag" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetFlag" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetFlag" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -5469,14 +7370,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SetFlag(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long arg3 ;
   bool arg4 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   bool val4 ;
@@ -5492,18 +7392,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SetFlag(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SetFlag" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetFlag" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SetFlag" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetFlag" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -5526,12 +7417,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetSettingsList(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   ZLIST result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -5541,21 +7431,12 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetSettingsList(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetSettingsList" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetSettingsList" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetSettingsList" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetSettingsList" "', argument " "2"" of type '" "ZMAP""'"); 
   }
-  result = (arg1)->map_GetSettingsList(arg2);
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->map_GetSettingsList(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -5565,21 +7446,19 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SaveFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
-  ZFORMAT arg4 ;
+  ZFORMAT arg4 = (ZFORMAT) 0 ;
   bool arg5 ;
   bool arg6 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
+  int res4 ;
   bool val5 ;
   int ecode5 = 0 ;
   bool val6 ;
@@ -5597,36 +7476,18 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SaveFile(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SaveFile" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SaveFile" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SaveFile" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SaveFile" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_map_SaveFile" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_map_SaveFile" "', argument " "4"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SaveFile" "', argument " "4"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
+  res4 = SWIG_ConvertPtr(obj3,SWIG_as_voidptrptr(&arg4), 0, 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_map_SaveFile" "', argument " "4"" of type '" "ZFORMAT""'"); 
   }
   ecode5 = SWIG_AsVal_bool(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
@@ -5651,24 +7512,22 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_LoadFile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
   long arg4 ;
-  ZFORMAT arg5 ;
+  ZFORMAT arg5 = (ZFORMAT) 0 ;
   bool arg6 ;
   bool arg7 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
   long val4 ;
   int ecode4 = 0 ;
-  void *argp5 ;
-  int res5 = 0 ;
+  int res5 ;
   bool val6 ;
   int ecode6 = 0 ;
   bool val7 ;
@@ -5687,18 +7546,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_LoadFile(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_LoadFile" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_LoadFile" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_LoadFile" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_LoadFile" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -5710,18 +7560,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_LoadFile(PyObject *SWIGUNUSEDPARM(self), 
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "CExtAPI_map_LoadFile" "', argument " "4"" of type '" "long""'");
   } 
   arg4 = static_cast< long >(val4);
-  {
-    res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CExtAPI_map_LoadFile" "', argument " "5"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp5) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_LoadFile" "', argument " "5"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp5);
-      arg5 = *temp;
-      if (SWIG_IsNewObj(res5)) delete temp;
-    }
+  res5 = SWIG_ConvertPtr(obj4,SWIG_as_voidptrptr(&arg5), 0, 0);
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CExtAPI_map_LoadFile" "', argument " "5"" of type '" "ZFORMAT""'"); 
   }
   ecode6 = SWIG_AsVal_bool(obj5, &val6);
   if (!SWIG_IsOK(ecode6)) {
@@ -5746,15 +7587,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetNameInProject(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
-  ZVAR arg3 ;
+  ZMAP arg2 = (ZMAP) 0 ;
+  ZVAR arg3 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 ;
+  int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -5765,31 +7604,13 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetNameInProject(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetNameInProject" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetNameInProject" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetNameInProject" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetNameInProject" "', argument " "2"" of type '" "ZMAP""'"); 
   }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_map_GetNameInProject" "', argument " "3"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetNameInProject" "', argument " "3"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_map_GetNameInProject" "', argument " "3"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->map_GetNameInProject(arg2,arg3);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -5802,7 +7623,7 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_InitMosaic(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long arg3 ;
   long arg4 ;
   long arg5 ;
@@ -5810,13 +7631,12 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_InitMosaic(PyObject *SWIGUNUSEDPARM(self)
   bool arg7 ;
   char *arg8 = (char *) 0 ;
   long arg9 ;
-  ZFORMAT arg10 ;
+  ZFORMAT arg10 = (ZFORMAT) 0 ;
   char *arg11 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   long val4 ;
@@ -5832,8 +7652,7 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_InitMosaic(PyObject *SWIGUNUSEDPARM(self)
   int alloc8 = 0 ;
   long val9 ;
   int ecode9 = 0 ;
-  void *argp10 ;
-  int res10 = 0 ;
+  int res10 ;
   int res11 ;
   char *buf11 = 0 ;
   int alloc11 = 0 ;
@@ -5855,18 +7674,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_InitMosaic(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_InitMosaic" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_InitMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_InitMosaic" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_InitMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -5903,18 +7713,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_InitMosaic(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(ecode9), "in method '" "CExtAPI_map_InitMosaic" "', argument " "9"" of type '" "long""'");
   } 
   arg9 = static_cast< long >(val9);
-  {
-    res10 = SWIG_ConvertPtr(obj9, &argp10, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res10)) {
-      SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "CExtAPI_map_InitMosaic" "', argument " "10"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp10) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_InitMosaic" "', argument " "10"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp10);
-      arg10 = *temp;
-      if (SWIG_IsNewObj(res10)) delete temp;
-    }
+  res10 = SWIG_ConvertPtr(obj9,SWIG_as_voidptrptr(&arg10), 0, 0);
+  if (!SWIG_IsOK(res10)) {
+    SWIG_exception_fail(SWIG_ArgError(res10), "in method '" "CExtAPI_map_InitMosaic" "', argument " "10"" of type '" "ZFORMAT""'"); 
   }
   res11 = SWIG_AsCharPtrAndSize(obj10, &buf11, NULL, &alloc11);
   if (!SWIG_IsOK(res11)) {
@@ -5936,13 +7737,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_LoadMosaic(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -5956,18 +7756,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_LoadMosaic(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_LoadMosaic" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_LoadMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_LoadMosaic" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_LoadMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -5987,12 +7778,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SaveMosaic(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -6002,18 +7792,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SaveMosaic(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SaveMosaic" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SaveMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SaveMosaic" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SaveMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (bool)(arg1)->map_SaveMosaic(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -6026,12 +7807,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetFormat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   ZFORMAT result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -6041,21 +7821,12 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetFormat(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetFormat" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetFormat" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetFormat" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetFormat" "', argument " "2"" of type '" "ZMAP""'"); 
   }
-  result = (arg1)->map_GetFormat(arg2);
-  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
+  result = (ZFORMAT)(arg1)->map_GetFormat(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -6065,15 +7836,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SetFormat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
-  ZFORMAT arg3 ;
+  ZMAP arg2 = (ZMAP) 0 ;
+  ZFORMAT arg3 = (ZFORMAT) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 ;
+  int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -6084,31 +7853,13 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SetFormat(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SetFormat" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetFormat" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SetFormat" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SetFormat" "', argument " "2"" of type '" "ZMAP""'"); 
   }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_map_SetFormat" "', argument " "3"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SetFormat" "', argument " "3"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_map_SetFormat" "', argument " "3"" of type '" "ZFORMAT""'"); 
   }
   result = (bool)(arg1)->map_SetFormat(arg2,arg3);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -6121,12 +7872,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetFilename(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -6136,18 +7886,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetFilename(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetFilename" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetFilename" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetFilename" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetFilename" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (char *)(arg1)->map_GetFilename(arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
@@ -6160,12 +7901,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_CombineMosaic(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -6175,18 +7915,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_CombineMosaic(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_CombineMosaic" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_CombineMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_CombineMosaic" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_CombineMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (bool)(arg1)->map_CombineMosaic(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -6199,23 +7930,21 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SplitToMosaic(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
   long arg4 ;
-  ZFORMAT arg5 ;
+  ZFORMAT arg5 = (ZFORMAT) 0 ;
   char *arg6 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
   long val4 ;
   int ecode4 = 0 ;
-  void *argp5 ;
-  int res5 = 0 ;
+  int res5 ;
   int res6 ;
   char *buf6 = 0 ;
   int alloc6 = 0 ;
@@ -6232,18 +7961,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SplitToMosaic(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SplitToMosaic" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SplitToMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SplitToMosaic" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SplitToMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -6255,18 +7975,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SplitToMosaic(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "CExtAPI_map_SplitToMosaic" "', argument " "4"" of type '" "long""'");
   } 
   arg4 = static_cast< long >(val4);
-  {
-    res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CExtAPI_map_SplitToMosaic" "', argument " "5"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp5) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SplitToMosaic" "', argument " "5"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp5);
-      arg5 = *temp;
-      if (SWIG_IsNewObj(res5)) delete temp;
-    }
+  res5 = SWIG_ConvertPtr(obj4,SWIG_as_voidptrptr(&arg5), 0, 0);
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CExtAPI_map_SplitToMosaic" "', argument " "5"" of type '" "ZFORMAT""'"); 
   }
   res6 = SWIG_AsCharPtrAndSize(obj5, &buf6, NULL, &alloc6);
   if (!SWIG_IsOK(res6)) {
@@ -6288,13 +7999,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_SaveMosaicAs(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -6308,18 +8018,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_SaveMosaicAs(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_SaveMosaicAs" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SaveMosaicAs" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_SaveMosaicAs" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_SaveMosaicAs" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -6339,21 +8040,19 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_ExportMap(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
-  ZFORMAT arg4 ;
+  ZFORMAT arg4 = (ZFORMAT) 0 ;
   long arg5 ;
   long arg6 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
+  int res4 ;
   long val5 ;
   int ecode5 = 0 ;
   long val6 ;
@@ -6371,36 +8070,18 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_ExportMap(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_ExportMap" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_ExportMap" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_ExportMap" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_ExportMap" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_map_ExportMap" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_map_ExportMap" "', argument " "4"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_ExportMap" "', argument " "4"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
+  res4 = SWIG_ConvertPtr(obj3,SWIG_as_voidptrptr(&arg4), 0, 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_map_ExportMap" "', argument " "4"" of type '" "ZFORMAT""'"); 
   }
   ecode5 = SWIG_AsVal_long(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
@@ -6425,9 +8106,9 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_ExportMosaic(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
-  ZFORMAT arg4 ;
+  ZFORMAT arg4 = (ZFORMAT) 0 ;
   long arg5 ;
   long arg6 ;
   long arg7 ;
@@ -6435,13 +8116,11 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_ExportMosaic(PyObject *SWIGUNUSEDPARM(sel
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
+  int res4 ;
   long val5 ;
   int ecode5 = 0 ;
   long val6 ;
@@ -6466,36 +8145,18 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_ExportMosaic(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_ExportMosaic" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_ExportMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_ExportMosaic" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_ExportMosaic" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_map_ExportMosaic" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_map_ExportMosaic" "', argument " "4"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_ExportMosaic" "', argument " "4"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
+  res4 = SWIG_ConvertPtr(obj3,SWIG_as_voidptrptr(&arg4), 0, 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_map_ExportMosaic" "', argument " "4"" of type '" "ZFORMAT""'"); 
   }
   ecode5 = SWIG_AsVal_long(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
@@ -6532,12 +8193,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetDataPtr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   void *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -6547,18 +8207,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetDataPtr(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetDataPtr" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetDataPtr" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetDataPtr" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetDataPtr" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   result = (void *)(arg1)->map_GetDataPtr(arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
@@ -6571,14 +8222,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicTile(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   long arg3 ;
   long arg4 ;
   void *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   long val4 ;
@@ -6594,18 +8244,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_map_GetMosaicTile(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_map_GetMosaicTile" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicTile" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_map_GetMosaicTile" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_map_GetMosaicTile" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -6960,8 +8601,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_Create(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CExtAPI_format_Create" "', argument " "5"" of type '" "char const *""'");
   }
   arg5 = reinterpret_cast< char * >(buf5);
-  result = (arg1)->format_Create((char const *)arg2,(char const *)arg3,(char const *)arg4,(char const *)arg5);
-  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
+  result = (ZFORMAT)(arg1)->format_Create((char const *)arg2,(char const *)arg3,(char const *)arg4,(char const *)arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
@@ -7029,8 +8670,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_CreateGeneric(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CExtAPI_format_CreateGeneric" "', argument " "5"" of type '" "char const *""'");
   }
   arg5 = reinterpret_cast< char * >(buf5);
-  result = (arg1)->format_CreateGeneric(arg2,(char const *)arg3,(char const *)arg4,(char const *)arg5);
-  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
+  result = (ZFORMAT)(arg1)->format_CreateGeneric(arg2,(char const *)arg3,(char const *)arg4,(char const *)arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
   if (alloc5 == SWIG_NEWOBJ) delete[] buf5;
@@ -7046,14 +8687,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_SetFlags(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   bool arg3 ;
   bool arg4 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   bool val3 ;
   int ecode3 = 0 ;
   bool val4 ;
@@ -7069,18 +8709,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_SetFlags(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_SetFlags" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_SetFlags" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_SetFlags" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_SetFlags" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
   ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -7103,13 +8734,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_SetInfoStr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -7123,18 +8753,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_SetInfoStr(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_SetInfoStr" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_SetInfoStr" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_SetInfoStr" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_SetInfoStr" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -7154,12 +8775,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_GetExt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   char *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7169,18 +8789,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_GetExt(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_GetExt" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetExt" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_GetExt" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetExt" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
   result = (char *)(arg1)->format_GetExt(arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
@@ -7193,12 +8804,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_GetOptionList(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   ZLIST result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7208,21 +8818,12 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_GetOptionList(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_GetOptionList" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetOptionList" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_GetOptionList" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetOptionList" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
-  result = (arg1)->format_GetOptionList(arg2);
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->format_GetOptionList(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7232,15 +8833,14 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_GetOptionValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   char *arg3 = (char *) 0 ;
   long arg4 ;
   void *arg5 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -7259,18 +8859,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_GetOptionValue(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_GetOptionValue" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetOptionValue" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_GetOptionValue" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetOptionValue" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -7299,15 +8890,14 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_SetOptionValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   char *arg3 = (char *) 0 ;
   long arg4 ;
   void *arg5 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -7326,18 +8916,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_SetOptionValue(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_SetOptionValue" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_SetOptionValue" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_SetOptionValue" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_SetOptionValue" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -7406,8 +8987,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_GetFormatByExt(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_format_GetFormatByExt" "', argument " "4"" of type '" "char const *""'");
   }
   arg4 = reinterpret_cast< char * >(buf4);
-  result = (arg1)->format_GetFormatByExt((char const *)arg2,arg3,(char const *)arg4);
-  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
+  result = (ZFORMAT)(arg1)->format_GetFormatByExt((char const *)arg2,arg3,(char const *)arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc4 == SWIG_NEWOBJ) delete[] buf4;
   return resultobj;
@@ -7421,13 +9002,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_GetFormatByExt2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
   ZFORMAT result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -7441,26 +9021,17 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_GetFormatByExt2(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_GetFormatByExt2" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetFormatByExt2" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_GetFormatByExt2" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetFormatByExt2" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_format_GetFormatByExt2" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (arg1)->format_GetFormatByExt2(arg2,(char const *)arg3);
-  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
+  result = (ZFORMAT)(arg1)->format_GetFormatByExt2(arg2,(char const *)arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
 fail:
@@ -7502,8 +9073,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_GetFormatList(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CExtAPI_format_GetFormatList" "', argument " "3"" of type '" "long""'");
   } 
   arg3 = static_cast< long >(val3);
-  result = (arg1)->format_GetFormatList((char const *)arg2,arg3);
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->format_GetFormatList((char const *)arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
@@ -7515,12 +9086,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_GetFormatList2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   ZLIST result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7530,21 +9100,12 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_GetFormatList2(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_GetFormatList2" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetFormatList2" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_GetFormatList2" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_GetFormatList2" "', argument " "2"" of type '" "ZMAP""'"); 
   }
-  result = (arg1)->format_GetFormatList2(arg2);
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->format_GetFormatList2(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -7554,12 +9115,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_IsMosaic(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7569,18 +9129,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_IsMosaic(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_IsMosaic" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_IsMosaic" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_IsMosaic" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_IsMosaic" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
   result = (bool)(arg1)->format_IsMosaic(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -7593,12 +9144,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_format_IsNative(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7608,18 +9158,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_IsNative(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_format_IsNative" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_IsNative" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_format_IsNative" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_format_IsNative" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
   result = (bool)(arg1)->format_IsNative(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -7662,8 +9203,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_format_GetActiveFormat(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CExtAPI_format_GetActiveFormat" "', argument " "3"" of type '" "long""'");
   } 
   arg3 = static_cast< long >(val3);
-  result = (arg1)->format_GetActiveFormat((char const *)arg2,arg3);
-  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
+  result = (ZFORMAT)(arg1)->format_GetActiveFormat((char const *)arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
@@ -7675,12 +9216,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_progbox_ShowWnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7690,18 +9230,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_progbox_ShowWnd(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_progbox_ShowWnd" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_progbox_ShowWnd" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_progbox_ShowWnd" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_progbox_ShowWnd" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->progbox_ShowWnd(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -7714,12 +9245,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_progbox_HideWnd(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7729,18 +9259,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_progbox_HideWnd(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_progbox_HideWnd" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_progbox_HideWnd" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_progbox_HideWnd" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_progbox_HideWnd" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->progbox_HideWnd(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -7753,13 +9274,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_progbox_SetTitle(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -7773,18 +9293,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_progbox_SetTitle(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_progbox_SetTitle" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_progbox_SetTitle" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_progbox_SetTitle" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_progbox_SetTitle" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -7804,14 +9315,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_progbox_SetProgress(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   __int64 arg3 ;
   __int64 arg4 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long long val3 ;
   int ecode3 = 0 ;
   long long val4 ;
@@ -7827,18 +9337,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_progbox_SetProgress(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_progbox_SetProgress" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_progbox_SetProgress" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_progbox_SetProgress" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_progbox_SetProgress" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   ecode3 = SWIG_AsVal_long_SS_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -7861,13 +9362,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_combosel_SetOptions(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -7881,18 +9381,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_combosel_SetOptions(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_combosel_SetOptions" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_combosel_SetOptions" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_combosel_SetOptions" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_combosel_SetOptions" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -7912,12 +9403,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_combosel_GetOptions(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -7927,18 +9417,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_combosel_GetOptions(PyObject *SWIGUNUSEDPARM(
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_combosel_GetOptions" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_combosel_GetOptions" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_combosel_GetOptions" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_combosel_GetOptions" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (char *)(arg1)->combosel_GetOptions(arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
@@ -7951,13 +9432,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_combosel_SetCurSel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -7971,18 +9451,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_combosel_SetCurSel(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_combosel_SetCurSel" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_combosel_SetCurSel" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_combosel_SetCurSel" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_combosel_SetCurSel" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -8002,12 +9473,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_combosel_GetCurSel(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -8017,18 +9487,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_combosel_GetCurSel(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_combosel_GetCurSel" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_combosel_GetCurSel" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_combosel_GetCurSel" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_combosel_GetCurSel" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (char *)(arg1)->combosel_GetCurSel(arg2);
   resultobj = SWIG_FromCharPtr((const char *)result);
@@ -8108,8 +9569,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_project_GetMap(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_project_GetMap" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  result = (arg1)->project_GetMap((char const *)arg2);
-  resultobj = SWIG_NewPointerObj((new ZMAP(static_cast< const ZMAP& >(result))), SWIGTYPE_p_ZMAP, SWIG_POINTER_OWN |  0 );
+  result = (ZMAP)(arg1)->project_GetMap((char const *)arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
@@ -8154,8 +9615,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_project_GetSettingsList(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_project_GetSettingsList" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  result = (arg1)->project_GetSettingsList();
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->project_GetSettingsList();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -8210,8 +9671,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_view_GetActiveMap(PyObject *SWIGUNUSEDPARM(se
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_view_GetActiveMap" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  result = (arg1)->view_GetActiveMap();
-  resultobj = SWIG_NewPointerObj((new ZMAP(static_cast< const ZMAP& >(result))), SWIGTYPE_p_ZMAP, SWIG_POINTER_OWN |  0 );
+  result = (ZMAP)(arg1)->view_GetActiveMap();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -8221,12 +9682,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_view_GetSelectedArea(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -8236,18 +9696,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_view_GetSelectedArea(PyObject *SWIGUNUSEDPARM
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_view_GetSelectedArea" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_view_GetSelectedArea" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_view_GetSelectedArea" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_view_GetSelectedArea" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   result = (bool)(arg1)->view_GetSelectedArea(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -8260,13 +9711,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_file_GetExt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -8280,18 +9730,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_file_GetExt(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_file_GetExt" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_file_GetExt" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_file_GetExt" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_file_GetExt" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -8311,13 +9752,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_file_GetFilenameNoExt(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -8331,18 +9771,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_file_GetFilenameNoExt(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_file_GetFilenameNoExt" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_file_GetFilenameNoExt" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_file_GetFilenameNoExt" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_file_GetFilenameNoExt" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -8362,13 +9793,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_file_GetDir(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -8382,18 +9812,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_file_GetDir(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_file_GetDir" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_file_GetDir" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_file_GetDir" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_file_GetDir" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -8413,13 +9834,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_file_GetFilenameNoDir(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -8433,18 +9853,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_file_GetFilenameNoDir(PyObject *SWIGUNUSEDPAR
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_file_GetFilenameNoDir" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_file_GetFilenameNoDir" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_file_GetFilenameNoDir" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_file_GetFilenameNoDir" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -8498,14 +9909,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_buffer_Init(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long arg3 ;
   long arg4 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   long val4 ;
@@ -8521,18 +9931,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_buffer_Init(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_buffer_Init" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_Init" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_buffer_Init" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_Init" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -8555,12 +9956,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_buffer_Free(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -8570,18 +9970,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_buffer_Free(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_buffer_Free" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_Free" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_buffer_Free" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_Free" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->buffer_Free(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -8594,12 +9985,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_buffer_nItems(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -8609,18 +9999,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_buffer_nItems(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_buffer_nItems" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_nItems" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_buffer_nItems" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_nItems" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (long)(arg1)->buffer_nItems(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -8633,12 +10014,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_buffer_MemSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -8648,18 +10028,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_buffer_MemSize(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_buffer_MemSize" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_MemSize" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_buffer_MemSize" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_MemSize" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (long)(arg1)->buffer_MemSize(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -8672,12 +10043,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_buffer_ItemSize(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -8687,18 +10057,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_buffer_ItemSize(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_buffer_ItemSize" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_ItemSize" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_buffer_ItemSize" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_ItemSize" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (long)(arg1)->buffer_ItemSize(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -8711,12 +10072,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_buffer_GetPtr(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   void *result = 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -8726,18 +10086,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_buffer_GetPtr(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_buffer_GetPtr" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_GetPtr" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_buffer_GetPtr" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_GetPtr" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (void *)(arg1)->buffer_GetPtr(arg2);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
@@ -8750,14 +10101,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_buffer_GetValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long arg3 ;
   void *arg4 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   int res4 ;
@@ -8772,18 +10122,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_buffer_GetValue(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_buffer_GetValue" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_GetValue" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_buffer_GetValue" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_GetValue" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -8805,14 +10146,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_buffer_SetValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   long arg3 ;
   void *arg4 = (void *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   long val3 ;
   int ecode3 = 0 ;
   int res4 ;
@@ -8827,18 +10167,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_buffer_SetValue(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_buffer_SetValue" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_SetValue" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_buffer_SetValue" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_buffer_SetValue" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   ecode3 = SWIG_AsVal_long(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -8862,7 +10193,7 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_LoadFunc(PyObject *SWIGUNUSEDPARM(sel
   CExtAPI *arg1 = (CExtAPI *) 0 ;
   char *arg2 = (char *) 0 ;
   long arg3 ;
-  ZLIST arg4 ;
+  ZLIST arg4 = (ZLIST) 0 ;
   ZVAR result;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -8871,8 +10202,7 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_LoadFunc(PyObject *SWIGUNUSEDPARM(sel
   int alloc2 = 0 ;
   long val3 ;
   int ecode3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
+  int res4 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -8894,21 +10224,12 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_LoadFunc(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CExtAPI_zeofunc_LoadFunc" "', argument " "3"" of type '" "long""'");
   } 
   arg3 = static_cast< long >(val3);
-  {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_zeofunc_LoadFunc" "', argument " "4"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_LoadFunc" "', argument " "4"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
+  res4 = SWIG_ConvertPtr(obj3,SWIG_as_voidptrptr(&arg4), 0, 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_zeofunc_LoadFunc" "', argument " "4"" of type '" "ZLIST""'"); 
   }
-  result = (arg1)->zeofunc_LoadFunc((char const *)arg2,arg3,arg4);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->zeofunc_LoadFunc((char const *)arg2,arg3,arg4);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
@@ -8923,7 +10244,7 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_LoadFuncEx(PyObject *SWIGUNUSEDPARM(s
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
   long arg4 ;
-  ZLIST arg5 ;
+  ZLIST arg5 = (ZLIST) 0 ;
   ZVAR result;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -8935,8 +10256,7 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_LoadFuncEx(PyObject *SWIGUNUSEDPARM(s
   int alloc3 = 0 ;
   long val4 ;
   int ecode4 = 0 ;
-  void *argp5 ;
-  int res5 = 0 ;
+  int res5 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -8964,21 +10284,12 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_LoadFuncEx(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "CExtAPI_zeofunc_LoadFuncEx" "', argument " "4"" of type '" "long""'");
   } 
   arg4 = static_cast< long >(val4);
-  {
-    res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CExtAPI_zeofunc_LoadFuncEx" "', argument " "5"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp5) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_LoadFuncEx" "', argument " "5"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp5);
-      arg5 = *temp;
-      if (SWIG_IsNewObj(res5)) delete temp;
-    }
+  res5 = SWIG_ConvertPtr(obj4,SWIG_as_voidptrptr(&arg5), 0, 0);
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CExtAPI_zeofunc_LoadFuncEx" "', argument " "5"" of type '" "ZLIST""'"); 
   }
-  result = (arg1)->zeofunc_LoadFuncEx((char const *)arg2,(char const *)arg3,arg4,arg5);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->zeofunc_LoadFuncEx((char const *)arg2,(char const *)arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
@@ -9013,8 +10324,8 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_GetFunc(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_GetFunc" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  result = (arg1)->zeofunc_GetFunc((char const *)arg2);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->zeofunc_GetFunc((char const *)arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
@@ -9026,12 +10337,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_GetReturnTypeID(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFUNC arg2 ;
+  ZFUNC arg2 = (ZFUNC) 0 ;
   long result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -9041,18 +10351,9 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_GetReturnTypeID(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_zeofunc_GetReturnTypeID" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFUNC,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_GetReturnTypeID" "', argument " "2"" of type '" "ZFUNC""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_GetReturnTypeID" "', argument " "2"" of type '" "ZFUNC""'");
-    } else {
-      ZFUNC * temp = reinterpret_cast< ZFUNC * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_GetReturnTypeID" "', argument " "2"" of type '" "ZFUNC""'"); 
   }
   result = (long)(arg1)->zeofunc_GetReturnTypeID(arg2);
   resultobj = SWIG_From_long(static_cast< long >(result));
@@ -9065,15 +10366,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_GetArgListPrototype(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFUNC arg2 ;
-  ZLIST arg3 ;
+  ZFUNC arg2 = (ZFUNC) 0 ;
+  ZLIST arg3 = (ZLIST) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 ;
+  int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -9084,31 +10383,13 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_GetArgListPrototype(PyObject *SWIGUNU
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_zeofunc_GetArgListPrototype" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFUNC,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_GetArgListPrototype" "', argument " "2"" of type '" "ZFUNC""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_GetArgListPrototype" "', argument " "2"" of type '" "ZFUNC""'");
-    } else {
-      ZFUNC * temp = reinterpret_cast< ZFUNC * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_GetArgListPrototype" "', argument " "2"" of type '" "ZFUNC""'"); 
   }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_zeofunc_GetArgListPrototype" "', argument " "3"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_GetArgListPrototype" "', argument " "3"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_zeofunc_GetArgListPrototype" "', argument " "3"" of type '" "ZLIST""'"); 
   }
   result = (bool)(arg1)->zeofunc_GetArgListPrototype(arg2,arg3);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -9121,15 +10402,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_Execute(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFUNC arg2 ;
-  ZLIST arg3 ;
+  ZFUNC arg2 = (ZFUNC) 0 ;
+  ZLIST arg3 = (ZLIST) 0 ;
   ZVAR result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 ;
+  int res3 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -9140,34 +10419,16 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_Execute(PyObject *SWIGUNUSEDPARM(self
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_zeofunc_Execute" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFUNC,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_Execute" "', argument " "2"" of type '" "ZFUNC""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_Execute" "', argument " "2"" of type '" "ZFUNC""'");
-    } else {
-      ZFUNC * temp = reinterpret_cast< ZFUNC * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_Execute" "', argument " "2"" of type '" "ZFUNC""'"); 
   }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_zeofunc_Execute" "', argument " "3"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_Execute" "', argument " "3"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_zeofunc_Execute" "', argument " "3"" of type '" "ZLIST""'"); 
   }
-  result = (arg1)->zeofunc_Execute(arg2,arg3);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->zeofunc_Execute(arg2,arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -9177,16 +10438,14 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_Execute2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFUNC arg2 ;
-  ZLIST arg3 ;
+  ZFUNC arg2 = (ZFUNC) 0 ;
+  ZLIST arg3 = (ZLIST) 0 ;
   ZVAR *arg4 = (ZVAR *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 ;
+  int res3 ;
   void *argp4 = 0 ;
   int res4 = 0 ;
   PyObject * obj0 = 0 ;
@@ -9200,33 +10459,15 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_Execute2(PyObject *SWIGUNUSEDPARM(sel
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_zeofunc_Execute2" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFUNC,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_Execute2" "', argument " "2"" of type '" "ZFUNC""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_Execute2" "', argument " "2"" of type '" "ZFUNC""'");
-    } else {
-      ZFUNC * temp = reinterpret_cast< ZFUNC * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_Execute2" "', argument " "2"" of type '" "ZFUNC""'"); 
   }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_zeofunc_Execute2" "', argument " "3"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_Execute2" "', argument " "3"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_zeofunc_Execute2" "', argument " "3"" of type '" "ZLIST""'"); 
   }
-  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_ZVAR, 0 |  0 );
+  res4 = SWIG_ConvertPtr(obj3, &argp4,SWIGTYPE_p_p_void, 0 |  0 );
   if (!SWIG_IsOK(res4)) {
     SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CExtAPI_zeofunc_Execute2" "', argument " "4"" of type '" "ZVAR *""'"); 
   }
@@ -9242,17 +10483,15 @@ fail:
 SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_ExecuteThreaded(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CExtAPI *arg1 = (CExtAPI *) 0 ;
-  ZFUNC arg2 ;
-  ZLIST arg3 ;
+  ZFUNC arg2 = (ZFUNC) 0 ;
+  ZLIST arg3 = (ZLIST) 0 ;
   bool arg4 ;
   long arg5 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res2 ;
+  int res3 ;
   bool val4 ;
   int ecode4 = 0 ;
   long val5 ;
@@ -9269,31 +10508,13 @@ SWIGINTERN PyObject *_wrap_CExtAPI_zeofunc_ExecuteThreaded(PyObject *SWIGUNUSEDP
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CExtAPI_zeofunc_ExecuteThreaded" "', argument " "1"" of type '" "CExtAPI *""'"); 
   }
   arg1 = reinterpret_cast< CExtAPI * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFUNC,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_ExecuteThreaded" "', argument " "2"" of type '" "ZFUNC""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_ExecuteThreaded" "', argument " "2"" of type '" "ZFUNC""'");
-    } else {
-      ZFUNC * temp = reinterpret_cast< ZFUNC * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CExtAPI_zeofunc_ExecuteThreaded" "', argument " "2"" of type '" "ZFUNC""'"); 
   }
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_zeofunc_ExecuteThreaded" "', argument " "3"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CExtAPI_zeofunc_ExecuteThreaded" "', argument " "3"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CExtAPI_zeofunc_ExecuteThreaded" "', argument " "3"" of type '" "ZLIST""'"); 
   }
   ecode4 = SWIG_AsVal_bool(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
@@ -9436,25 +10657,15 @@ fail:
 
 SWIGINTERN PyObject *_wrap_new_CzVar__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  ZVAR arg1 ;
+  ZVAR arg1 = (ZVAR) 0 ;
   CzVar *result = 0 ;
-  void *argp1 ;
-  int res1 = 0 ;
+  int res1 ;
   PyObject * obj0 = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"O:new_CzVar",&obj0)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CzVar" "', argument " "1"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "new_CzVar" "', argument " "1"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_CzVar" "', argument " "1"" of type '" "ZVAR""'"); 
   }
   result = (CzVar *)new CzVar(arg1);
   resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_CzVar, SWIG_POINTER_NEW |  0 );
@@ -9479,7 +10690,8 @@ SWIGINTERN PyObject *_wrap_new_CzVar(PyObject *self, PyObject *args) {
   }
   if (argc == 1) {
     int _v;
-    int res = SWIG_ConvertPtr(argv[0], 0, SWIGTYPE_p_ZVAR, 0);
+    void *ptr = 0;
+    int res = SWIG_ConvertPtr(argv[0], &ptr, 0, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
       return _wrap_new_CzVar__SWIG_1(self, args);
@@ -9517,12 +10729,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzVar_Attach(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzVar *arg1 = (CzVar *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -9532,18 +10743,9 @@ SWIGINTERN PyObject *_wrap_CzVar_Attach(PyObject *SWIGUNUSEDPARM(self), PyObject
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzVar_Attach" "', argument " "1"" of type '" "CzVar *""'"); 
   }
   arg1 = reinterpret_cast< CzVar * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzVar_Attach" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzVar_Attach" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzVar_Attach" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->Attach(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -9567,8 +10769,8 @@ SWIGINTERN PyObject *_wrap_CzVar_GetZVAR(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzVar_GetZVAR" "', argument " "1"" of type '" "CzVar *""'"); 
   }
   arg1 = reinterpret_cast< CzVar * >(argp1);
-  result = (arg1)->GetZVAR();
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->GetZVAR();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -9858,12 +11060,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzVar_GetTypeName(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzVar *arg1 = (CzVar *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -9873,18 +11074,9 @@ SWIGINTERN PyObject *_wrap_CzVar_GetTypeName(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzVar_GetTypeName" "', argument " "1"" of type '" "CzVar *""'"); 
   }
   arg1 = reinterpret_cast< CzVar * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzVar_GetTypeName" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzVar_GetTypeName" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzVar_GetTypeName" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->GetTypeName(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -10004,12 +11196,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzVar_CopyValue(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzVar *arg1 = (CzVar *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -10019,18 +11210,9 @@ SWIGINTERN PyObject *_wrap_CzVar_CopyValue(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzVar_CopyValue" "', argument " "1"" of type '" "CzVar *""'"); 
   }
   arg1 = reinterpret_cast< CzVar * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzVar_CopyValue" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzVar_CopyValue" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzVar_CopyValue" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->CopyValue(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -10043,12 +11225,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzVar_SetVarRef(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzVar *arg1 = (CzVar *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -10058,18 +11239,9 @@ SWIGINTERN PyObject *_wrap_CzVar_SetVarRef(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzVar_SetVarRef" "', argument " "1"" of type '" "CzVar *""'"); 
   }
   arg1 = reinterpret_cast< CzVar * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzVar_SetVarRef" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzVar_SetVarRef" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzVar_SetVarRef" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->SetVarRef(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -10305,8 +11477,8 @@ SWIGINTERN PyObject *_wrap_CzList_CreateItem(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CzList_CreateItem" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (arg1)->CreateItem(arg2,(char const *)arg3);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->CreateItem(arg2,(char const *)arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
 fail:
@@ -10348,8 +11520,8 @@ SWIGINTERN PyObject *_wrap_CzList_GetOrCreateItem(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CzList_GetOrCreateItem" "', argument " "3"" of type '" "char const *""'");
   }
   arg3 = reinterpret_cast< char * >(buf3);
-  result = (arg1)->GetOrCreateItem(arg2,(char const *)arg3);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->GetOrCreateItem(arg2,(char const *)arg3);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc3 == SWIG_NEWOBJ) delete[] buf3;
   return resultobj;
 fail:
@@ -10381,8 +11553,8 @@ SWIGINTERN PyObject *_wrap_CzList_GetItem__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "CzList_GetItem" "', argument " "2"" of type '" "long""'");
   } 
   arg2 = static_cast< long >(val2);
-  result = (arg1)->GetItem(arg2);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->GetItem(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -10413,8 +11585,8 @@ SWIGINTERN PyObject *_wrap_CzList_GetItem__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzList_GetItem" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  result = (arg1)->GetItem((char const *)arg2);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->GetItem((char const *)arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
@@ -12214,8 +13386,8 @@ SWIGINTERN PyObject *_wrap_CzMap_GetSettingsList(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzMap_GetSettingsList" "', argument " "1"" of type '" "CzMap *""'"); 
   }
   arg1 = reinterpret_cast< CzMap * >(argp1);
-  result = (arg1)->GetSettingsList();
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->GetSettingsList();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -12226,7 +13398,7 @@ SWIGINTERN PyObject *_wrap_CzMap_SaveFile(PyObject *SWIGUNUSEDPARM(self), PyObje
   PyObject *resultobj = 0;
   CzMap *arg1 = (CzMap *) 0 ;
   char *arg2 = (char *) 0 ;
-  ZFORMAT arg3 ;
+  ZFORMAT arg3 = (ZFORMAT) 0 ;
   bool arg4 ;
   bool arg5 ;
   bool result;
@@ -12235,8 +13407,7 @@ SWIGINTERN PyObject *_wrap_CzMap_SaveFile(PyObject *SWIGUNUSEDPARM(self), PyObje
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res3 ;
   bool val4 ;
   int ecode4 = 0 ;
   bool val5 ;
@@ -12258,18 +13429,9 @@ SWIGINTERN PyObject *_wrap_CzMap_SaveFile(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzMap_SaveFile" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CzMap_SaveFile" "', argument " "3"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzMap_SaveFile" "', argument " "3"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CzMap_SaveFile" "', argument " "3"" of type '" "ZFORMAT""'"); 
   }
   ecode4 = SWIG_AsVal_bool(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
@@ -12296,7 +13458,7 @@ SWIGINTERN PyObject *_wrap_CzMap_LoadFile(PyObject *SWIGUNUSEDPARM(self), PyObje
   CzMap *arg1 = (CzMap *) 0 ;
   char *arg2 = (char *) 0 ;
   long arg3 ;
-  ZFORMAT arg4 ;
+  ZFORMAT arg4 = (ZFORMAT) 0 ;
   bool arg5 ;
   bool arg6 ;
   bool result;
@@ -12307,8 +13469,7 @@ SWIGINTERN PyObject *_wrap_CzMap_LoadFile(PyObject *SWIGUNUSEDPARM(self), PyObje
   int alloc2 = 0 ;
   long val3 ;
   int ecode3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
+  int res4 ;
   bool val5 ;
   int ecode5 = 0 ;
   bool val6 ;
@@ -12336,18 +13497,9 @@ SWIGINTERN PyObject *_wrap_CzMap_LoadFile(PyObject *SWIGUNUSEDPARM(self), PyObje
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CzMap_LoadFile" "', argument " "3"" of type '" "long""'");
   } 
   arg3 = static_cast< long >(val3);
-  {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CzMap_LoadFile" "', argument " "4"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzMap_LoadFile" "', argument " "4"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
+  res4 = SWIG_ConvertPtr(obj3,SWIG_as_voidptrptr(&arg4), 0, 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CzMap_LoadFile" "', argument " "4"" of type '" "ZFORMAT""'"); 
   }
   ecode5 = SWIG_AsVal_bool(obj4, &val5);
   if (!SWIG_IsOK(ecode5)) {
@@ -12372,12 +13524,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzMap_GetNameInProject(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzMap *arg1 = (CzMap *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -12387,18 +13538,9 @@ SWIGINTERN PyObject *_wrap_CzMap_GetNameInProject(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzMap_GetNameInProject" "', argument " "1"" of type '" "CzMap *""'"); 
   }
   arg1 = reinterpret_cast< CzMap * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzMap_GetNameInProject" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzMap_GetNameInProject" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzMap_GetNameInProject" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->GetNameInProject(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -12418,7 +13560,7 @@ SWIGINTERN PyObject *_wrap_CzMap_InitMosaic(PyObject *SWIGUNUSEDPARM(self), PyOb
   bool arg6 ;
   char *arg7 = (char *) 0 ;
   long arg8 ;
-  ZFORMAT arg9 ;
+  ZFORMAT arg9 = (ZFORMAT) 0 ;
   char *arg10 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
@@ -12438,8 +13580,7 @@ SWIGINTERN PyObject *_wrap_CzMap_InitMosaic(PyObject *SWIGUNUSEDPARM(self), PyOb
   int alloc7 = 0 ;
   long val8 ;
   int ecode8 = 0 ;
-  void *argp9 ;
-  int res9 = 0 ;
+  int res9 ;
   int res10 ;
   char *buf10 = 0 ;
   int alloc10 = 0 ;
@@ -12495,18 +13636,9 @@ SWIGINTERN PyObject *_wrap_CzMap_InitMosaic(PyObject *SWIGUNUSEDPARM(self), PyOb
     SWIG_exception_fail(SWIG_ArgError(ecode8), "in method '" "CzMap_InitMosaic" "', argument " "8"" of type '" "long""'");
   } 
   arg8 = static_cast< long >(val8);
-  {
-    res9 = SWIG_ConvertPtr(obj8, &argp9, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res9)) {
-      SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "CzMap_InitMosaic" "', argument " "9"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp9) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzMap_InitMosaic" "', argument " "9"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp9);
-      arg9 = *temp;
-      if (SWIG_IsNewObj(res9)) delete temp;
-    }
+  res9 = SWIG_ConvertPtr(obj8,SWIG_as_voidptrptr(&arg9), 0, 0);
+  if (!SWIG_IsOK(res9)) {
+    SWIG_exception_fail(SWIG_ArgError(res9), "in method '" "CzMap_InitMosaic" "', argument " "9"" of type '" "ZFORMAT""'"); 
   }
   res10 = SWIG_AsCharPtrAndSize(obj9, &buf10, NULL, &alloc10);
   if (!SWIG_IsOK(res10)) {
@@ -12595,8 +13727,8 @@ SWIGINTERN PyObject *_wrap_CzMap_GetFormat(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzMap_GetFormat" "', argument " "1"" of type '" "CzMap *""'"); 
   }
   arg1 = reinterpret_cast< CzMap * >(argp1);
-  result = (arg1)->GetFormat();
-  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
+  result = (ZFORMAT)(arg1)->GetFormat();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -12606,12 +13738,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzMap_SetFormat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzMap *arg1 = (CzMap *) 0 ;
-  ZFORMAT arg2 ;
+  ZFORMAT arg2 = (ZFORMAT) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -12621,18 +13752,9 @@ SWIGINTERN PyObject *_wrap_CzMap_SetFormat(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzMap_SetFormat" "', argument " "1"" of type '" "CzMap *""'"); 
   }
   arg1 = reinterpret_cast< CzMap * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzMap_SetFormat" "', argument " "2"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzMap_SetFormat" "', argument " "2"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzMap_SetFormat" "', argument " "2"" of type '" "ZFORMAT""'"); 
   }
   result = (bool)(arg1)->SetFormat(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -12691,7 +13813,7 @@ SWIGINTERN PyObject *_wrap_CzMap_SplitToMosaic(PyObject *SWIGUNUSEDPARM(self), P
   CzMap *arg1 = (CzMap *) 0 ;
   char *arg2 = (char *) 0 ;
   long arg3 ;
-  ZFORMAT arg4 ;
+  ZFORMAT arg4 = (ZFORMAT) 0 ;
   char *arg5 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
@@ -12701,8 +13823,7 @@ SWIGINTERN PyObject *_wrap_CzMap_SplitToMosaic(PyObject *SWIGUNUSEDPARM(self), P
   int alloc2 = 0 ;
   long val3 ;
   int ecode3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
+  int res4 ;
   int res5 ;
   char *buf5 = 0 ;
   int alloc5 = 0 ;
@@ -12728,18 +13849,9 @@ SWIGINTERN PyObject *_wrap_CzMap_SplitToMosaic(PyObject *SWIGUNUSEDPARM(self), P
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CzMap_SplitToMosaic" "', argument " "3"" of type '" "long""'");
   } 
   arg3 = static_cast< long >(val3);
-  {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CzMap_SplitToMosaic" "', argument " "4"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzMap_SplitToMosaic" "', argument " "4"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
+  res4 = SWIG_ConvertPtr(obj3,SWIG_as_voidptrptr(&arg4), 0, 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CzMap_SplitToMosaic" "', argument " "4"" of type '" "ZFORMAT""'"); 
   }
   res5 = SWIG_AsCharPtrAndSize(obj4, &buf5, NULL, &alloc5);
   if (!SWIG_IsOK(res5)) {
@@ -12796,7 +13908,7 @@ SWIGINTERN PyObject *_wrap_CzMap_ExportMap(PyObject *SWIGUNUSEDPARM(self), PyObj
   PyObject *resultobj = 0;
   CzMap *arg1 = (CzMap *) 0 ;
   char *arg2 = (char *) 0 ;
-  ZFORMAT arg3 ;
+  ZFORMAT arg3 = (ZFORMAT) 0 ;
   long arg4 ;
   long arg5 ;
   bool result;
@@ -12805,8 +13917,7 @@ SWIGINTERN PyObject *_wrap_CzMap_ExportMap(PyObject *SWIGUNUSEDPARM(self), PyObj
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res3 ;
   long val4 ;
   int ecode4 = 0 ;
   long val5 ;
@@ -12828,18 +13939,9 @@ SWIGINTERN PyObject *_wrap_CzMap_ExportMap(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzMap_ExportMap" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CzMap_ExportMap" "', argument " "3"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzMap_ExportMap" "', argument " "3"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CzMap_ExportMap" "', argument " "3"" of type '" "ZFORMAT""'"); 
   }
   ecode4 = SWIG_AsVal_long(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
@@ -12865,7 +13967,7 @@ SWIGINTERN PyObject *_wrap_CzMap_ExportMosaic(PyObject *SWIGUNUSEDPARM(self), Py
   PyObject *resultobj = 0;
   CzMap *arg1 = (CzMap *) 0 ;
   char *arg2 = (char *) 0 ;
-  ZFORMAT arg3 ;
+  ZFORMAT arg3 = (ZFORMAT) 0 ;
   long arg4 ;
   long arg5 ;
   long arg6 ;
@@ -12876,8 +13978,7 @@ SWIGINTERN PyObject *_wrap_CzMap_ExportMosaic(PyObject *SWIGUNUSEDPARM(self), Py
   int res2 ;
   char *buf2 = 0 ;
   int alloc2 = 0 ;
-  void *argp3 ;
-  int res3 = 0 ;
+  int res3 ;
   long val4 ;
   int ecode4 = 0 ;
   long val5 ;
@@ -12906,18 +14007,9 @@ SWIGINTERN PyObject *_wrap_CzMap_ExportMosaic(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzMap_ExportMosaic" "', argument " "2"" of type '" "char const *""'");
   }
   arg2 = reinterpret_cast< char * >(buf2);
-  {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_ZFORMAT,  0  | 0);
-    if (!SWIG_IsOK(res3)) {
-      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CzMap_ExportMosaic" "', argument " "3"" of type '" "ZFORMAT""'"); 
-    }  
-    if (!argp3) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzMap_ExportMosaic" "', argument " "3"" of type '" "ZFORMAT""'");
-    } else {
-      ZFORMAT * temp = reinterpret_cast< ZFORMAT * >(argp3);
-      arg3 = *temp;
-      if (SWIG_IsNewObj(res3)) delete temp;
-    }
+  res3 = SWIG_ConvertPtr(obj2,SWIG_as_voidptrptr(&arg3), 0, 0);
+  if (!SWIG_IsOK(res3)) {
+    SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "CzMap_ExportMosaic" "', argument " "3"" of type '" "ZFORMAT""'"); 
   }
   ecode4 = SWIG_AsVal_long(obj3, &val4);
   if (!SWIG_IsOK(ecode4)) {
@@ -13210,13 +14302,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CzFormat_GetByExt2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzFormat *arg1 = (CzFormat *) 0 ;
-  ZMAP arg2 ;
+  ZMAP arg2 = (ZMAP) 0 ;
   char *arg3 = (char *) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   int res3 ;
   char *buf3 = 0 ;
   int alloc3 = 0 ;
@@ -13230,18 +14321,9 @@ SWIGINTERN PyObject *_wrap_CzFormat_GetByExt2(PyObject *SWIGUNUSEDPARM(self), Py
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFormat_GetByExt2" "', argument " "1"" of type '" "CzFormat *""'"); 
   }
   arg1 = reinterpret_cast< CzFormat * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFormat_GetByExt2" "', argument " "2"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFormat_GetByExt2" "', argument " "2"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFormat_GetByExt2" "', argument " "2"" of type '" "ZMAP""'"); 
   }
   res3 = SWIG_AsCharPtrAndSize(obj2, &buf3, NULL, &alloc3);
   if (!SWIG_IsOK(res3)) {
@@ -13411,8 +14493,8 @@ SWIGINTERN PyObject *_wrap_CzFormat_GetOptionList(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFormat_GetOptionList" "', argument " "1"" of type '" "CzFormat *""'"); 
   }
   arg1 = reinterpret_cast< CzFormat * >(argp1);
-  result = (arg1)->GetOptionList();
-  resultobj = SWIG_NewPointerObj((new ZLIST(static_cast< const ZLIST& >(result))), SWIGTYPE_p_ZLIST, SWIG_POINTER_OWN |  0 );
+  result = (ZLIST)(arg1)->GetOptionList();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -13608,12 +14690,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzFunc_Attach(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzFunc *arg1 = (CzFunc *) 0 ;
-  ZVAR arg2 ;
+  ZVAR arg2 = (ZVAR) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13623,18 +14704,9 @@ SWIGINTERN PyObject *_wrap_CzFunc_Attach(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFunc_Attach" "', argument " "1"" of type '" "CzFunc *""'"); 
   }
   arg1 = reinterpret_cast< CzFunc * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_Attach" "', argument " "2"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFunc_Attach" "', argument " "2"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_Attach" "', argument " "2"" of type '" "ZVAR""'"); 
   }
   result = (bool)(arg1)->Attach(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -13649,7 +14721,7 @@ SWIGINTERN PyObject *_wrap_CzFunc_LoadFunc(PyObject *SWIGUNUSEDPARM(self), PyObj
   CzFunc *arg1 = (CzFunc *) 0 ;
   char *arg2 = (char *) 0 ;
   long arg3 ;
-  ZLIST arg4 ;
+  ZLIST arg4 = (ZLIST) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -13658,8 +14730,7 @@ SWIGINTERN PyObject *_wrap_CzFunc_LoadFunc(PyObject *SWIGUNUSEDPARM(self), PyObj
   int alloc2 = 0 ;
   long val3 ;
   int ecode3 = 0 ;
-  void *argp4 ;
-  int res4 = 0 ;
+  int res4 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -13681,18 +14752,9 @@ SWIGINTERN PyObject *_wrap_CzFunc_LoadFunc(PyObject *SWIGUNUSEDPARM(self), PyObj
     SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "CzFunc_LoadFunc" "', argument " "3"" of type '" "long""'");
   } 
   arg3 = static_cast< long >(val3);
-  {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res4)) {
-      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CzFunc_LoadFunc" "', argument " "4"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp4) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFunc_LoadFunc" "', argument " "4"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp4);
-      arg4 = *temp;
-      if (SWIG_IsNewObj(res4)) delete temp;
-    }
+  res4 = SWIG_ConvertPtr(obj3,SWIG_as_voidptrptr(&arg4), 0, 0);
+  if (!SWIG_IsOK(res4)) {
+    SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "CzFunc_LoadFunc" "', argument " "4"" of type '" "ZLIST""'"); 
   }
   result = (bool)(arg1)->LoadFunc((char const *)arg2,arg3,arg4);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -13710,7 +14772,7 @@ SWIGINTERN PyObject *_wrap_CzFunc_LoadFuncEx(PyObject *SWIGUNUSEDPARM(self), PyO
   char *arg2 = (char *) 0 ;
   char *arg3 = (char *) 0 ;
   long arg4 ;
-  ZLIST arg5 ;
+  ZLIST arg5 = (ZLIST) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -13722,8 +14784,7 @@ SWIGINTERN PyObject *_wrap_CzFunc_LoadFuncEx(PyObject *SWIGUNUSEDPARM(self), PyO
   int alloc3 = 0 ;
   long val4 ;
   int ecode4 = 0 ;
-  void *argp5 ;
-  int res5 = 0 ;
+  int res5 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
@@ -13751,18 +14812,9 @@ SWIGINTERN PyObject *_wrap_CzFunc_LoadFuncEx(PyObject *SWIGUNUSEDPARM(self), PyO
     SWIG_exception_fail(SWIG_ArgError(ecode4), "in method '" "CzFunc_LoadFuncEx" "', argument " "4"" of type '" "long""'");
   } 
   arg4 = static_cast< long >(val4);
-  {
-    res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res5)) {
-      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CzFunc_LoadFuncEx" "', argument " "5"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp5) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFunc_LoadFuncEx" "', argument " "5"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp5);
-      arg5 = *temp;
-      if (SWIG_IsNewObj(res5)) delete temp;
-    }
+  res5 = SWIG_ConvertPtr(obj4,SWIG_as_voidptrptr(&arg5), 0, 0);
+  if (!SWIG_IsOK(res5)) {
+    SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "CzFunc_LoadFuncEx" "', argument " "5"" of type '" "ZLIST""'"); 
   }
   result = (bool)(arg1)->LoadFuncEx((char const *)arg2,(char const *)arg3,arg4,arg5);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -13779,12 +14831,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzFunc_GetArgListPrototype(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzFunc *arg1 = (CzFunc *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13794,18 +14845,9 @@ SWIGINTERN PyObject *_wrap_CzFunc_GetArgListPrototype(PyObject *SWIGUNUSEDPARM(s
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFunc_GetArgListPrototype" "', argument " "1"" of type '" "CzFunc *""'"); 
   }
   arg1 = reinterpret_cast< CzFunc * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_GetArgListPrototype" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFunc_GetArgListPrototype" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_GetArgListPrototype" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   result = (bool)(arg1)->GetArgListPrototype(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -13874,12 +14916,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzFunc_Execute__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzFunc *arg1 = (CzFunc *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   ZVAR result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -13889,21 +14930,12 @@ SWIGINTERN PyObject *_wrap_CzFunc_Execute__SWIG_0(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFunc_Execute" "', argument " "1"" of type '" "CzFunc *""'"); 
   }
   arg1 = reinterpret_cast< CzFunc * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_Execute" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFunc_Execute" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_Execute" "', argument " "2"" of type '" "ZLIST""'"); 
   }
-  result = (arg1)->Execute(arg2);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->Execute(arg2);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -13924,8 +14956,8 @@ SWIGINTERN PyObject *_wrap_CzFunc_Execute__SWIG_1(PyObject *SWIGUNUSEDPARM(self)
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFunc_Execute" "', argument " "1"" of type '" "CzFunc *""'"); 
   }
   arg1 = reinterpret_cast< CzFunc * >(argp1);
-  result = (arg1)->Execute();
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
+  result = (ZVAR)(arg1)->Execute();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -13957,7 +14989,8 @@ SWIGINTERN PyObject *_wrap_CzFunc_Execute(PyObject *self, PyObject *args) {
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_CzFunc, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_ZLIST, 0);
+      void *ptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &ptr, 0, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         return _wrap_CzFunc_Execute__SWIG_0(self, args);
@@ -13974,14 +15007,13 @@ fail:
 SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzFunc *arg1 = (CzFunc *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   bool arg3 ;
   long arg4 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   bool val3 ;
   int ecode3 = 0 ;
   long val4 ;
@@ -13997,18 +15029,9 @@ SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded__SWIG_0(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFunc_ExecuteThreaded" "', argument " "1"" of type '" "CzFunc *""'"); 
   }
   arg1 = reinterpret_cast< CzFunc * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -14031,13 +15054,12 @@ fail:
 SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzFunc *arg1 = (CzFunc *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   bool arg3 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   bool val3 ;
   int ecode3 = 0 ;
   PyObject * obj0 = 0 ;
@@ -14050,18 +15072,9 @@ SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded__SWIG_1(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFunc_ExecuteThreaded" "', argument " "1"" of type '" "CzFunc *""'"); 
   }
   arg1 = reinterpret_cast< CzFunc * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   ecode3 = SWIG_AsVal_bool(obj2, &val3);
   if (!SWIG_IsOK(ecode3)) {
@@ -14079,12 +15092,11 @@ fail:
 SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded__SWIG_2(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   CzFunc *arg1 = (CzFunc *) 0 ;
-  ZLIST arg2 ;
+  ZLIST arg2 = (ZLIST) 0 ;
   bool result;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 ;
-  int res2 = 0 ;
+  int res2 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   
@@ -14094,18 +15106,9 @@ SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded__SWIG_2(PyObject *SWIGUNUSEDPA
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "CzFunc_ExecuteThreaded" "', argument " "1"" of type '" "CzFunc *""'"); 
   }
   arg1 = reinterpret_cast< CzFunc * >(argp1);
-  {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_ZLIST,  0  | 0);
-    if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'"); 
-    }  
-    if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'");
-    } else {
-      ZLIST * temp = reinterpret_cast< ZLIST * >(argp2);
-      arg2 = *temp;
-      if (SWIG_IsNewObj(res2)) delete temp;
-    }
+  res2 = SWIG_ConvertPtr(obj1,SWIG_as_voidptrptr(&arg2), 0, 0);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "CzFunc_ExecuteThreaded" "', argument " "2"" of type '" "ZLIST""'"); 
   }
   result = (bool)(arg1)->ExecuteThreaded(arg2);
   resultobj = SWIG_From_bool(static_cast< bool >(result));
@@ -14162,7 +15165,8 @@ SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded(PyObject *self, PyObject *args
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_CzFunc, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_ZLIST, 0);
+      void *ptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &ptr, 0, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         return _wrap_CzFunc_ExecuteThreaded__SWIG_2(self, args);
@@ -14175,7 +15179,8 @@ SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded(PyObject *self, PyObject *args
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_CzFunc, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_ZLIST, 0);
+      void *ptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &ptr, 0, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         {
@@ -14194,7 +15199,8 @@ SWIGINTERN PyObject *_wrap_CzFunc_ExecuteThreaded(PyObject *self, PyObject *args
     int res = SWIG_ConvertPtr(argv[0], &vptr, SWIGTYPE_p_CzFunc, 0);
     _v = SWIG_CheckState(res);
     if (_v) {
-      int res = SWIG_ConvertPtr(argv[1], 0, SWIGTYPE_p_ZLIST, 0);
+      void *ptr = 0;
+      int res = SWIG_ConvertPtr(argv[1], &ptr, 0, 0);
       _v = SWIG_CheckState(res);
       if (_v) {
         {
@@ -15570,6 +16576,126 @@ SWIGINTERN PyObject *CzBuffer_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObj
   return SWIG_Py_Void();
 }
 
+SWIGINTERN PyObject *_wrap_zmap_to_zvar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZMAP arg1 = (ZMAP) 0 ;
+  ZVAR result;
+  int res1 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zmap_to_zvar",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zmap_to_zvar" "', argument " "1"" of type '" "ZMAP""'"); 
+  }
+  result = (ZVAR)zmap_to_zvar(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_zlist_to_zvar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZLIST arg1 = (ZLIST) 0 ;
+  ZVAR result;
+  int res1 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zlist_to_zvar",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zlist_to_zvar" "', argument " "1"" of type '" "ZLIST""'"); 
+  }
+  result = (ZVAR)zlist_to_zvar(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_zvar_to_zmap(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZVAR arg1 = (ZVAR) 0 ;
+  ZMAP result;
+  int res1 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zvar_to_zmap",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zvar_to_zmap" "', argument " "1"" of type '" "ZVAR""'"); 
+  }
+  result = (ZMAP)zvar_to_zmap(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_zvar_to_zlist(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZVAR arg1 = (ZVAR) 0 ;
+  ZLIST result;
+  int res1 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zvar_to_zlist",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zvar_to_zlist" "', argument " "1"" of type '" "ZVAR""'"); 
+  }
+  result = (ZLIST)zvar_to_zlist(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_zvar_to_zfunc(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZVAR arg1 = (ZVAR) 0 ;
+  ZFUNC result;
+  int res1 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zvar_to_zfunc",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zvar_to_zfunc" "', argument " "1"" of type '" "ZVAR""'"); 
+  }
+  result = (ZFUNC)zvar_to_zfunc(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_zvar_to_zformat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZVAR arg1 = (ZVAR) 0 ;
+  ZFORMAT result;
+  int res1 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zvar_to_zformat",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zvar_to_zformat" "', argument " "1"" of type '" "ZVAR""'"); 
+  }
+  result = (ZFORMAT)zvar_to_zformat(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN int theAPI_set(PyObject *_val) {
   {
     void *argp = 0;
@@ -15600,67 +16726,107 @@ SWIGINTERN PyObject *theAPI_get(void) {
 }
 
 
-SWIGINTERN PyObject *_wrap_zmap_to_zvar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  ZMAP arg1 ;
-  ZVAR result;
-  void *argp1 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:zmap_to_zvar",&obj0)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_ZMAP,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zmap_to_zvar" "', argument " "1"" of type '" "ZMAP""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "zmap_to_zvar" "', argument " "1"" of type '" "ZMAP""'");
-    } else {
-      ZMAP * temp = reinterpret_cast< ZMAP * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
-  }
-  result = zmap_to_zvar(arg1);
-  resultobj = SWIG_NewPointerObj((new ZVAR(static_cast< const ZVAR& >(result))), SWIGTYPE_p_ZVAR, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_zvar_to_zformat(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  ZVAR arg1 ;
-  ZFORMAT result;
-  void *argp1 ;
-  int res1 = 0 ;
-  PyObject * obj0 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"O:zvar_to_zformat",&obj0)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_ZVAR,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zvar_to_zformat" "', argument " "1"" of type '" "ZVAR""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "zvar_to_zformat" "', argument " "1"" of type '" "ZVAR""'");
-    } else {
-      ZVAR * temp = reinterpret_cast< ZVAR * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
-  }
-  result = zvar_to_zformat(arg1);
-  resultobj = SWIG_NewPointerObj((new ZFORMAT(static_cast< const ZFORMAT& >(result))), SWIGTYPE_p_ZFORMAT, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 static PyMethodDef SwigMethods[] = {
+	 { (char *)"vector3sc_x_set", _wrap_vector3sc_x_set, METH_VARARGS, NULL},
+	 { (char *)"vector3sc_x_get", _wrap_vector3sc_x_get, METH_VARARGS, NULL},
+	 { (char *)"vector3sc_y_set", _wrap_vector3sc_y_set, METH_VARARGS, NULL},
+	 { (char *)"vector3sc_y_get", _wrap_vector3sc_y_get, METH_VARARGS, NULL},
+	 { (char *)"vector3sc_z_set", _wrap_vector3sc_z_set, METH_VARARGS, NULL},
+	 { (char *)"vector3sc_z_get", _wrap_vector3sc_z_get, METH_VARARGS, NULL},
+	 { (char *)"new_vector3sc", _wrap_new_vector3sc, METH_VARARGS, NULL},
+	 { (char *)"delete_vector3sc", _wrap_delete_vector3sc, METH_VARARGS, NULL},
+	 { (char *)"vector3sc_swigregister", vector3sc_swigregister, METH_VARARGS, NULL},
+	 { (char *)"vector3f_x_set", _wrap_vector3f_x_set, METH_VARARGS, NULL},
+	 { (char *)"vector3f_x_get", _wrap_vector3f_x_get, METH_VARARGS, NULL},
+	 { (char *)"vector3f_y_set", _wrap_vector3f_y_set, METH_VARARGS, NULL},
+	 { (char *)"vector3f_y_get", _wrap_vector3f_y_get, METH_VARARGS, NULL},
+	 { (char *)"vector3f_z_set", _wrap_vector3f_z_set, METH_VARARGS, NULL},
+	 { (char *)"vector3f_z_get", _wrap_vector3f_z_get, METH_VARARGS, NULL},
+	 { (char *)"new_vector3f", _wrap_new_vector3f, METH_VARARGS, NULL},
+	 { (char *)"delete_vector3f", _wrap_delete_vector3f, METH_VARARGS, NULL},
+	 { (char *)"vector3f_swigregister", vector3f_swigregister, METH_VARARGS, NULL},
+	 { (char *)"vector3d_x_set", _wrap_vector3d_x_set, METH_VARARGS, NULL},
+	 { (char *)"vector3d_x_get", _wrap_vector3d_x_get, METH_VARARGS, NULL},
+	 { (char *)"vector3d_y_set", _wrap_vector3d_y_set, METH_VARARGS, NULL},
+	 { (char *)"vector3d_y_get", _wrap_vector3d_y_get, METH_VARARGS, NULL},
+	 { (char *)"vector3d_z_set", _wrap_vector3d_z_set, METH_VARARGS, NULL},
+	 { (char *)"vector3d_z_get", _wrap_vector3d_z_get, METH_VARARGS, NULL},
+	 { (char *)"new_vector3d", _wrap_new_vector3d, METH_VARARGS, NULL},
+	 { (char *)"delete_vector3d", _wrap_delete_vector3d, METH_VARARGS, NULL},
+	 { (char *)"vector3d_swigregister", vector3d_swigregister, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3f_i_set", _wrap_matrix3x3f_i_set, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3f_i_get", _wrap_matrix3x3f_i_get, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3f_j_set", _wrap_matrix3x3f_j_set, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3f_j_get", _wrap_matrix3x3f_j_get, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3f_k_set", _wrap_matrix3x3f_k_set, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3f_k_get", _wrap_matrix3x3f_k_get, METH_VARARGS, NULL},
+	 { (char *)"new_matrix3x3f", _wrap_new_matrix3x3f, METH_VARARGS, NULL},
+	 { (char *)"delete_matrix3x3f", _wrap_delete_matrix3x3f, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3f_swigregister", matrix3x3f_swigregister, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3d_i_set", _wrap_matrix3x3d_i_set, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3d_i_get", _wrap_matrix3x3d_i_get, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3d_j_set", _wrap_matrix3x3d_j_set, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3d_j_get", _wrap_matrix3x3d_j_get, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3d_k_set", _wrap_matrix3x3d_k_set, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3d_k_get", _wrap_matrix3x3d_k_get, METH_VARARGS, NULL},
+	 { (char *)"new_matrix3x3d", _wrap_new_matrix3x3d, METH_VARARGS, NULL},
+	 { (char *)"delete_matrix3x3d", _wrap_delete_matrix3x3d, METH_VARARGS, NULL},
+	 { (char *)"matrix3x3d_swigregister", matrix3x3d_swigregister, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Alt_set", _wrap_DesignMapPixel_Alt_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Alt_get", _wrap_DesignMapPixel_Alt_get, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Peak_set", _wrap_DesignMapPixel_Peak_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Peak_get", _wrap_DesignMapPixel_Peak_get, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Frac_set", _wrap_DesignMapPixel_Frac_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Frac_get", _wrap_DesignMapPixel_Frac_get, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Cliffs_set", _wrap_DesignMapPixel_Cliffs_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Cliffs_get", _wrap_DesignMapPixel_Cliffs_get, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Erosion_set", _wrap_DesignMapPixel_Erosion_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Erosion_get", _wrap_DesignMapPixel_Erosion_get, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Lakes_set", _wrap_DesignMapPixel_Lakes_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Lakes_get", _wrap_DesignMapPixel_Lakes_get, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Climate_set", _wrap_DesignMapPixel_Climate_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_Climate_get", _wrap_DesignMapPixel_Climate_get, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_SpecType_set", _wrap_DesignMapPixel_SpecType_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_SpecType_get", _wrap_DesignMapPixel_SpecType_get, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_SpecParam_set", _wrap_DesignMapPixel_SpecParam_set, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_SpecParam_get", _wrap_DesignMapPixel_SpecParam_get, METH_VARARGS, NULL},
+	 { (char *)"new_DesignMapPixel", _wrap_new_DesignMapPixel, METH_VARARGS, NULL},
+	 { (char *)"delete_DesignMapPixel", _wrap_delete_DesignMapPixel, METH_VARARGS, NULL},
+	 { (char *)"DesignMapPixel_swigregister", DesignMapPixel_swigregister, METH_VARARGS, NULL},
+	 { (char *)"AttributesPixel_ClimateID_set", _wrap_AttributesPixel_ClimateID_set, METH_VARARGS, NULL},
+	 { (char *)"AttributesPixel_ClimateID_get", _wrap_AttributesPixel_ClimateID_get, METH_VARARGS, NULL},
+	 { (char *)"AttributesPixel_LandTypeID_set", _wrap_AttributesPixel_LandTypeID_set, METH_VARARGS, NULL},
+	 { (char *)"AttributesPixel_LandTypeID_get", _wrap_AttributesPixel_LandTypeID_get, METH_VARARGS, NULL},
+	 { (char *)"new_AttributesPixel", _wrap_new_AttributesPixel, METH_VARARGS, NULL},
+	 { (char *)"delete_AttributesPixel", _wrap_delete_AttributesPixel, METH_VARARGS, NULL},
+	 { (char *)"AttributesPixel_swigregister", AttributesPixel_swigregister, METH_VARARGS, NULL},
+	 { (char *)"WaterMapPixel_WaterID_set", _wrap_WaterMapPixel_WaterID_set, METH_VARARGS, NULL},
+	 { (char *)"WaterMapPixel_WaterID_get", _wrap_WaterMapPixel_WaterID_get, METH_VARARGS, NULL},
+	 { (char *)"WaterMapPixel_Type_set", _wrap_WaterMapPixel_Type_set, METH_VARARGS, NULL},
+	 { (char *)"WaterMapPixel_Type_get", _wrap_WaterMapPixel_Type_get, METH_VARARGS, NULL},
+	 { (char *)"WaterMapPixel_WaterLevel_set", _wrap_WaterMapPixel_WaterLevel_set, METH_VARARGS, NULL},
+	 { (char *)"WaterMapPixel_WaterLevel_get", _wrap_WaterMapPixel_WaterLevel_get, METH_VARARGS, NULL},
+	 { (char *)"new_WaterMapPixel", _wrap_new_WaterMapPixel, METH_VARARGS, NULL},
+	 { (char *)"delete_WaterMapPixel", _wrap_delete_WaterMapPixel, METH_VARARGS, NULL},
+	 { (char *)"WaterMapPixel_swigregister", WaterMapPixel_swigregister, METH_VARARGS, NULL},
+	 { (char *)"AuxWaterMapPixel_Type_set", _wrap_AuxWaterMapPixel_Type_set, METH_VARARGS, NULL},
+	 { (char *)"AuxWaterMapPixel_Type_get", _wrap_AuxWaterMapPixel_Type_get, METH_VARARGS, NULL},
+	 { (char *)"AuxWaterMapPixel_DoneFlag_set", _wrap_AuxWaterMapPixel_DoneFlag_set, METH_VARARGS, NULL},
+	 { (char *)"AuxWaterMapPixel_DoneFlag_get", _wrap_AuxWaterMapPixel_DoneFlag_get, METH_VARARGS, NULL},
+	 { (char *)"AuxWaterMapPixel_WaterLevel_set", _wrap_AuxWaterMapPixel_WaterLevel_set, METH_VARARGS, NULL},
+	 { (char *)"AuxWaterMapPixel_WaterLevel_get", _wrap_AuxWaterMapPixel_WaterLevel_get, METH_VARARGS, NULL},
+	 { (char *)"new_AuxWaterMapPixel", _wrap_new_AuxWaterMapPixel, METH_VARARGS, NULL},
+	 { (char *)"delete_AuxWaterMapPixel", _wrap_delete_AuxWaterMapPixel, METH_VARARGS, NULL},
+	 { (char *)"AuxWaterMapPixel_swigregister", AuxWaterMapPixel_swigregister, METH_VARARGS, NULL},
+	 { (char *)"ColourPixel_r_set", _wrap_ColourPixel_r_set, METH_VARARGS, NULL},
+	 { (char *)"ColourPixel_r_get", _wrap_ColourPixel_r_get, METH_VARARGS, NULL},
+	 { (char *)"ColourPixel_g_set", _wrap_ColourPixel_g_set, METH_VARARGS, NULL},
+	 { (char *)"ColourPixel_g_get", _wrap_ColourPixel_g_get, METH_VARARGS, NULL},
+	 { (char *)"ColourPixel_b_set", _wrap_ColourPixel_b_set, METH_VARARGS, NULL},
+	 { (char *)"ColourPixel_b_get", _wrap_ColourPixel_b_get, METH_VARARGS, NULL},
+	 { (char *)"new_ColourPixel", _wrap_new_ColourPixel, METH_VARARGS, NULL},
+	 { (char *)"delete_ColourPixel", _wrap_delete_ColourPixel, METH_VARARGS, NULL},
+	 { (char *)"ColourPixel_swigregister", ColourPixel_swigregister, METH_VARARGS, NULL},
 	 { (char *)"ExtGetApiVersion", _wrap_ExtGetApiVersion, METH_VARARGS, NULL},
 	 { (char *)"new_CExtAPI", _wrap_new_CExtAPI, METH_VARARGS, NULL},
 	 { (char *)"delete_CExtAPI", _wrap_delete_CExtAPI, METH_VARARGS, NULL},
@@ -15946,6 +17112,10 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CzBuffer_SetValue", _wrap_CzBuffer_SetValue, METH_VARARGS, NULL},
 	 { (char *)"CzBuffer_swigregister", CzBuffer_swigregister, METH_VARARGS, NULL},
 	 { (char *)"zmap_to_zvar", _wrap_zmap_to_zvar, METH_VARARGS, NULL},
+	 { (char *)"zlist_to_zvar", _wrap_zlist_to_zvar, METH_VARARGS, NULL},
+	 { (char *)"zvar_to_zmap", _wrap_zvar_to_zmap, METH_VARARGS, NULL},
+	 { (char *)"zvar_to_zlist", _wrap_zvar_to_zlist, METH_VARARGS, NULL},
+	 { (char *)"zvar_to_zfunc", _wrap_zvar_to_zfunc, METH_VARARGS, NULL},
 	 { (char *)"zvar_to_zformat", _wrap_zvar_to_zformat, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -15980,8 +17150,11 @@ static void *_p_CzListTo_p_CzVar(void *x) {
 static void *_p_CzProgBoxTo_p_CzVar(void *x) {
     return (void *)((CzVar *)  ((CzProgBox *) x));
 }
+static swig_type_info _swigt__p_AttributesPixel = {"_p_AttributesPixel", "AttributesPixel *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_AuxWaterMapPixel = {"_p_AuxWaterMapPixel", "AuxWaterMapPixel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CExtAPI = {"_p_CExtAPI", "CExtAPI *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_COLORREF = {"_p_COLORREF", "COLORREF *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_ColourPixel = {"_p_ColourPixel", "ColourPixel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CzBuffer = {"_p_CzBuffer", "CzBuffer *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CzColour = {"_p_CzColour", "CzColour *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CzComboSel = {"_p_CzComboSel", "CzComboSel *", 0, 0, (void*)0, 0};
@@ -15992,19 +17165,19 @@ static swig_type_info _swigt__p_CzMap = {"_p_CzMap", "CzMap *", 0, 0, (void*)0, 
 static swig_type_info _swigt__p_CzProgBox = {"_p_CzProgBox", "CzProgBox *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CzStr = {"_p_CzStr", "CzStr *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_CzVar = {"_p_CzVar", "CzVar *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DesignMapPixel = {"_p_DesignMapPixel", "DesignMapPixel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_FARPROC = {"_p_FARPROC", "FARPROC *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ZFORMAT = {"_p_ZFORMAT", "ZFORMAT *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ZFUNC = {"_p_ZFUNC", "ZFUNC *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ZLIST = {"_p_ZLIST", "ZLIST *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ZMAP = {"_p_ZMAP", "ZMAP *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_ZVAR = {"_p_ZVAR", "ZVAR *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_WaterMapPixel = {"_p_WaterMapPixel", "WaterMapPixel *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p___int64 = {"_p___int64", "__int64 *|LONGLONG *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *|CCHAR *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_float = {"_p_float", "float *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "int *|INT_PTR *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long = {"_p_long", "long *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_matrix3x3d = {"_p_matrix3x3d", "matrix3x3d *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_matrix3x3f = {"_p_matrix3x3f", "matrix3x3f *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **|LPCUTSTR *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_unsigned_long = {"_p_p_unsigned_long", "unsigned long **|PLCID *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_p_void = {"_p_p_void", "void **|ZVAR *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|SHORT *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed___int64 = {"_p_signed___int64", "signed __int64 *|INT64 *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|INT8 *", 0, 0, (void*)0, 0};
@@ -16013,11 +17186,17 @@ static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned c
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "unsigned int *|UINT_PTR *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long = {"_p_unsigned_long", "unsigned long *|LCID *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *|LANGID *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_void = {"_p_void", "void *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_vector3d = {"_p_vector3d", "vector3d *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_vector3f = {"_p_vector3f", "vector3f *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_vector3sc = {"_p_vector3sc", "vector3sc *|TerrainNormalPixel *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_void = {"_p_void", "void *|ZFORMAT", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_AttributesPixel,
+  &_swigt__p_AuxWaterMapPixel,
   &_swigt__p_CExtAPI,
   &_swigt__p_COLORREF,
+  &_swigt__p_ColourPixel,
   &_swigt__p_CzBuffer,
   &_swigt__p_CzColour,
   &_swigt__p_CzComboSel,
@@ -16028,19 +17207,19 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_CzProgBox,
   &_swigt__p_CzStr,
   &_swigt__p_CzVar,
+  &_swigt__p_DesignMapPixel,
   &_swigt__p_FARPROC,
-  &_swigt__p_ZFORMAT,
-  &_swigt__p_ZFUNC,
-  &_swigt__p_ZLIST,
-  &_swigt__p_ZMAP,
-  &_swigt__p_ZVAR,
+  &_swigt__p_WaterMapPixel,
   &_swigt__p___int64,
   &_swigt__p_char,
   &_swigt__p_float,
   &_swigt__p_int,
   &_swigt__p_long,
+  &_swigt__p_matrix3x3d,
+  &_swigt__p_matrix3x3f,
   &_swigt__p_p_char,
   &_swigt__p_p_unsigned_long,
+  &_swigt__p_p_void,
   &_swigt__p_short,
   &_swigt__p_signed___int64,
   &_swigt__p_signed_char,
@@ -16049,11 +17228,17 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_unsigned_int,
   &_swigt__p_unsigned_long,
   &_swigt__p_unsigned_short,
+  &_swigt__p_vector3d,
+  &_swigt__p_vector3f,
+  &_swigt__p_vector3sc,
   &_swigt__p_void,
 };
 
+static swig_cast_info _swigc__p_AttributesPixel[] = {  {&_swigt__p_AttributesPixel, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_AuxWaterMapPixel[] = {  {&_swigt__p_AuxWaterMapPixel, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_CExtAPI[] = {  {&_swigt__p_CExtAPI, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_COLORREF[] = {  {&_swigt__p_COLORREF, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_ColourPixel[] = {  {&_swigt__p_ColourPixel, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_CzBuffer[] = {  {&_swigt__p_CzBuffer, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_CzColour[] = {  {&_swigt__p_CzColour, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_CzComboSel[] = {  {&_swigt__p_CzComboSel, 0, 0, 0},{0, 0, 0, 0}};
@@ -16064,19 +17249,19 @@ static swig_cast_info _swigc__p_CzMap[] = {  {&_swigt__p_CzMap, 0, 0, 0},{0, 0, 
 static swig_cast_info _swigc__p_CzProgBox[] = {  {&_swigt__p_CzProgBox, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_CzStr[] = {  {&_swigt__p_CzStr, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_CzVar[] = {  {&_swigt__p_CzMap, _p_CzMapTo_p_CzVar, 0, 0},  {&_swigt__p_CzFunc, _p_CzFuncTo_p_CzVar, 0, 0},  {&_swigt__p_CzBuffer, _p_CzBufferTo_p_CzVar, 0, 0},  {&_swigt__p_CzComboSel, _p_CzComboSelTo_p_CzVar, 0, 0},  {&_swigt__p_CzFormat, _p_CzFormatTo_p_CzVar, 0, 0},  {&_swigt__p_CzColour, _p_CzColourTo_p_CzVar, 0, 0},  {&_swigt__p_CzVar, 0, 0, 0},  {&_swigt__p_CzStr, _p_CzStrTo_p_CzVar, 0, 0},  {&_swigt__p_CzList, _p_CzListTo_p_CzVar, 0, 0},  {&_swigt__p_CzProgBox, _p_CzProgBoxTo_p_CzVar, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DesignMapPixel[] = {  {&_swigt__p_DesignMapPixel, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_FARPROC[] = {  {&_swigt__p_FARPROC, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ZFORMAT[] = {  {&_swigt__p_ZFORMAT, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ZFUNC[] = {  {&_swigt__p_ZFUNC, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ZLIST[] = {  {&_swigt__p_ZLIST, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ZMAP[] = {  {&_swigt__p_ZMAP, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_ZVAR[] = {  {&_swigt__p_ZVAR, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_WaterMapPixel[] = {  {&_swigt__p_WaterMapPixel, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p___int64[] = {  {&_swigt__p___int64, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long[] = {  {&_swigt__p_long, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_matrix3x3d[] = {  {&_swigt__p_matrix3x3d, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_matrix3x3f[] = {  {&_swigt__p_matrix3x3f, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_unsigned_long[] = {  {&_swigt__p_p_unsigned_long, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_p_void[] = {  {&_swigt__p_p_void, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed___int64[] = {  {&_swigt__p_signed___int64, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -16085,11 +17270,17 @@ static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_long[] = {  {&_swigt__p_unsigned_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_vector3d[] = {  {&_swigt__p_vector3d, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_vector3f[] = {  {&_swigt__p_vector3f, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_vector3sc[] = {  {&_swigt__p_vector3sc, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_void[] = {  {&_swigt__p_void, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_AttributesPixel,
+  _swigc__p_AuxWaterMapPixel,
   _swigc__p_CExtAPI,
   _swigc__p_COLORREF,
+  _swigc__p_ColourPixel,
   _swigc__p_CzBuffer,
   _swigc__p_CzColour,
   _swigc__p_CzComboSel,
@@ -16100,19 +17291,19 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_CzProgBox,
   _swigc__p_CzStr,
   _swigc__p_CzVar,
+  _swigc__p_DesignMapPixel,
   _swigc__p_FARPROC,
-  _swigc__p_ZFORMAT,
-  _swigc__p_ZFUNC,
-  _swigc__p_ZLIST,
-  _swigc__p_ZMAP,
-  _swigc__p_ZVAR,
+  _swigc__p_WaterMapPixel,
   _swigc__p___int64,
   _swigc__p_char,
   _swigc__p_float,
   _swigc__p_int,
   _swigc__p_long,
+  _swigc__p_matrix3x3d,
+  _swigc__p_matrix3x3f,
   _swigc__p_p_char,
   _swigc__p_p_unsigned_long,
+  _swigc__p_p_void,
   _swigc__p_short,
   _swigc__p_signed___int64,
   _swigc__p_signed_char,
@@ -16121,6 +17312,9 @@ static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_unsigned_int,
   _swigc__p_unsigned_long,
   _swigc__p_unsigned_short,
+  _swigc__p_vector3d,
+  _swigc__p_vector3f,
+  _swigc__p_vector3sc,
   _swigc__p_void,
 };
 
@@ -16642,6 +17836,47 @@ SWIGEXPORT void SWIG_init(void) {
   SWIG_InstallConstants(d,swig_const_table);
   
   
+  SWIG_Python_SetConstant(d, "VarID_INVALID",SWIG_From_int(static_cast< int >(0)));
+  SWIG_Python_SetConstant(d, "VarID_void",SWIG_From_int(static_cast< int >(1)));
+  SWIG_Python_SetConstant(d, "VarID_var",SWIG_From_int(static_cast< int >(2)));
+  SWIG_Python_SetConstant(d, "VarID_bool",SWIG_From_int(static_cast< int >(3)));
+  SWIG_Python_SetConstant(d, "VarID_char",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "VarID_byte",SWIG_From_int(static_cast< int >(5)));
+  SWIG_Python_SetConstant(d, "VarID_short",SWIG_From_int(static_cast< int >(6)));
+  SWIG_Python_SetConstant(d, "VarID_int",SWIG_From_int(static_cast< int >(7)));
+  SWIG_Python_SetConstant(d, "VarID_int64",SWIG_From_int(static_cast< int >(8)));
+  SWIG_Python_SetConstant(d, "VarID_float",SWIG_From_int(static_cast< int >(9)));
+  SWIG_Python_SetConstant(d, "VarID_double",SWIG_From_int(static_cast< int >(10)));
+  SWIG_Python_SetConstant(d, "VarID_string",SWIG_From_int(static_cast< int >(11)));
+  SWIG_Python_SetConstant(d, "VarID_colour",SWIG_From_int(static_cast< int >(13)));
+  SWIG_Python_SetConstant(d, "VarID_vector3f",SWIG_From_int(static_cast< int >(14)));
+  SWIG_Python_SetConstant(d, "VarID_buffer",SWIG_From_int(static_cast< int >(15)));
+  SWIG_Python_SetConstant(d, "VarID_LPVOID",SWIG_From_int(static_cast< int >(20)));
+  SWIG_Python_SetConstant(d, "VarID_varlist",SWIG_From_int(static_cast< int >(31)));
+  SWIG_Python_SetConstant(d, "VarID_map",SWIG_From_int(static_cast< int >(60)));
+  SWIG_Python_SetConstant(d, "VarID_format",SWIG_From_int(static_cast< int >(100)));
+  SWIG_Python_SetConstant(d, "VarID_ComboSelector",SWIG_From_int(static_cast< int >(302)));
+  SWIG_Python_SetConstant(d, "VarID_Climate",SWIG_From_int(static_cast< int >(340)));
+  SWIG_Python_SetConstant(d, "VarID_LandType",SWIG_From_int(static_cast< int >(341)));
+  SWIG_Python_SetConstant(d, "VarID_ZeoFunc",SWIG_From_int(static_cast< int >(510)));
+  SWIG_Python_SetConstant(d, "VarID_ProgBox",SWIG_From_int(static_cast< int >(600)));
+  SWIG_Python_SetConstant(d, "MAP_Empty",SWIG_From_int(static_cast< int >(0)));
+  SWIG_Python_SetConstant(d, "MAP_BYTE",SWIG_From_int(static_cast< int >(1)));
+  SWIG_Python_SetConstant(d, "MAP_WORD",SWIG_From_int(static_cast< int >(2)));
+  SWIG_Python_SetConstant(d, "MAP_24bit",SWIG_From_int(static_cast< int >(3)));
+  SWIG_Python_SetConstant(d, "MAP_DWORD",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MAP_DesignMap",SWIG_From_int(static_cast< int >(10)));
+  SWIG_Python_SetConstant(d, "MAP_Heightfield",SWIG_From_int(static_cast< int >(20)));
+  SWIG_Python_SetConstant(d, "MAP_TerrainNormals",SWIG_From_int(static_cast< int >(30)));
+  SWIG_Python_SetConstant(d, "MAP_AttributesMap",SWIG_From_int(static_cast< int >(40)));
+  SWIG_Python_SetConstant(d, "MAP_WaterMap",SWIG_From_int(static_cast< int >(50)));
+  SWIG_Python_SetConstant(d, "MAP_AuxWaterMap",SWIG_From_int(static_cast< int >(52)));
+  SWIG_Python_SetConstant(d, "MAPFLAG_READY",SWIG_From_int(static_cast< int >(1)));
+  SWIG_Python_SetConstant(d, "MAPFLAG_SAVED",SWIG_From_int(static_cast< int >(2)));
+  SWIG_Python_SetConstant(d, "MAPFLAG_MOSAIC",SWIG_From_int(static_cast< int >(3)));
+  SWIG_Python_SetConstant(d, "MAPFLAG_INVALID",SWIG_From_int(static_cast< int >(4)));
+  SWIG_Python_SetConstant(d, "MAPFLAG_MODIFIED",SWIG_From_int(static_cast< int >(5)));
+  SWIG_Python_SetConstant(d, "MAPFLAG_SEAMFIX",SWIG_From_int(static_cast< int >(6)));
   PyDict_SetItemString(d,(char*)"cvar", SWIG_globals());
   SWIG_addvarlink(SWIG_globals(),(char*)"theAPI",theAPI_get, theAPI_set);
 }
