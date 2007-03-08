@@ -3,6 +3,8 @@
 
 import zeolite
 
+print 'HFtoBMP running'
+
 string = zeolite.CzStr()
 string.Create(None)
 string.EditUI("Enter filename")
@@ -17,3 +19,5 @@ format.GetByExt("HF", 0, "bmp")
 filename = string.GetText() + ".bmp"
 
 hmap.SaveFile(filename, zeolite.zvar_to_zformat(format.GetZVAR()), True, True)
+
+print 'HFtoBMP done.'
