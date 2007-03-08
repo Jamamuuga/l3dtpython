@@ -72,6 +72,7 @@
 				LinkIncremental="2"
 				SuppressStartupBanner="false"
 				AdditionalLibraryDirectories=""
+				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
 				ModuleDefinitionFile="cdPython.def"
 				GenerateDebugInformation="true"
@@ -102,7 +103,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying plugin to L3DT extensions folder..."
-				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;&#x0D;&#x0A;cp &quot;$(ProjectDir)\zeolite.py&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\&quot;&#x0D;&#x0A;del &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.pyc&quot;"
+				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;&#x0D;&#x0A;cp &quot;$(ProjectDir)\zeolite.py&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\&quot;&#x0D;&#x0A;del &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.pyc&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -158,6 +159,7 @@
 				LinkIncremental="1"
 				SuppressStartupBanner="false"
 				AdditionalLibraryDirectories=""
+				GenerateManifest="false"
 				IgnoreAllDefaultLibraries="false"
 				IgnoreDefaultLibraryNames=""
 				ModuleDefinitionFile="cdPython.def"
@@ -192,7 +194,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying plugin to L3DT extensions folder..."
-				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;&#x0D;&#x0A;cp &quot;$(ProjectDir)\zeolite.py&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\&quot;&#x0D;&#x0A;del &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.pyc&quot;"
+				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;&#x0D;&#x0A;cp &quot;$(ProjectDir)\zeolite.py&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\&quot;&#x0D;&#x0A;del &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.pyc&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
