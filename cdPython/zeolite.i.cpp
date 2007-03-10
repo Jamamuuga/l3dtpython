@@ -3110,6 +3110,16 @@ ZVAR zlist_to_zvar(ZLIST x) {
 }
 
 
+ZVAR zformat_to_zvar(ZFORMAT x) {
+   return static_cast< ZVAR >(x);
+}
+
+
+ZVAR zfunc_to_zvar(ZFUNC x) {
+   return static_cast< ZVAR >(x);
+}
+
+
 ZMAP zvar_to_zmap(ZVAR x) {
    return static_cast< ZMAP >(x);
 }
@@ -16616,6 +16626,46 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_zformat_to_zvar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZFORMAT arg1 = (ZFORMAT) 0 ;
+  ZVAR result;
+  int res1 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zformat_to_zvar",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zformat_to_zvar" "', argument " "1"" of type '" "ZFORMAT""'"); 
+  }
+  result = (ZVAR)zformat_to_zvar(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_zfunc_to_zvar(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  ZFUNC arg1 = (ZFUNC) 0 ;
+  ZVAR result;
+  int res1 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:zfunc_to_zvar",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0,SWIG_as_voidptrptr(&arg1), 0, 0);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "zfunc_to_zvar" "', argument " "1"" of type '" "ZFUNC""'"); 
+  }
+  result = (ZVAR)zfunc_to_zvar(arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_void, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_zvar_to_zmap(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   ZVAR arg1 = (ZVAR) 0 ;
@@ -17113,6 +17163,8 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"CzBuffer_swigregister", CzBuffer_swigregister, METH_VARARGS, NULL},
 	 { (char *)"zmap_to_zvar", _wrap_zmap_to_zvar, METH_VARARGS, NULL},
 	 { (char *)"zlist_to_zvar", _wrap_zlist_to_zvar, METH_VARARGS, NULL},
+	 { (char *)"zformat_to_zvar", _wrap_zformat_to_zvar, METH_VARARGS, NULL},
+	 { (char *)"zfunc_to_zvar", _wrap_zfunc_to_zvar, METH_VARARGS, NULL},
 	 { (char *)"zvar_to_zmap", _wrap_zvar_to_zmap, METH_VARARGS, NULL},
 	 { (char *)"zvar_to_zlist", _wrap_zvar_to_zlist, METH_VARARGS, NULL},
 	 { (char *)"zvar_to_zfunc", _wrap_zvar_to_zfunc, METH_VARARGS, NULL},

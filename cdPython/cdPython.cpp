@@ -129,7 +129,7 @@ bool __stdcall ExtLoadScript(ZVAR hReturnVar, ZLIST hArgList)
 	//
 	ofn.lpstrFile[0] = '\0';
 	ofn.nMaxFile = MAX_PATH;
-	ofn.lpstrFilter = "Python files (*.py)\0*.py\0";
+	ofn.lpstrFilter = "Python files (*.py)\0*.py\0All files (*.*)\0*.*\0";
 	ofn.nFilterIndex = 1;
 	ofn.lpstrFileTitle = NULL;
 	ofn.nMaxFileTitle = 0;

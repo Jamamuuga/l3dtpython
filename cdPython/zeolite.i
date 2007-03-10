@@ -37,6 +37,8 @@ extern CExtAPI theAPI;
 
 %pointer_cast(ZMAP, ZVAR, zmap_to_zvar)
 %pointer_cast(ZLIST, ZVAR, zlist_to_zvar)
+%pointer_cast(ZFORMAT, ZVAR, zformat_to_zvar)
+%pointer_cast(ZFUNC, ZVAR, zfunc_to_zvar)
 
 %pointer_cast(ZVAR, ZMAP, zvar_to_zmap)
 %pointer_cast(ZVAR, ZLIST, zvar_to_zlist)

@@ -6,7 +6,7 @@ Set LIB=C:\Program Files\Microsoft Visual C++ Toolkit 2003\lib;%LIB%
 
 Rem Modify paths as necessary below...
 
-Set PATH=%PATH%;D:\Install\Python25;D:\Projects\swig\swigwin-1.3.31;
+Set PATH=%PATH%;D:\Install\Python25;D:\Projects\swig\swigwin-1.3.31;D:\Install\7-Zip;
 Set INCLUDE=%INCLUDE%;D:\Install\Python25\include;C:\Program Files\Microsoft Platform SDK\Include;
 Set LIB=%LIB%;D:\Install\Python25\libs;C:\Program Files\Microsoft Visual Studio .NET 2003\Vc7\lib;C:\Program Files\Microsoft Platform SDK\Lib;
 
@@ -39,6 +39,15 @@ cl /Od /GL /D "STATIC_LINKED" /D "_WINDLL" /D "_MBCS" /FD /EHsc /MD /Fo"Release\
 
 link "/OUT:D:\Projects\l3dtdev\l3dtpython\cdPython\Release\cdPython.dll" /INCREMENTAL:NO /DLL "/DEF:cdPython.def" /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /LTCG /MACHINE:X86 python25.lib kernel32.lib user32.lib comdlg32.lib shell32.lib ".\Release\cdPython.obj" ".\Release\stdafx.obj" ".\Release\zeolite.i.obj" ".\Release\ExtAPI.obj" ".\Release\zBuffer.obj" ".\Release\zColour.obj" ".\Release\zComboSel.obj" ".\Release\zFormat.obj" ".\Release\zFunc.obj" ".\Release\zList.obj" ".\Release\zMap.obj" ".\Release\zProgBox.obj" ".\Release\zStr.obj" ".\Release\zVar.obj" 
 
+Rem Install and bundle into zip file
+
 cp ".\Release\cdPython.dll" "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\"
 cp ".\zeolite.py" "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\"
+cp ".\License.txt" "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\cdPythonLicense.txt"
 del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.pyc"
+
+cd "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\"
+
+7z a -tzip cdPython.zip "Extensions\cdPython.dll"
+7z a -tzip cdPython.zip "Extensions\cdPythonLicense.txt"
+7z a -tzip cdPython.zip "zeolite.py"
