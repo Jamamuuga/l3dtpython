@@ -56,7 +56,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 		fpStdOut = freopen( "CONOUT$", "w", stdout);
 		fpStdErr = freopen( "CONOUT$", "w", stderr);
 
-		fprintf(stdout, "Console opened by cdPython\n");
+		fprintf(stdout, "cdPython " CDPYTHON_VERSION "\nCopyright (C) 2007 A. Carl Douglas\n");
 
 		Py_Initialize();
 		init_zeolite(); // SWIG generated method
@@ -94,6 +94,8 @@ bool __stdcall ExtInitPlugin(FARPROC pFunc, LPVOID hID)
 	// add menu options
 	theAPI.menu_InsertItemEx("ExtAbout", "About", false);
 	theAPI.menu_InsertItemEx("ExtLoadScript", "Run a Python script", false);
+
+	fprintf(stdout, "Zeolite API runtime version %s\n", ExtGetApiVersion());
 
 	return true;
 }
