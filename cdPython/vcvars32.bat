@@ -51,3 +51,9 @@ cd "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\"
 7z a -tzip cdPython.zip "Extensions\cdPython.dll"
 7z a -tzip cdPython.zip "Extensions\cdPythonLicense.txt"
 7z a -tzip cdPython.zip "zeolite.py"
+
+Rem Delete preinstall files so I have to test the zip file
+
+del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\cdPython.dll"
+del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\cdPythonLicense.txt"
+del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.py"
