@@ -27,6 +27,5 @@
 
 // Windows Header Files:
 #include <windows.h>
-#include <commdlg.h> // for open file dialog
 
 // TODO: reference additional headers your program requires here

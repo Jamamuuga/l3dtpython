@@ -6,6 +6,8 @@
 
 
 #include "stdafx.h"
+#include <commdlg.h> // for open file dialog
+#include <Shellapi.h> // for ShellExecute
 #include "cdPython.h"
 
 #include "..\Plugin API\ExtAPI.h"
@@ -48,6 +50,12 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 
 		AllocConsole();
 
+		// minimise the console window
+		HWND hConsole;
+		if(hConsole = GetConsoleWindow()) {
+			ShowWindow(hConsole, SW_MINIMIZE);
+		}
+
 		// Important note:
 		// If PythonXX.dll links to a different version of the c runtime (msvcrXX.dll)
 		// to this DLL, then stderr/stdout redirection will not work properly, and
@@ -86,14 +94,27 @@ bool __stdcall ExtInitPlugin(FARPROC pFunc, LPVOID hID)
 		return false;
 	}
 
+	// load some functions
 	CzFunc func;
-
 	func.LoadFunc("ExtAbout", VarID_void, NULL);
-	func.LoadFunc("ExtLoadScript", VarID_void, NULL);
-	
+	func.LoadFunc("LoadScriptUI", VarID_void, NULL); // opens file UI
+	func.LoadFunc("ExtWikiPage", VarID_void, NULL);
+	func.LoadFunc("ExtZeoPage", VarID_void, NULL);
+
+	// extra function that takes filename as argument
+	CzList args;
+	args.CreateItem(VarID_string, "FileName");
+	func.LoadFunc("LoadScript", VarID_void, args.GetZVAR());
+
+	args.DelAll();
+	args.CreateItem(VarID_string, "ScriptStr");
+	func.LoadFunc("RunScript", VarID_void, args.GetZVAR());
+
 	// add menu options
-	theAPI.menu_InsertItemEx("ExtAbout", "About", false);
-	theAPI.menu_InsertItemEx("ExtLoadScript", "Run a Python script", false);
+	theAPI.menu_InsertItem("LoadScriptUI", "Run script from file");
+	theAPI.menu_InsertItem("ExtZeoPage", "Zeolite API docs");
+	theAPI.menu_InsertItem("ExtWikiPage", "Visit project page");
+	theAPI.menu_InsertItem("ExtAbout", "About cdPython");
 
 	fprintf(stdout, "Zeolite API runtime version %s\n", ExtGetApiVersion());
 
@@ -114,8 +135,22 @@ bool __stdcall ExtAbout(ZVAR hReturnVar, ZLIST hArgList)
 	return true;
 }
 
+// Show the wiki page
+bool __stdcall ExtWikiPage(ZVAR hReturnVar, ZLIST hArgList)  
+{
+       ShellExecute(NULL, "open", "http://www.bundysoft.com/wiki/doku.php?id=plugins:general:cdPython", NULL, NULL, SW_SHOWNORMAL);
+       return true;
+}
+
+// Show the zeolite page
+bool __stdcall ExtZeoPage(ZVAR hReturnVar, ZLIST hArgList)  
+{
+       ShellExecute(NULL, "open", "http://www.bundysoft.com/docs/doku.php?id=zeolite", NULL, NULL, SW_SHOWNORMAL);
+       return true;
+}
+
 // Let the user choose a python script then run that script.
-bool __stdcall ExtLoadScript(ZVAR hReturnVar, ZLIST hArgList) 
+bool __stdcall LoadScriptUI(ZVAR hReturnVar, ZLIST hArgList) 
 {
 	OPENFILENAME ofn;       // common dialog box structure
 	char szFile[MAX_PATH];  // buffer for file name
@@ -166,6 +201,68 @@ bool __stdcall ExtLoadScript(ZVAR hReturnVar, ZLIST hArgList)
 	}
 
 	return true;
+}
+
+// extension function that allows other plugins to run python scripts from files
+bool __stdcall LoadScript(ZVAR hReturnVar, ZLIST hArgList)  {
+
+       CzStr FileName;
+       if(!FileName.Attach(theAPI.list_GetItemI(hArgList, 0))) {
+               theAPI.ReportError("cdPython::LoadScript error:\r\n - cannot retrieve file name argument");
+               return false;
+       }
+
+       if(!FileName.GetLength()) {
+               theAPI.ReportError("cdPython::LoadScript error:\r\n - zero-length file name");
+               return false;
+       }
+
+       if(!theAPI.file_FileExists((char*)FileName)) { // check func name?
+               theAPI.ReportError("cdPython::LoadScript error:\r\n - file not found");
+               return false;
+       }
+
+       // Thank you:  http://www.ragestorm.net/tutorial?id=21#8
+       PyObject* PyFileObject = PyFile_FromString((char*)FileName, "r");
+
+       if (PyFileObject == NULL)
+       {
+               PyErr_Print();
+               PyErr_Clear();
+               return false;
+       }
+
+       if (PyRun_SimpleFile(PyFile_AsFile(PyFileObject), (char*)FileName) == -1)
+       {
+               PyErr_Print();
+               PyErr_Clear();
+       }
+
+       Py_DECREF(PyFileObject);
+
+       return true;
+}
+
+// extension function that allows other plugins to run python scripts from string
+bool __stdcall RunScript(ZVAR hReturnVar, ZLIST hArgList)  {
+
+       CzStr ScriptStr;
+       if(!ScriptStr.Attach(theAPI.list_GetItemI(hArgList, 0))) {
+               theAPI.ReportError("cdPython::RunScript error:\r\n - cannot retrieve file name argument");
+               return false;
+       }
+
+       if(!ScriptStr.GetLength()) {
+               theAPI.ReportError("cdPython::LoadScript error:\r\n - zero-length script");
+               return false;
+       }
+
+       if (PyRun_SimpleString((char*)ScriptStr) == -1)         {
+               PyErr_Print();
+               PyErr_Clear();
+       }
+
+       return true;
 }
 
 // EOF

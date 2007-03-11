@@ -3,6 +3,10 @@ LIBRARY	"cdPython"
 EXPORTS
     ; Explicit exports can go here
     
-ExtInitPlugin @1
-ExtAbout @2
-ExtLoadScript @3
+ExtInitPlugin	@1
+LoadScriptUI	@2
+LoadScript		@3
+RunScript		@4
+ExtWikiPage		@5
+ExtZeoPage		@6
+ExtAbout		@7
