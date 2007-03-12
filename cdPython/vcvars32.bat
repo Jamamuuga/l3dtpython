@@ -27,7 +27,7 @@ echo Visit http://msdn.microsoft.com/visualc/using/documentation/default.aspx fo
 echo complete compiler documentation.
 
 
-del .\Release\*.*
+del /Q .\Release\*.*
 rmdir .\Release
 mkdir .\Release
 
@@ -57,3 +57,7 @@ Rem Delete preinstall files so I have to test the zip file
 del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\cdPython.dll"
 del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\cdPythonLicense.txt"
 del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.py"
+
+Rem Extract from zip
+
+7z x cdPython.zip
