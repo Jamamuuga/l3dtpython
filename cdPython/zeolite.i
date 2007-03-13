@@ -50,5 +50,6 @@ extern CExtAPI theAPI;
 %pointer_class(bool,boolp)
 %pointer_class(float,floatp)
 %pointer_class(double,doublep)
+%pointer_class(char, charp)
 
 extern CExtAPI theAPI;
