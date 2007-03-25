@@ -1,5 +1,6 @@
 // Copyright (C) 2007 A. Carl Douglas   carl.douglas@gmail.com
 // All rights reserved.
+// $Id$
 
 #define CDPYTHON_VERSION "0.5"
 #define CDPYTHON_VERSION_NUM_MAJOR 0x00

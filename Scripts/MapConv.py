@@ -4,6 +4,7 @@
 import zeolite
 import os
 
+# exports a map layer to a BMP file
 def saveMapToBMP(mapname, filename):
     hmap = zeolite.CzMap()
     hf = zeolite.cvar.theAPI.project_GetMap(mapname)
@@ -123,12 +124,12 @@ cmd += ' -a ' + hfbmp
 # terrain type map
 #cmd += ' -y ' + typebmp
 
-# lowpass, smoothing?
+# lowpass, smoothing
 lowpass_var.GetValue(zeolite.VarID_bool, lowpass.cast())
 if lowpass.value() == True:
     cmd += ' -l '
 
-# invert height map?
+# invert height map
 invert_var.GetValue(zeolite.VarID_bool, invert.cast())
 if invert.value() == True:
     cmd += ' -i '

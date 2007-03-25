@@ -4,17 +4,13 @@
 #pragma once
 
 #ifdef MFC
-#include <afx.h>
+	#include <afx.h>
 #else
-#include <windows.h>
-#endif
-
-#ifdef MSC_VER
-
+	#include <windows.h>
 #endif
 
 #ifdef __MINGW32__
-#include <ctype.h>
+	#include <ctype.h>
 #endif
 
 // variable handles
