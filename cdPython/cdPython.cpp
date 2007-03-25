@@ -86,7 +86,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 
 
 // Initialize zeolite API
-bool __stdcall ExtInitPlugin(FARPROC pFunc, LPVOID hID) 
+extern "C" __declspec( dllexport ) bool __stdcall ExtInitPlugin(FARPROC pFunc, LPVOID hID) 
 {
 
 	if(!theAPI.InitAPI(pFunc, hID)) {
@@ -122,7 +122,7 @@ bool __stdcall ExtInitPlugin(FARPROC pFunc, LPVOID hID)
 }
 
 // Show the version number etc
-bool __stdcall ExtAbout(ZVAR hReturnVar, ZLIST hArgList) 
+extern "C" __declspec( dllexport ) bool __stdcall ExtAbout(ZVAR hReturnVar, ZLIST hArgList) 
 {
 	static const char title[] =
 		"Python Extension Version " CDPYTHON_VERSION;
@@ -136,21 +136,21 @@ bool __stdcall ExtAbout(ZVAR hReturnVar, ZLIST hArgList)
 }
 
 // Show the wiki page
-bool __stdcall ExtWikiPage(ZVAR hReturnVar, ZLIST hArgList)  
+extern "C" __declspec( dllexport ) bool __stdcall ExtWikiPage(ZVAR hReturnVar, ZLIST hArgList)  
 {
        ShellExecute(NULL, "open", "http://www.bundysoft.com/wiki/doku.php?id=plugins:general:cdPython", NULL, NULL, SW_SHOWNORMAL);
        return true;
 }
 
 // Show the zeolite page
-bool __stdcall ExtZeoPage(ZVAR hReturnVar, ZLIST hArgList)  
+extern "C" __declspec( dllexport ) bool __stdcall ExtZeoPage(ZVAR hReturnVar, ZLIST hArgList)  
 {
        ShellExecute(NULL, "open", "http://www.bundysoft.com/docs/doku.php?id=zeolite", NULL, NULL, SW_SHOWNORMAL);
        return true;
 }
 
 // Let the user choose a python script then run that script.
-bool __stdcall LoadScriptUI(ZVAR hReturnVar, ZLIST hArgList) 
+extern "C" __declspec( dllexport ) bool __stdcall LoadScriptUI(ZVAR hReturnVar, ZLIST hArgList) 
 {
 	OPENFILENAME ofn;       // common dialog box structure
 	char szFile[MAX_PATH];  // buffer for file name
@@ -204,7 +204,7 @@ bool __stdcall LoadScriptUI(ZVAR hReturnVar, ZLIST hArgList)
 }
 
 // extension function that allows other plugins to run python scripts from files
-bool __stdcall LoadScript(ZVAR hReturnVar, ZLIST hArgList)  {
+extern "C" __declspec( dllexport ) bool __stdcall LoadScript(ZVAR hReturnVar, ZLIST hArgList)  {
 
        CzStr FileName;
        if(!FileName.Attach(theAPI.list_GetItemI(hArgList, 0))) {
@@ -244,7 +244,7 @@ bool __stdcall LoadScript(ZVAR hReturnVar, ZLIST hArgList)  {
 }
 
 // extension function that allows other plugins to run python scripts from string
-bool __stdcall RunScript(ZVAR hReturnVar, ZLIST hArgList)  {
+extern "C" __declspec( dllexport ) bool __stdcall RunScript(ZVAR hReturnVar, ZLIST hArgList)  {
 
        CzStr ScriptStr;
        if(!ScriptStr.Attach(theAPI.list_GetItemI(hArgList, 0))) {
