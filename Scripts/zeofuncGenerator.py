@@ -171,4 +171,4 @@ file.writelines(footer)
 
 file.close()
 
-print __file__ + ' is finished'
+print filename + ' has been written'
