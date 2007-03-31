@@ -17,6 +17,9 @@
 #include "..\Plugin API\zColour.h"
 #include "..\Plugin API\zBuffer.h"
 
+// auto generated zeofunc wrapper by browsing L3DT zeofuncs, see zeofuncGenerator.py
+#include "zeofuncapi.c"
+
 extern CExtAPI theAPI;
 %}
 
@@ -36,6 +39,7 @@ extern CExtAPI theAPI;
 %include "..\Plugin API\zComboSel.h"
 %include "..\Plugin API\zColour.h"
 %include "..\Plugin API\zBuffer.h"
+%include "zeofuncapi.c"
 
 %pointer_cast(ZMAP, ZVAR, zmap_to_zvar)
 %pointer_cast(ZLIST, ZVAR, zlist_to_zvar)

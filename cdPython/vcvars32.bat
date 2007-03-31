@@ -37,27 +37,11 @@ cl /Od /GL /D "STATIC_LINKED" /D "_WINDLL" /D "_MBCS" /FD /EHsc /MD /Yc"stdafx.h
 
 cl /Od /GL /D "STATIC_LINKED" /D "_WINDLL" /D "_MBCS" /FD /EHsc /MD /Fo"Release\\" /W3 /c /Wp64 /Zi /TP "..\Plugin API\zVar.cpp"   "..\Plugin API\zStr.cpp"   "..\Plugin API\zProgBox.cpp"   "..\Plugin API\zMap.cpp"   "..\Plugin API\zList.cpp"   "..\Plugin API\zFunc.cpp"   "..\Plugin API\zFormat.cpp"   "..\Plugin API\zComboSel.cpp"   "..\Plugin API\zColour.cpp"   "..\Plugin API\zBuffer.cpp"   "..\Plugin API\ExtAPI.cpp"   .\zeolite.i.cpp   .\cdPython.cpp
 
-link "/OUT:D:\Projects\l3dtdev\l3dtpython\cdPython\Release\cdPython.dll" /INCREMENTAL:NO /DLL "/DEF:cdPython.def" /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /LTCG /MACHINE:X86 python25.lib kernel32.lib user32.lib comdlg32.lib shell32.lib ".\Release\cdPython.obj" ".\Release\stdafx.obj" ".\Release\zeolite.i.obj" ".\Release\ExtAPI.obj" ".\Release\zBuffer.obj" ".\Release\zColour.obj" ".\Release\zComboSel.obj" ".\Release\zFormat.obj" ".\Release\zFunc.obj" ".\Release\zList.obj" ".\Release\zMap.obj" ".\Release\zProgBox.obj" ".\Release\zStr.obj" ".\Release\zVar.obj" 
+link "/OUT:.\Release\cdPython.dll" /INCREMENTAL:NO /DLL "/DEF:cdPython.def" /SUBSYSTEM:WINDOWS /OPT:NOREF /OPT:NOICF /LTCG /MACHINE:X86 python25.lib kernel32.lib user32.lib comdlg32.lib shell32.lib ".\Release\cdPython.obj" ".\Release\stdafx.obj" ".\Release\zeolite.i.obj" ".\Release\ExtAPI.obj" ".\Release\zBuffer.obj" ".\Release\zColour.obj" ".\Release\zComboSel.obj" ".\Release\zFormat.obj" ".\Release\zFunc.obj" ".\Release\zList.obj" ".\Release\zMap.obj" ".\Release\zProgBox.obj" ".\Release\zStr.obj" ".\Release\zVar.obj" 
 
-Rem Install and bundle into zip file
+Rem bundle into zip file
 
-cp ".\Release\cdPython.dll" "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\"
-cp ".\zeolite.py" "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\"
-cp ".\License.txt" "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\cdPythonLicense.txt"
-del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.pyc"
+7z a -tzip "cdPython.zip" ".\Release\cdPython.dll"
+7z a -tzip "cdPython.zip" ".\cdPythonLicense.txt"
+7z a -tzip "cdPython.zip" ".\zeolite.py"
 
-cd "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\"
-
-7z a -tzip cdPython.zip "Extensions\cdPython.dll"
-7z a -tzip cdPython.zip "Extensions\cdPythonLicense.txt"
-7z a -tzip cdPython.zip "zeolite.py"
-
-Rem Delete preinstall files so I have to test the zip file
-
-del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\cdPython.dll"
-del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\cdPythonLicense.txt"
-del "D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.py"
-
-Rem Extract from zip
-
-7z x cdPython.zip
