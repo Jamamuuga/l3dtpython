@@ -41,7 +41,7 @@ link "/OUT:.\Release\cdPython.dll" /INCREMENTAL:NO /DLL "/DEF:cdPython.def" /SUB
 
 Rem bundle into zip file
 
-7z a -tzip "cdPython.zip" ".\Release\cdPython.dll"
-7z a -tzip "cdPython.zip" ".\cdPythonLicense.txt"
-7z a -tzip "cdPython.zip" ".\zeolite.py"
+7z a -tzip cdPython.zip ".\Release\cdPython.dll"
+7z a -tzip cdPython.zip ".\cdPythonLicense.txt"
+7z a -tzip cdPython.zip ".\zeolite.py"
 
