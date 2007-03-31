@@ -34,8 +34,6 @@ def typeToC(type):
     return type
 
 def typeToConst(type):
-    if (type == 'LPVOID' or type == 'void'):
-        return 'VarID_void'
     return 'VarID_' + type
 
 def processItem(file,item,prefix):
@@ -79,26 +77,26 @@ def processItem(file,item,prefix):
         if (arglist.nItems() == 0):
             code = Template(
 '''{
-    static CzFunc $localname;
+    static ZFUNC hFunc$localname = NULL;
     
-    if ($localname.GetZVAR() == NULL)
-        $localname.GetFunc("$name");
+    if (hFunc$localname == NULL)
+        hFunc$localname = theAPI.zeofunc_GetFunc("$name");
 
-    CzVar retVar($localname.Execute());
+    ZVAR hRetVar = theAPI.zeofunc_Execute(hFunc$localname, NULL);
     $returncode
 }
 ''')
         else:
             code = Template(
 '''{
-    static CzFunc $localname;
+    static ZFUNC hFunc$localname = NULL;
     
-    if ($localname.GetZVAR() == NULL)
-        $localname.GetFunc("$name");
+    if (hFunc$localname == NULL)
+        hFunc$localname = theAPI.zeofunc_GetFunc("$name");
 
-    CzList args;
+    ZLIST hArgs = theAPI.var_CreateTemp(VarID_varlist);
     $createallargs
-    CzVar retVar($localname.Execute((ZLIST)args.GetZVAR()));
+    ZVAR hRetVar = theAPI.zeofunc_Execute(hFunc$localname, hArgs);
     $returncode
 }
 
@@ -112,13 +110,21 @@ def processItem(file,item,prefix):
                 type = typename.GetText()
                 createargt = Template(
 '''
-    CzVar var$argname (args.CreateItem($zeolitetype, "$argname"));
-    var$argname.SetValue($zeolitetype, & $argname);
+    ZVAR hVar$argname = theAPI.list_CreateItem(hArgs, $zeolitetype, "$argname");
+    theAPI.var_SetValue(hVar$argname, &$argname);
 ''')
-                argcode = createargt.substitute(
+                # strings are a special case?
+                if (temp.GetTypeID() == zeolite.VarID_string):
+                    createargt = Template(
+'''
+    ZVAR hVar$argname = theAPI.list_CreateItem(hArgs, $zeolitetype, "$argname");
+    theAPI.str_SetText(hVar$argname, $argname);
+''')
+                argcode = argcode + createargt.substitute(
                             zeolitetype=typeToConst(type),
                             argname=temp.GetName()
                             )
+                
                 argi = argi + 1
         
         #return var
@@ -127,7 +133,7 @@ def processItem(file,item,prefix):
             returncodet = Template(
 '''
     $rettypename retValue;
-    retVar.GetValue($rettypenameconst, &retValue);
+    theAPI.var_GetValue(hRetVar, &retValue);
     return retValue;
 ''')
             zeolite.cvar.theAPI.type_GetTypeName(func.GetReturnTypeID(), typename.GetZVAR());
@@ -139,7 +145,7 @@ def processItem(file,item,prefix):
         else:
             returncodeg = 'return;'
         codestr = code.substitute(
-              localname='local'+func.GetName(),
+              localname=func.GetName(),
               name=getFuncName(prefix + func.GetName()),
               createallargs=argcode,
               returncode=returncodeg

@@ -17,10 +17,11 @@
 #include "..\Plugin API\zColour.h"
 #include "..\Plugin API\zBuffer.h"
 
+extern CExtAPI theAPI;
+
 // auto generated zeofunc wrapper by browsing L3DT zeofuncs, see zeofuncGenerator.py
 #include "zeofuncapi.c"
 
-extern CExtAPI theAPI;
 %}
 
 %include "windows.i"
