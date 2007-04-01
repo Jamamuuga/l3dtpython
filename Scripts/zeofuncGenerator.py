@@ -101,29 +101,42 @@ def processItem(file,item,prefix):
 }
 
 ''')
-            argcode = '/* create all the args here */\n'
+            argcode = '\n'
             argi = 0
             while argi < arglist.nItems():
                 temp = zeolite.CzVar(arglist.GetItem(argi))
                 temp.GetTypeName(typename.GetZVAR())
                 # the argument type and name
                 type = typename.GetText()
-                createargt = Template(
-'''
-    ZVAR hVar$argname = theAPI.list_CreateItem(hArgs, $zeolitetype, "$argname");
-    theAPI.var_SetValue(hVar$argname, &$argname);
-''')
-                # strings are a special case?
+
+                createargt = ''
+                # strings are a special case ...
                 if (temp.GetTypeID() == zeolite.VarID_string):
                     createargt = Template(
 '''
     ZVAR hVar$argname = theAPI.list_CreateItem(hArgs, $zeolitetype, "$argname");
     theAPI.str_SetText(hVar$argname, $argname);
 ''')
+                elif (temp.GetTypeID() >= zeolite.VarID_colour and temp.GetTypeID() <= zeolite.VarID_ProgBox):
+                # some vars are passed by reference
+                    createargt = Template(
+'''
+    ZVAR hVar$argname = theAPI.list_CreateItem(hArgs, $zeolitetype, "$argname");
+    theAPI.var_SetVarRef(hVar$argname, $argname);
+''')
+                else:
+                # its a C atomic type, so pass a reference to it
+                    createargt = Template(
+'''
+    ZVAR hVar$argname = theAPI.list_CreateItem(hArgs, $zeolitetype, "$argname");
+    theAPI.var_SetValue(hVar$argname, &$argname);
+''')
+                
                 argcode = argcode + createargt.substitute(
                             zeolitetype=typeToConst(type),
                             argname=temp.GetName()
                             )
+                
                 
                 argi = argi + 1
         
