@@ -8,7 +8,7 @@ public:
 	CzComboSel(void);
 	~CzComboSel(void);
 
-	bool Create(const char* lpVarName = NULL);
+	bool Create(const char* lpVarName = 0);
 
 	bool		SetOptions(const char* lpOptionsStr);
 	const char*	GetOptions();

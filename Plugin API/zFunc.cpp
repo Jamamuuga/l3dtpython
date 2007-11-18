@@ -29,7 +29,7 @@ bool CzFunc::GetArgListPrototype(ZLIST hArgList) {
 	return theAPI.zeofunc_GetArgListPrototype(m_hVar, hArgList);
 }
 ZVAR CzFunc::Execute(ZLIST hArgList) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	bool rval = false;
 
@@ -43,6 +43,28 @@ ZVAR CzFunc::Execute(ZLIST hArgList) {
 	}
 	
 	return hRval;
+}
+bool CzFunc::Execute2(ZLIST hArgList, ZVAR* ppRval) {
+
+	if(!m_hVar)	
+		return false;
+
+	bool rval = false;
+
+	if(!hArgList)
+		hArgList = m_args.GetZVAR();
+
+	ZVAR hRval = m_rval.GetZVAR();
+
+	if(!theAPI.zeofunc_Execute2(m_hVar, hArgList, &hRval)) {
+		return false;
+	}
+
+	if(ppRval) {
+		*ppRval = hRval;
+	}
+	
+	return true;
 }
 bool CzFunc::ExecuteThreaded(ZLIST hArgList, bool DeleteArgs, long ThreadPriority) {
 	if(!m_hVar)	return false;

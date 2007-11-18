@@ -2,8 +2,10 @@
 #include "extapi.h"
 extern CExtAPI theAPI;
 
+#include <stdio.h>
+
 CzStr::CzStr(void) {
-	Create(NULL);
+	Create(0);
 }
 
 CzStr::~CzStr(void) {
@@ -14,7 +16,7 @@ bool CzStr::Create(const char* lpVarName){
 }
 
 const char* CzStr::GetText() {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.str_GetText(m_hVar);
 }
@@ -25,10 +27,11 @@ bool CzStr::SetText(const char* lpTextStr) {
 }
 
 int CzStr::GetLength() { return (int)strlen(GetText()); }
+bool CzStr::IsStr(const char* lpText) { return !Compare(lpText); }
 int CzStr::Compare(const char* lpText) { return strcmp(GetText(), lpText); }
 int CzStr::CompareNoCase(const char* lpText) {
 	int len = GetLength();
-	char* pBuf = NULL;
+	char* pBuf = 0;
 
 	if(len) {
 		if(!(pBuf = (char*)calloc(len+1, 1))) {
@@ -66,4 +69,27 @@ char CzStr::GetAt(int index) {
 		return 0;
 
 	return (GetText()[index]);
+}
+
+const char* CzStr::Append(const char* lpNewText) {
+	if(!lpNewText)	return GetText();
+
+	long buflen = GetLength()+(long)strlen(lpNewText)+1;
+	if(buflen<1)
+		return 0;
+
+	char* pBuf = (char*)malloc(buflen);
+	if(!pBuf)	return 0;
+
+	sprintf(pBuf, "%s%s", GetText(), lpNewText);
+	SetText(pBuf);
+
+	free(pBuf);
+	return GetText();
+}
+const char* CzStr::AppendChar(char c) {
+	char c2[2];
+	c2[0]=c;
+	c2[1]=0;
+	return Append(c2);
 }

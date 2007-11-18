@@ -1,6 +1,8 @@
 #pragma once
 #include "zvar.h"
 #include "zlist.h"
+#include "ExtAPI_defines.h"
+
 
 class CzFunc :
 	public CzVar
@@ -16,8 +18,9 @@ public:
 	bool	GetArgListPrototype(ZLIST hArgList);
 	bool	GetFunc(const char* lpFnName);
 	long	GetReturnTypeID();
-	ZVAR	Execute(ZLIST hArgList = NULL); // NULL arg list is interpreted as using the m_args member
-	bool	ExecuteThreaded(ZLIST hArgList = NULL, bool DeleteArgs = false, long ThreadPriority = THREAD_PRIORITY_BELOW_NORMAL);
+	ZVAR	Execute(ZLIST hArgList = 0); // 0 arg list is interpreted as using the m_args member
+	bool	Execute2(ZLIST hArgList = 0, ZVAR* ppRval = 0);
+	bool	ExecuteThreaded(ZLIST hArgList = 0, bool DeleteArgs = false, long ThreadPriority = THREAD_PRIORITY_NORMAL);
 
 	CzList	m_args;
 	CzVar	m_rval;

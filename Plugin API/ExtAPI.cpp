@@ -1,10 +1,3 @@
-// include MFC or windows, depending on developer's choice
-//#ifdef _MSC_VER
-//	#include "afx.h"
-//#else
-//	#include "windows.h"
-//#endif
-
 #include "extapi.h"
 
 // the one and only CExtAPI instance
@@ -12,177 +5,194 @@ CExtAPI theAPI;
 
 // function for reporting API version to calling app
 extern "C" __declspec( dllexport ) const char* __stdcall ExtGetApiVersion(void) {
-	return "2.3";
+	return "2.5.2";
 }
 
 
 CExtAPI::CExtAPI(void) {
 
-	m_hID = NULL;
+	m_hID = 0;
 
 	// app functions
 
-	m_lpfnGetFuncHandle = NULL;
-	m_lpfnReportError = NULL;
+	m_lpfnGetFuncHandle = 0;
+	m_lpfnReportError = 0;
+	m_lpfnWriteToLog = 0;
 
 	// var function handles
 
-	m_lpfn_var_Create = NULL;
-	m_lpfn_var_CreateTemp = NULL;
-	m_lpfn_var_Delete = NULL;
-	m_lpfn_var_Rename = NULL;
-	m_lpfn_var_GetVar = NULL;
-	m_lpfn_var_GetName = NULL;
-	m_lpfn_var_GetTypeID = NULL;
-	m_lpfn_var_IsType = NULL;
-	m_lpfn_var_GetValue = NULL;
-	m_lpfn_var_SetValue = NULL;
-	m_lpfn_var_GetValueEx = NULL;
-	m_lpfn_var_SetValueEx = NULL;
-	m_lpfn_var_CopyValue = NULL;
-	m_lpfn_var_SetVarRef = NULL;
-	m_lpfn_var_EditUI = NULL;
-	m_lpfn_var_GetDataPtr = NULL;
+	m_lpfn_var_Create = 0;
+	m_lpfn_var_CreateTemp = 0;
+	m_lpfn_var_Delete = 0;
+	m_lpfn_var_ReInit = 0;
+	m_lpfn_var_Rename = 0;
+	m_lpfn_var_GetVar = 0;
+	m_lpfn_var_GetName = 0;
+	m_lpfn_var_GetTypeID = 0;
+	m_lpfn_var_IsType = 0;
+	m_lpfn_var_GetValue = 0;
+	m_lpfn_var_SetValue = 0;
+	m_lpfn_var_GetValueEx = 0;
+	m_lpfn_var_SetValueEx = 0;
+	m_lpfn_var_CopyValue = 0;
+	m_lpfn_var_SetVarRef = 0;
+	m_lpfn_var_EditUI = 0;
+	m_lpfn_var_GetDataPtr = 0;
 
 	// type function handles
 
-	m_lpfn_type_GetTypeID = NULL;
-	m_lpfn_type_GetTypeName = NULL;
+	m_lpfn_type_GetTypeID = 0;
+	m_lpfn_type_GetTypeName = 0;
 
 	// string function handles
 
-	m_lpfn_str_GetText = NULL;
-	m_lpfn_str_SetText = NULL;
+	m_lpfn_str_GetText = 0;
+	m_lpfn_str_SetText = 0;
 
 	// list function handles
 
-	m_lpfn_list_nItems = NULL;
-	m_lpfn_list_CreateItem = NULL;
-	m_lpfn_list_GetItemI = NULL;
-	m_lpfn_list_GetItemA = NULL;
-	m_lpfn_list_DelItemI = NULL;
-	m_lpfn_list_DelItemA = NULL;
-	m_lpfn_list_DelAll = NULL;
-	m_lpfn_list_SortI = NULL;
-	m_lpfn_list_SortA = NULL;
+	m_lpfn_list_nItems = 0;
+	m_lpfn_list_CreateItem = 0;
+	m_lpfn_list_GetItemI = 0;
+	m_lpfn_list_GetItemA = 0;
+	m_lpfn_list_DelItemI = 0;
+	m_lpfn_list_DelItemA = 0;
+	m_lpfn_list_DelAll = 0;
+	m_lpfn_list_SortI = 0;
+	m_lpfn_list_SortA = 0;
 
 	// map functions
 
-	m_lpfn_map_Init = NULL;
-	m_lpfn_map_Free = NULL;
-	m_lpfn_map_GetMapType = NULL;
-	m_lpfn_map_GetPixelSize = NULL;
-	m_lpfn_map_GetWrapFlag = NULL;
-	m_lpfn_map_SetWrapFlag = NULL;
-	m_lpfn_map_GetBusyFlag = NULL;
-	m_lpfn_map_SetBusyFlag = NULL;
-	m_lpfn_map_GetWidth = NULL;
-	m_lpfn_map_GetHeight = NULL;
-	m_lpfn_map_GetPixel = NULL;
-	m_lpfn_map_SetPixel = NULL;
-	m_lpfn_map_GetMinMaxAlt = NULL;
-	m_lpfn_map_SetMinMaxAlt = NULL;
-	m_lpfn_map_GetHorizScale = NULL;
-	m_lpfn_map_GetMosaicFlag = NULL;
-	m_lpfn_map_GetMosaicTileSize = NULL;
-	m_lpfn_map_GetMosaicTilesX = NULL;
-	m_lpfn_map_GetMosaicTilesY = NULL;
-	m_lpfn_map_GetFlag = NULL;
-	m_lpfn_map_SetFlag = NULL;
-	m_lpfn_map_GetSettingsList = NULL;
-	m_lpfn_map_SaveFile = NULL;
-	m_lpfn_map_LoadFile = NULL;
-	m_lpfn_map_GetNameInProject = NULL;
-	m_lpfn_map_InitMosaic = NULL;
-	m_lpfn_map_LoadMosaic = NULL;
-	m_lpfn_map_SaveMosaic = NULL;
-	m_lpfn_map_GetFormat = NULL;
-	m_lpfn_map_SetFormat = NULL;
-	m_lpfn_map_GetFilename = NULL;
-	m_lpfn_map_CombineMosaic = NULL;
-	m_lpfn_map_SplitToMosaic = NULL;
-	m_lpfn_map_SaveMosaicAs = NULL;
-	m_lpfn_map_ExportMap = NULL;
-	m_lpfn_map_ExportMosaic = NULL;
-	m_lpfn_map_GetDataPtr = NULL;
-	m_lpfn_map_GetMosaicTile = NULL;
+	m_lpfn_map_Init = 0;
+	m_lpfn_map_Free = 0;
+	m_lpfn_map_GetMapType = 0;
+	m_lpfn_map_GetPixelSize = 0;
+	m_lpfn_map_GetWrapFlag = 0;
+	m_lpfn_map_SetWrapFlag = 0;
+	m_lpfn_map_GetBusyFlag = 0;
+	m_lpfn_map_SetBusyFlag = 0;
+	m_lpfn_map_GetWidth = 0;
+	m_lpfn_map_GetHeight = 0;
+	m_lpfn_map_GetPixel = 0;
+	m_lpfn_map_SetPixel = 0;
+	m_lpfn_map_GetMinMaxAlt = 0;
+	m_lpfn_map_SetMinMaxAlt = 0;
+	m_lpfn_map_GetHorizScale = 0;
+	m_lpfn_map_GetMosaicFlag = 0;
+	m_lpfn_map_GetMosaicTileSize = 0;
+	m_lpfn_map_GetMosaicTilesX = 0;
+	m_lpfn_map_GetMosaicTilesY = 0;
+	m_lpfn_map_GetFlag = 0;
+	m_lpfn_map_SetFlag = 0;
+	m_lpfn_map_GetSettingsList = 0;
+	m_lpfn_map_SaveFile = 0;
+	m_lpfn_map_LoadFile = 0;
+	m_lpfn_map_GetNameInProject = 0;
+	m_lpfn_map_InitMosaic = 0;
+	m_lpfn_map_LoadMosaic = 0;
+	m_lpfn_map_SaveMosaic = 0;
+	m_lpfn_map_GetFormat = 0;
+	m_lpfn_map_SetFormat = 0;
+	m_lpfn_map_GetFilename = 0;
+	m_lpfn_map_CombineMosaic = 0;
+	m_lpfn_map_SplitToMosaic = 0;
+	m_lpfn_map_SaveMosaicAs = 0;
+	m_lpfn_map_ExportMap = 0;
+	m_lpfn_map_ExportMosaic = 0;
+	m_lpfn_map_GetDataPtr = 0;
+	m_lpfn_map_LinInterp = 0;
+	m_lpfn_map_GetMosaicTile = 0;
+	//m_lpfn_map_GenMipmaps = 0;
+	m_lpfn_map_GenMipmaps2 = 0;
+	m_lpfn_map_ClearMipmaps = 0;
+	m_lpfn_map_GetMipmapLevel = 0;
+	m_lpfn_map_GetMipmapResStep = 0;
+	m_lpfn_map_GetMipmapMaxLevel = 0;
 
 	// tile functions
 
-	m_lpfn_tile_GetMinMaxAlt = NULL;
-	m_lpfn_tile_GetPixel = NULL;
-	m_lpfn_tile_SetPixel = NULL;
-	m_lpfn_tile_GetTileCoords = NULL;
-	m_lpfn_tile_SetLock = NULL;
-	m_lpfn_tile_GetDataPtr = NULL;
+	m_lpfn_tile_GetMinMaxAlt = 0;
+	m_lpfn_tile_GetPixel = 0;
+	m_lpfn_tile_SetPixel = 0;
+	m_lpfn_tile_GetTileCoords = 0;
+	m_lpfn_tile_SetLock = 0;
+	m_lpfn_tile_GetDataPtr = 0;
 
 	// format functions
 
-	m_lpfn_format_Create = NULL;
-	m_lpfn_format_CreateGeneric = NULL;
-	m_lpfn_format_SetFlags = NULL;
-	m_lpfn_format_GetExt = NULL;
-	m_lpfn_format_GetOptionList = NULL;
-	m_lpfn_format_GetOptionValue = NULL;
-	m_lpfn_format_SetOptionValue = NULL;
-	m_lpfn_format_GetFormatByExt = NULL;
-	m_lpfn_format_GetFormatList = NULL;
-	m_lpfn_format_IsMosaic = NULL;
-	m_lpfn_format_IsNative = NULL;
+	m_lpfn_format_Create = 0;
+	m_lpfn_format_CreateGeneric = 0;
+	m_lpfn_format_SetFlags = 0;
+	m_lpfn_format_GetExt = 0;
+	m_lpfn_format_GetOptionList = 0;
+	m_lpfn_format_GetOptionValue = 0;
+	m_lpfn_format_SetOptionValue = 0;
+	m_lpfn_format_GetFormatByExt = 0;
+	m_lpfn_format_GetFormatList = 0;
+	m_lpfn_format_IsMosaic = 0;
+	m_lpfn_format_IsNative = 0;
 
 	// prog box function handles
 
-	m_lpfn_progbox_ShowWnd = NULL;
-	m_lpfn_progbox_HideWnd = NULL;
-	m_lpfn_progbox_SetTitle = NULL;
-	m_lpfn_progbox_SetProgress = NULL;
+	m_lpfn_progbox_ShowWnd = 0;
+	m_lpfn_progbox_HideWnd = 0;
+	m_lpfn_progbox_SetTitle = 0;
+	m_lpfn_progbox_SetProgress = 0;
+
+	// file selector function handles
+
+	m_lpfn_filesel_InitFS = 0;
+	m_lpfn_filesel_GetFilename = 0;
 
 	// combo box function handles
 
-	m_lpfn_combosel_SetOptions = NULL;
-	m_lpfn_combosel_GetOptions = NULL;
-	m_lpfn_combosel_SetCurSel = NULL;
-	m_lpfn_combosel_GetCurSel = NULL;
+	m_lpfn_combosel_SetOptions = 0;
+	m_lpfn_combosel_GetOptions = 0;
+	m_lpfn_combosel_SetCurSel = 0;
+	m_lpfn_combosel_GetCurSel = 0;
 
 	// buffer function handles
 
-	m_lpfn_buffer_Init = NULL;
-	m_lpfn_buffer_Free = NULL;
-	m_lpfn_buffer_nItems = NULL;
-	m_lpfn_buffer_MemSize = NULL;
-	m_lpfn_buffer_ItemSize = NULL;
-	m_lpfn_buffer_GetPtr = NULL;
-	m_lpfn_buffer_GetValue = NULL;
-	m_lpfn_buffer_SetValue = NULL;
+	m_lpfn_buffer_Init = 0;
+	m_lpfn_buffer_Free = 0;
+	m_lpfn_buffer_nItems = 0;
+	m_lpfn_buffer_MemSize = 0;
+	m_lpfn_buffer_ItemSize = 0;
+	m_lpfn_buffer_GetPtr = 0;
+	m_lpfn_buffer_GetValue = 0;
+	m_lpfn_buffer_SetValue = 0;
 
 	// view function handles
 
-	m_lpfn_view_ShowMap = NULL;
-	m_lpfn_view_GetActiveMap = NULL;
-	m_lpfn_view_GetSelectedArea = NULL;
+	m_lpfn_view_ShowMap = 0;
+	m_lpfn_view_GetActiveMap = 0;
+	m_lpfn_view_GetSelectedArea = 0;
 
 	// file/dir function handles
 
-	m_lpfn_file_GetExt = NULL;
-	m_lpfn_file_GetFilenameNoExt = NULL;
-	m_lpfn_file_GetDir = NULL;
-	m_lpfn_file_GetFilenameNoDir = NULL;
-	m_lpfn_file_FileExists = NULL;
+	m_lpfn_file_GetExt = 0;
+	m_lpfn_file_GetFilenameNoExt = 0;
+	m_lpfn_file_GetDir = 0;
+	m_lpfn_file_GetFilenameNoDir = 0;
+	m_lpfn_file_FileExists = 0;
 
 	// extension functions
 
-	m_lpfn_zeofunc_LoadFunc = NULL;
-	m_lpfn_zeofunc_LoadFuncEx = NULL;
-	m_lpfn_zeofunc_GetFunc = NULL;
-	m_lpfn_zeofunc_GetReturnTypeID = NULL;
-	m_lpfn_zeofunc_GetArgListPrototype = NULL;
-	//m_lpfn_zeofunc_Execute = NULL;
-	m_lpfn_zeofunc_Execute2 = NULL;
-	m_lpfn_zeofunc_ExecuteThreaded = NULL;
+	m_lpfn_zeofunc_LoadFunc = 0;
+	m_lpfn_zeofunc_LoadFuncEx = 0;
+	m_lpfn_zeofunc_GetFunc = 0;
+	m_lpfn_zeofunc_GetReturnTypeID = 0;
+	m_lpfn_zeofunc_GetArgListPrototype = 0;
+	//m_lpfn_zeofunc_Execute = 0;
+	m_lpfn_zeofunc_Execute2 = 0;
+	m_lpfn_zeofunc_ExecuteThreaded = 0;
 
 	//menu function handles
-	m_lpfn_menu_InsertItem = NULL;
-	m_lpfn_menu_InsertItemEx = NULL;
+	m_lpfn_menu_InsertItem = 0;
+	m_lpfn_menu_InsertItemEx = 0;
+
+	// script function handles
+	m_lpfn_script_Execute = 0;
 }
 
 CExtAPI::~CExtAPI(void) {
@@ -191,12 +201,12 @@ CExtAPI::~CExtAPI(void) {
 bool CExtAPI::InitAPI(FARPROC pFunc, void* hID) {
 
 	if(!pFunc) {
-		MessageBox(NULL, "Invalid callback handle", "Zeolite initialisation", MB_ICONERROR);
+		MessageBox(0, "Invalid callback handle", "Zeolite initialisation", MB_ICONERROR);
 		return false;
 	}
 
 	if(!hID) {
-		MessageBox(NULL, "Invalid ID handle", "Zeolite initialisation", MB_ICONERROR);
+		MessageBox(0, "Invalid ID handle", "Zeolite initialisation", MB_ICONERROR);
 		return false;
 	}
 
@@ -218,6 +228,7 @@ bool CExtAPI::InitAPI(FARPROC pFunc, void* hID) {
 	//
 
 	m_lpfnReportError = (LPFNAPI_app_ReportError)GetFuncHandle("app.ReportError");
+	m_lpfnWriteToLog = (LPFNAPI_app_WriteToLog)GetFuncHandle("app.WriteToLog");
 
 	//
 	// var functions
@@ -226,6 +237,7 @@ bool CExtAPI::InitAPI(FARPROC pFunc, void* hID) {
 	m_lpfn_var_Create = (LPFNAPI_var_Create)GetFuncHandle("var.Create");
 	m_lpfn_var_CreateTemp = (LPFNAPI_var_CreateTemp)GetFuncHandle("var.CreateTemp");
 	m_lpfn_var_Delete = (LPFNAPI_var_Delete)GetFuncHandle("var.Delete");
+	m_lpfn_var_ReInit = (LPFNAPI_var_ReInit)GetFuncHandle("var.ReInit");
 	m_lpfn_var_Rename = (LPFNAPI_var_Rename)GetFuncHandle("var.Rename");
 	m_lpfn_var_GetVar = (LPFNAPI_var_GetVar)GetFuncHandle("var.GetVar");
 	m_lpfn_var_GetName = (LPFNAPI_var_GetName)GetFuncHandle("var.GetName");
@@ -309,7 +321,15 @@ bool CExtAPI::InitAPI(FARPROC pFunc, void* hID) {
 	m_lpfn_map_ExportMap = (LPFNAPI_map_ExportMap)GetFuncHandle("map.ExportMap");
 	m_lpfn_map_ExportMosaic = (LPFNAPI_map_ExportMosaic)GetFuncHandle("map.ExportMosaic");
 	m_lpfn_map_GetDataPtr = (LPFNAPI_map_GetDataPtr)GetFuncHandle("map.GetDataPtr");
+	m_lpfn_map_LinInterp = (LPFNAPI_map_LinInterp)GetFuncHandle("map.LinInterp");
 	m_lpfn_map_GetMosaicTile = (LPFNAPI_map_GetMosaicTile)GetFuncHandle("map.GetMosaicTile");
+
+	//m_lpfn_map_GenMipmaps = (LPFNAPI_map_GenMipmaps)GetFuncHandle("map.GenMipmaps");
+	m_lpfn_map_GenMipmaps2 = (LPFNAPI_map_GenMipmaps2)GetFuncHandle("map.GenMipmaps2");
+	m_lpfn_map_ClearMipmaps = (LPFNAPI_map_ClearMipmaps)GetFuncHandle("map.ClearMipmaps");
+	m_lpfn_map_GetMipmapLevel = (LPFNAPI_map_GetMipmapLevel)GetFuncHandle("map.GetMipmapLevel");
+	m_lpfn_map_GetMipmapResStep = (LPFNAPI_map_GetMipmapResStep)GetFuncHandle("map.GetMipmapResStep");
+	m_lpfn_map_GetMipmapMaxLevel = (LPFNAPI_map_GetMipmapMaxLevel)GetFuncHandle("map.GetMipmapMaxLevel");
 
 	//
 	// mosaic tile functions
@@ -347,6 +367,13 @@ bool CExtAPI::InitAPI(FARPROC pFunc, void* hID) {
 	m_lpfn_progbox_HideWnd = (LPFNAPI_progbox_HideWnd)GetFuncHandle("progbox.HideWnd");
 	m_lpfn_progbox_SetTitle = (LPFNAPI_progbox_SetTitle)GetFuncHandle("progbox.SetTitle");
 	m_lpfn_progbox_SetProgress = (LPFNAPI_progbox_SetProgress)GetFuncHandle("progbox.SetProgress");
+
+	//
+	// file selector function handles
+	//
+
+	m_lpfn_filesel_InitFS = (LPFNAPI_filesel_InitFS)GetFuncHandle("filesel.InitFS");
+	m_lpfn_filesel_GetFilename = (LPFNAPI_filesel_GetFilename)GetFuncHandle("filesel.GetFilename");
 
 	//
 	// combo box function handles
@@ -408,20 +435,34 @@ bool CExtAPI::InitAPI(FARPROC pFunc, void* hID) {
 	m_lpfn_menu_InsertItem = (LPFNAPI_menu_InsertItem)GetFuncHandle("menu.InsertItem");
 	m_lpfn_menu_InsertItemEx = (LPFNAPI_menu_InsertItemEx)GetFuncHandle("menu.InsertItemEx");
 
+	//
+	// script function handles
+	//
+	m_lpfn_script_Execute = (LPFNAPI_script_Execute)GetFuncHandle("script.Execute");
+
 	return true;
 }
 
 //
-// app functions
+// api functions
 //
 
 void CExtAPI::ReportError(const char* lpErrorMessage) {
-	
 	if(!m_lpfnReportError) {
-		MessageBox(NULL, lpErrorMessage, "Zeolite error", MB_ICONERROR);
+		MessageBox(0, lpErrorMessage, "Zeolite error", MB_ICONERROR);
+		return;
 	}
 
 	m_lpfnReportError(m_hID, lpErrorMessage);
+}
+
+void CExtAPI::WriteToLog(const char* lpMessage) {
+	if(!m_lpfnWriteToLog) {
+		ReportError("CExtAPI::WriteToLog error - function not found");
+		return;
+	}
+
+	m_lpfnWriteToLog(m_hID, lpMessage);
 }
 
 //
@@ -431,7 +472,7 @@ void CExtAPI::ReportError(const char* lpErrorMessage) {
 ZVAR CExtAPI::var_Create(long VarID, const char* lpVarName) {
 	if(!m_lpfn_var_Create) {
 		ReportError("CExtAPI::var_Create error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_var_Create(m_hID, VarID, lpVarName);
@@ -439,18 +480,31 @@ ZVAR CExtAPI::var_Create(long VarID, const char* lpVarName) {
 ZVAR CExtAPI::var_CreateTemp(long VarID) {
 	if(!m_lpfn_var_CreateTemp) {
 		ReportError("CExtAPI::var_CreateTemp error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_var_CreateTemp(m_hID, VarID);
 }
-bool CExtAPI::var_Delete(ZVAR hVar) {
+bool CExtAPI::var_Delete(ZVAR &hVar) {
 	if(!m_lpfn_var_Delete) {
 		ReportError("CExtAPI::var_Delete error - function not found");
 		return false;
 	}
 
-	return m_lpfn_var_Delete(m_hID, hVar);
+	bool rval =  m_lpfn_var_Delete(m_hID, hVar);
+	if(rval) {
+		hVar = 0;
+	}
+
+	return rval;
+}
+bool CExtAPI::var_ReInit(ZVAR hVar, long VarID) {
+	if(!m_lpfn_var_ReInit) {
+		ReportError("CExtAPI::var_ReInit error - function not found");
+		return false;
+	}
+
+	return m_lpfn_var_ReInit(m_hID, hVar, VarID);
 }
 bool CExtAPI::var_Rename(ZVAR hVar, const char* lpNewName) {
 	if(!m_lpfn_var_Rename) {
@@ -463,7 +517,7 @@ bool CExtAPI::var_Rename(ZVAR hVar, const char* lpNewName) {
 ZVAR CExtAPI::var_GetVar(const char* lpVarName) {
 	if(!m_lpfn_var_GetVar) {
 		ReportError("CExtAPI::var_GetVar error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_var_GetVar(m_hID, lpVarName);
@@ -471,7 +525,7 @@ ZVAR CExtAPI::var_GetVar(const char* lpVarName) {
 const char* CExtAPI::var_GetName(ZVAR hVar) {
 	if(!m_lpfn_var_GetName) {
 		ReportError("CExtAPI::var_GetName error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_var_GetName(m_hID, hVar);
@@ -585,7 +639,7 @@ bool CExtAPI::type_GetTypeName(long VarID, ZVAR hStringVar) {
 const char* CExtAPI::str_GetText(ZVAR hStr) {
 	if(!m_lpfn_str_GetText) {
 		ReportError("CExtAPI::str_GetText error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_str_GetText(m_hID, hStr);
@@ -614,7 +668,7 @@ long CExtAPI::list_nItems(ZLIST hList) {
 ZVAR CExtAPI::list_CreateItem(ZLIST hList, long VarID, const char* lpVarName) {
 	if(!m_lpfn_list_CreateItem) {
 		ReportError("CExtAPI::list_CreateItem error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_list_CreateItem(m_hID, hList, VarID, lpVarName);
@@ -622,7 +676,7 @@ ZVAR CExtAPI::list_CreateItem(ZLIST hList, long VarID, const char* lpVarName) {
 ZVAR CExtAPI::list_GetItemI(ZLIST hList, long index) {
 	if(!m_lpfn_list_GetItemI) {
 		ReportError("CExtAPI::list_GetItemI error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_list_GetItemI(m_hID, hList, index);
@@ -630,7 +684,7 @@ ZVAR CExtAPI::list_GetItemI(ZLIST hList, long index) {
 ZVAR CExtAPI::list_GetItemA(ZLIST hList, const char* lpVarName) {
 	if(!m_lpfn_list_GetItemA) {
 		ReportError("CExtAPI::list_GetItemA error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_list_GetItemA(m_hID, hList, lpVarName);
@@ -851,7 +905,7 @@ bool CExtAPI::map_SetFlag(ZMAP hMap, long FlagID, bool FlagValue) {
 ZLIST CExtAPI::map_GetSettingsList(ZMAP hMap) {
 	if(!m_lpfn_map_GetSettingsList) {
 		ReportError("CExtAPI::map_GetSettingsList error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_GetSettingsList(m_hID, hMap);
@@ -860,7 +914,7 @@ ZLIST CExtAPI::map_GetSettingsList(ZMAP hMap) {
 bool CExtAPI::map_SaveFile(ZMAP hMap, const char* lpFileName, ZFORMAT hFormat, bool SetFlags, bool ShowProgress) {
 	if(!m_lpfn_map_SaveFile) {
 		ReportError("CExtAPI::map_SaveFile error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_SaveFile(m_hID, hMap, lpFileName, hFormat, SetFlags, ShowProgress);
@@ -869,7 +923,7 @@ bool CExtAPI::map_SaveFile(ZMAP hMap, const char* lpFileName, ZFORMAT hFormat, b
 bool CExtAPI::map_LoadFile(ZMAP hMap, const char* lpFileName, long MapTypeID, ZFORMAT hFormat, bool SetFlags, bool ShowProgress) {
 	if(!m_lpfn_map_LoadFile) {
 		ReportError("CExtAPI::map_LoadFile error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_LoadFile(m_hID, hMap, lpFileName, MapTypeID, hFormat, SetFlags, ShowProgress);
@@ -878,7 +932,7 @@ bool CExtAPI::map_LoadFile(ZMAP hMap, const char* lpFileName, long MapTypeID, ZF
 bool CExtAPI::map_GetNameInProject(ZMAP hMap, ZVAR hStr) {
 	if(!m_lpfn_map_GetNameInProject) {
 		ReportError("CExtAPI::map_GetNameInProject error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_GetNameInProject(m_hID, hMap, hStr);
@@ -912,7 +966,7 @@ bool CExtAPI::map_SaveMosaic(ZMAP hMap) {
 ZFORMAT CExtAPI::map_GetFormat(ZMAP hMap) {
 	if(!m_lpfn_map_GetFormat) {
 		ReportError("CExtAPI::map_GetFormat error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_GetFormat(m_hID, hMap);
@@ -928,7 +982,7 @@ bool CExtAPI::map_SetFormat(ZMAP hMap, ZFORMAT hFormat) {
 const char* CExtAPI::map_GetFilename(ZMAP hMap) {
 	if(!m_lpfn_map_GetFilename) {
 		ReportError("CExtAPI::map_GetFilename error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_GetFilename(m_hID, hMap);
@@ -937,7 +991,7 @@ const char* CExtAPI::map_GetFilename(ZMAP hMap) {
 bool CExtAPI::map_CombineMosaic(ZMAP hMap) {
 	if(!m_lpfn_map_CombineMosaic) {
 		ReportError("CExtAPI::map_CombineMosaic error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_CombineMosaic(m_hID, hMap);
@@ -979,19 +1033,74 @@ bool CExtAPI::map_ExportMosaic(ZMAP hMap, const char* lpFileName, ZFORMAT hForma
 void* CExtAPI::map_GetDataPtr(ZMAP hMap) {
 	if(!m_lpfn_map_GetDataPtr) {
 		ReportError("CExtAPI::map_GetDataPtr error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_GetDataPtr(m_hID, hMap);
 }
+bool CExtAPI::map_LinInterp(ZMAP hMap, double dx, double dy, void* pValue) {
+	if(!m_lpfn_map_LinInterp) {
+		ReportError("CExtAPI::map_LinInterp error - function not found");
+		return false;
+	}
 
+	return m_lpfn_map_LinInterp(m_hID, hMap, dx, dy, pValue);
+}
 void* CExtAPI::map_GetMosaicTile(ZMAP hMap, long tx, long ty) {
 	if(!m_lpfn_map_GetMosaicTile) {
 		ReportError("CExtAPI::map_GetMosaicTile error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_map_GetMosaicTile(m_hID, hMap, tx, ty);
+}
+/*bool CExtAPI::map_GenMipmaps(ZMAP hMap, long ResStep, long MaxLevel) {
+	if(!m_lpfn_map_GenMipmaps) {
+		ReportError("CExtAPI::map_GenMipmaps error - function not found");
+		return false;
+	}
+
+	return m_lpfn_map_GenMipmaps(m_hID, hMap, ResStep, MaxLevel);
+}*/
+bool CExtAPI::map_GenMipmaps2(ZMAP hMap, long ResStep, long MaxLevel, long TileSize) {
+	if(!m_lpfn_map_GenMipmaps2) {
+		ReportError("CExtAPI::map_GenMipmaps2 error - function not found");
+		return false;
+	}
+
+	return m_lpfn_map_GenMipmaps2(m_hID, hMap, ResStep, MaxLevel, TileSize);
+}
+bool CExtAPI::map_ClearMipmaps(ZMAP hMap) {
+	if(!m_lpfn_map_ClearMipmaps) {
+		ReportError("CExtAPI::map_ClearMipmaps error - function not found");
+		return false;
+	}
+
+	return m_lpfn_map_ClearMipmaps(m_hID, hMap);
+}
+ZMAP CExtAPI::map_GetMipmapLevel(ZMAP hMap, long MipLevel) {
+	if(!m_lpfn_map_GetMipmapLevel) {
+		ReportError("CExtAPI::map_GetMipmapLevel error - function not found");
+		return 0;
+	}
+
+	return m_lpfn_map_GetMipmapLevel(m_hID, hMap, MipLevel);
+}
+long CExtAPI::map_GetMipmapResStep(ZMAP hMap) {
+	if(!m_lpfn_map_GetMipmapResStep) {
+		ReportError("CExtAPI::map_GetMipmapResStep error - function not found");
+		return 0;
+	}
+
+	return m_lpfn_map_GetMipmapResStep(m_hID, hMap);
+}
+long CExtAPI::map_GetMipmapMaxLevel(ZMAP hMap) {
+	if(!m_lpfn_map_GetMipmapMaxLevel) {
+		ReportError("CExtAPI::map_GetMipmapMaxLevel error - function not found");
+		return 0;
+	}
+
+	return m_lpfn_map_GetMipmapMaxLevel(m_hID, hMap);
 }
 
 //
@@ -1041,7 +1150,7 @@ bool CExtAPI::tile_SetLock(void* hTile, bool LockState) {
 void* CExtAPI::tile_GetDataPtr(void* hTile) {
 	if(!m_lpfn_tile_GetDataPtr) {
 		ReportError("CExtAPI::tile_GetDataPtr error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_tile_GetDataPtr(m_hID, hTile);
@@ -1054,7 +1163,7 @@ void* CExtAPI::tile_GetDataPtr(void* hTile) {
 ZFORMAT CExtAPI::format_Create(LPCTSTR lpMapName, const char* lpLongName, const char* lpFileExt, const char* lpNativeProgramName) {
 	if(!m_lpfn_format_Create) {
 		ReportError("CExtAPI::format_Create error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_format_Create(m_hID, lpMapName, lpLongName, lpFileExt, lpNativeProgramName);
@@ -1062,7 +1171,7 @@ ZFORMAT CExtAPI::format_Create(LPCTSTR lpMapName, const char* lpLongName, const 
 ZFORMAT CExtAPI::format_CreateGeneric(long MapTypeID, LPCTSTR lpLongName, const char* lpFileExt, const char* lpNativeProgramName) {
 	if(!m_lpfn_format_Create) {
 		ReportError("CExtAPI::format_CreateGeneric error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_format_CreateGeneric(m_hID, MapTypeID, lpLongName, lpFileExt, lpNativeProgramName);
@@ -1086,7 +1195,7 @@ bool CExtAPI::format_SetInfoStr(ZFORMAT hFormat, const char* lpInfoStr) {
 const char* CExtAPI::format_GetExt(ZFORMAT hFormat) {
 	if(!m_lpfn_format_GetExt) {
 		ReportError("CExtAPI::format_GetExt error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_format_GetExt(m_hID, hFormat);
@@ -1094,7 +1203,7 @@ const char* CExtAPI::format_GetExt(ZFORMAT hFormat) {
 ZLIST CExtAPI::format_GetOptionList(ZFORMAT hFormat) {
 	if(!m_lpfn_format_GetOptionList) {
 		ReportError("CExtAPI::format_GetOptionList error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_format_GetOptionList(m_hID, hFormat);
@@ -1119,7 +1228,7 @@ bool CExtAPI::format_GetOptionValue(ZFORMAT hFormat, const char* lpOptionName, l
 ZFORMAT	CExtAPI::format_GetFormatByExt(const char* lpMapName, long MapTypeID, const char* lpFileExt) {
 	if(!m_lpfn_format_GetFormatByExt) {
 		ReportError("CExtAPI::format_GetFormatByExt error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_format_GetFormatByExt(m_hID, lpMapName, MapTypeID, lpFileExt);
@@ -1127,7 +1236,7 @@ ZFORMAT	CExtAPI::format_GetFormatByExt(const char* lpMapName, long MapTypeID, co
 ZLIST CExtAPI::format_GetFormatList(const char* lpMapName, long MapTypeID) {
 	if(!m_lpfn_format_GetFormatList) {
 		ReportError("CExtAPI::format_GetFormatList error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_format_GetFormatList(m_hID, lpMapName, MapTypeID);
@@ -1180,31 +1289,31 @@ ZFORMAT CExtAPI::format_GetActiveFormat(const char* lpMapName, long MapTypeID) {
 	ZFUNC hFunc = zeofunc_GetFunc("classes.format.GetActiveFormat");
 	if(!hFunc) {
 		ReportError("CExtAPI::format_GetActiveFormat error:\r\n - cannot retrieve function handle");
-		return NULL;
+		return 0;
 	}
 
 	ZLIST hArgs = var_CreateTemp(VarID_varlist);
 	if(!hArgs) {
 		ReportError("CExtAPI::format_GetActiveFormat error:\r\n - cannot create arg list");
-		return NULL;
+		return 0;
 	}
 
 	ZVAR hFileName = list_CreateItem(hArgs, VarID_string, "MapName");
 	if(!str_SetText(hFileName, lpMapName)) {
 		ReportError("CExtAPI::format_GetActiveFormat error:\r\n - cannot set hFileName value");
-		return NULL;
+		return 0;
 	}
 
 	ZVAR hMapID = list_CreateItem(hArgs, VarID_int, "MapTypeID");
 	if(!var_SetValueEx(hMapID, VarID_int, &MapTypeID)) {
 		ReportError("CExtAPI::format_GetActiveFormat error:\r\n - cannot set MapTypeID value");
-		return NULL;
+		return 0;
 	}
 
-	ZVAR hRval = NULL;
+	ZVAR hRval = 0;
 	if(!zeofunc_Execute2(hFunc, hArgs, &hRval)) {
 		ReportError("CExtAPI::format_GetActiveFormat error:\r\n - zeofunc call failed");
-		return NULL;
+		return 0;
 	}
 
 	theAPI.var_Delete(hArgs);
@@ -1247,6 +1356,27 @@ bool CExtAPI::progbox_SetProgress(ZVAR hProgWnd, __int64 p, __int64 pmax) {
 	}
 
 	return m_lpfn_progbox_SetProgress(m_hID, hProgWnd, p, pmax);
+}
+
+//
+// file selector functions
+//
+
+bool CExtAPI::filesel_InitFS(ZVAR hFileSel, bool OpenFileFlag, const char* lpFileName, const char* lpFilterStr, const char* lpDefaultExt, const char* lpDefaultDir) {
+	if(!m_lpfn_filesel_InitFS) {
+		ReportError("CExtAPI::filesel_InitFS error - function not found");
+		return false;
+	}
+
+	return m_lpfn_filesel_InitFS(m_hID, hFileSel, OpenFileFlag, lpFileName, lpFilterStr, lpDefaultExt, lpDefaultDir);
+}
+const char* CExtAPI::filesel_GetFilename(ZVAR hFileSel) {
+	if(!m_lpfn_filesel_GetFilename) {
+		ReportError("CExtAPI::filesel_GetFilename error - function not found");
+		return 0;
+	}
+
+	return m_lpfn_filesel_GetFilename(m_hID, hFileSel);
 }
 
 //
@@ -1333,7 +1463,7 @@ long CExtAPI::buffer_ItemSize(ZVAR hBuf) {
 void* CExtAPI::buffer_GetPtr(ZVAR hBuf) {
 	if(!m_lpfn_buffer_GetPtr) {
 		ReportError("CExtAPI::buffer_GetPtr error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_buffer_GetPtr(m_hID, hBuf);
@@ -1364,33 +1494,82 @@ ZMAP CExtAPI::project_GetMap(const char* lpMapName) {
 	ZFUNC hFunc = zeofunc_GetFunc("project.GetMap");
 	if(!hFunc) {
 		ReportError("CExtAPI::project_GetMap error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	ZLIST hArgs = var_CreateTemp(VarID_varlist);
 	if(!hArgs) {
 		ReportError("CExtAPI::project_GetMap error:\r\n - cannot create arg list");
-		return NULL;
+		return 0;
 	}
 
 	ZVAR hMapName = list_CreateItem(hArgs, VarID_string, "MapName");
 	if(!str_SetText(hMapName, lpMapName)) {
 		ReportError("CExtAPI::project_GetMap error:\r\n - cannot set MapName value");
-		return NULL;
+		return 0;
 	}
 
-	ZVAR hRval1 = NULL, hRval2;
+	ZVAR hRval1 = 0, hRval2 = 0;
 	if(!zeofunc_Execute2(hFunc, hArgs, &hRval1)) {
-		return NULL;
+		return 0;
 	}
 	if(!theAPI.var_GetValueEx(hRval1, VarID_LPVOID, &hRval2)) {
-		return NULL;
+		return 0;
 	}
     
 	// cleanup
 	theAPI.var_Delete(hArgs);
 
 	return hRval2;
+}
+
+ZMAP CExtAPI::project_CreateMap(const char* lpMapName) {
+
+	ZFUNC hFunc = zeofunc_GetFunc("project.CreateMap");
+	if(!hFunc) {
+		ReportError("CExtAPI::project_CreateMap error - function not found");
+		return 0;
+	}
+
+	ZLIST hArgs = var_CreateTemp(VarID_varlist);
+	if(!hArgs) {
+		ReportError("CExtAPI::project_CreateMap error:\r\n - cannot create arg list");
+		return 0;
+	}
+
+	ZVAR hMapName = list_CreateItem(hArgs, VarID_string, "MapName");
+	if(!str_SetText(hMapName, lpMapName)) {
+		ReportError("CExtAPI::project_CreateMap error:\r\n - cannot set MapName value");
+		return 0;
+	}
+
+	ZVAR hRval1 = 0, hRval2 = 0;
+	if(!zeofunc_Execute2(hFunc, hArgs, &hRval1)) {
+		return 0;
+	}
+	if(!theAPI.var_GetValueEx(hRval1, VarID_LPVOID, &hRval2)) {
+		return 0;
+	}
+    
+	// cleanup
+	theAPI.var_Delete(hArgs);
+
+	return hRval2;
+}
+
+ZMAP CExtAPI::project_GetOrCreateMap(const char* lpMapName) {
+	ZMAP hMap = NULL;
+
+	if(hMap=project_GetMap(lpMapName)) {
+		return hMap;
+	}
+
+	if(hMap=project_CreateMap(lpMapName)) {
+		return hMap;
+	}
+
+	ReportError("CExtAPI::project_GetOrCreateMap error:\r\n - can neither get nor create map");
+	return 0;
 }
 
 bool CExtAPI::project_GetHeightfieldRange(float& minval, float& maxval) {
@@ -1400,8 +1579,8 @@ bool CExtAPI::project_GetHeightfieldRange(float& minval, float& maxval) {
 		return false;
 	}
 
-	ZLIST hRval = NULL;
-	if(!zeofunc_Execute2(hFunc, NULL, &hRval)) {
+	ZLIST hRval = 0;
+	if(!zeofunc_Execute2(hFunc, 0, &hRval)) {
 		ReportError("CExtAPI::project_GetHeightfieldRange error - zeofunc failed");
 		return false;
 	}
@@ -1424,13 +1603,13 @@ const char* CExtAPI::project_GetProjectFilename() {
 	ZFUNC hFunc = zeofunc_GetFunc("project.GetProjectPath");
 	if(!hFunc) {
 		ReportError("CExtAPI::project_GetProjectFilename error - function not found");
-		return NULL;
+		return 0;
 	}
 
-	ZVAR hRval = NULL;
-	if(!zeofunc_Execute2(hFunc, NULL, &hRval)) {
+	ZVAR hRval = 0;
+	if(!zeofunc_Execute2(hFunc, 0, &hRval)) {
 		ReportError("CExtAPI::project_GetProjectFilename error - zeofunc failed");
-		return NULL;
+		return 0;
 	}
 
     return theAPI.str_GetText(hRval);
@@ -1439,13 +1618,13 @@ ZLIST CExtAPI::project_GetSettingsList() {
 	ZFUNC hFunc = zeofunc_GetFunc("project.GetSettingsList");
 	if(!hFunc) {
 		ReportError("CExtAPI::project_GetSettingsList error - function not found");
-		return NULL;
+		return 0;
 	}
 
-	ZVAR hRval = NULL;
-	if(!zeofunc_Execute2(hFunc, NULL, &hRval)) {
+	ZVAR hRval = 0;
+	if(!zeofunc_Execute2(hFunc, 0, &hRval)) {
 		ReportError("CExtAPI::project_GetSettingsList error - zeofunc failed");
-		return NULL;
+		return 0;
 	}
 
 	return hRval;
@@ -1467,7 +1646,7 @@ bool CExtAPI::view_ShowMap(const char* lpProjMapName) {
 ZMAP CExtAPI::view_GetActiveMap() {
 	if(!m_lpfn_view_GetActiveMap) {
 		ReportError("CExtAPI::view_GetActiveMap error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_view_GetActiveMap(m_hID);
@@ -1533,7 +1712,7 @@ bool CExtAPI::file_FileExists(const char* lpFileName) {
 ZVAR CExtAPI::zeofunc_LoadFunc(const char* lpFnName, long rvalVarID, ZLIST hArgList) {
 	if(!m_lpfn_zeofunc_LoadFunc) {
 		ReportError("CExtAPI::zeofunc_LoadFunc error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_zeofunc_LoadFunc(m_hID, lpFnName, rvalVarID, hArgList);
@@ -1541,7 +1720,7 @@ ZVAR CExtAPI::zeofunc_LoadFunc(const char* lpFnName, long rvalVarID, ZLIST hArgL
 ZVAR CExtAPI::zeofunc_LoadFuncEx(const char* lpFnName, const char* lpExportName, long rvalVarID, ZLIST hArgList) {
 	if(!m_lpfn_zeofunc_LoadFuncEx) {
 		ReportError("CExtAPI::zeofunc_LoadFuncEx error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_zeofunc_LoadFuncEx(m_hID, lpFnName, lpExportName, rvalVarID, hArgList);
@@ -1549,7 +1728,7 @@ ZVAR CExtAPI::zeofunc_LoadFuncEx(const char* lpFnName, const char* lpExportName,
 ZVAR CExtAPI::zeofunc_GetFunc(const char* lpFnName) {
 	if(!m_lpfn_zeofunc_GetFunc) {
 		ReportError("CExtAPI::zeofunc_GetFunc error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_zeofunc_GetFunc(m_hID, lpFnName);
@@ -1570,22 +1749,22 @@ bool CExtAPI::zeofunc_GetArgListPrototype(ZFUNC hFunc, ZLIST hArgList) {
 
 	return m_lpfn_zeofunc_GetArgListPrototype(m_hID, hFunc, hArgList);
 }
-ZVAR CExtAPI::zeofunc_Execute(ZFUNC hFunc, ZLIST hArgList) {
+/*ZVAR CExtAPI::zeofunc_Execute(ZFUNC hFunc, ZLIST hArgList) {
 	// wrapper for Execute2
 	// note, this function is not fully thread-safe, as multiple
 	// simultanous calls to Execute will return the same rval object handle
 
-	ZVAR hRval = NULL;
+	ZVAR hRval = 0;
 	
 	if(!zeofunc_Execute2(hFunc, hArgList, &hRval))
-		return NULL;
+		return 0;
 
 	return hRval;
-}
+}*/
 bool CExtAPI::zeofunc_Execute2(ZFUNC hFunc, ZLIST hArgList, ZVAR* ppRval) {
 	if(!m_lpfn_zeofunc_Execute2) {
 		ReportError("CExtAPI::zeofunc_Execute2 error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_zeofunc_Execute2(m_hID, hFunc, hArgList, ppRval);
@@ -1606,7 +1785,7 @@ bool CExtAPI::zeofunc_ExecuteThreaded(ZFUNC hFunc, ZLIST hArgList, bool DeleteAr
 bool CExtAPI::menu_InsertItem(const char* lpFnName, const char* lpOptionName) {
 	if(!m_lpfn_menu_InsertItem) {
 		ReportError("CExtAPI::menu_InsertItem error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_menu_InsertItem(m_hID, lpFnName, lpOptionName);
@@ -1614,10 +1793,24 @@ bool CExtAPI::menu_InsertItem(const char* lpFnName, const char* lpOptionName) {
 bool CExtAPI::menu_InsertItemEx(const char* lpFnName, const char* lpOptionName, bool IsThreaded) {
 	if(!m_lpfn_menu_InsertItemEx) {
 		ReportError("CExtAPI::menu_InsertItemEx error - function not found");
-		return NULL;
+		return 0;
 	}
 
 	return m_lpfn_menu_InsertItemEx(m_hID, lpFnName, lpOptionName, IsThreaded);
+}
+
+
+//
+// script functions
+//
+
+bool CExtAPI::script_Execute(LPCSTR lpLangName, LPCSTR lpScript, ZVAR hRval) {
+	if(!m_lpfn_script_Execute) {
+		ReportError("CExtAPI::script_Execute error - function not found");
+		return false;
+	}
+
+	return m_lpfn_script_Execute(m_hID, lpLangName, lpScript, hRval);
 }
 
 //
@@ -1627,13 +1820,13 @@ bool CExtAPI::menu_InsertItemEx(const char* lpFnName, const char* lpOptionName, 
 FARPROC CExtAPI::GetFuncHandle(const char* lpFuncName) {
 	if(!m_lpfnGetFuncHandle) {
 		ReportError("CExtAPI::GetFuncHandle error - API not initialised");
-		return NULL;
+		return 0;
 	}
 
 	FARPROC hProc = m_lpfnGetFuncHandle(m_hID, lpFuncName);
 	if(!hProc) {
 		ReportError("CExtAPI::GetFuncHandle error - Function not found");
-		return NULL;
+		return 0;
 	}
 
 	return hProc;

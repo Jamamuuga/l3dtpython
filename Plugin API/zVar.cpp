@@ -5,7 +5,7 @@
 extern CExtAPI theAPI;
 
 CzVar::CzVar(void) {
-	m_hVar = NULL;
+	m_hVar = 0;
 	m_AutoDelete = false;
 }
 CzVar::CzVar(ZVAR hVar) {
@@ -14,14 +14,14 @@ CzVar::CzVar(ZVAR hVar) {
 }
 
 CzVar::~CzVar(void) {
-	if(m_hVar) {
+	if(m_hVar && m_AutoDelete) {
 		Delete();
 	}
 }
 
 bool CzVar::Attach(ZVAR hVar) {
 
-	if(m_hVar) Delete();
+	if(m_hVar && m_AutoDelete) Delete();
 
 	if(!hVar)
 		return false;
@@ -34,7 +34,7 @@ bool CzVar::Attach(ZVAR hVar) {
 ZVAR CzVar::GetZVAR() { return m_hVar; }
 
 bool CzVar::Create(long VarID, const char* lpVarName) {
-	if(m_hVar) Delete();
+	if(m_hVar && m_AutoDelete) Delete();
 
 	if(lpVarName)
 			m_hVar = theAPI.var_Create(VarID, lpVarName);
@@ -48,7 +48,7 @@ bool CzVar::Create(long VarID, const char* lpVarName) {
 }
 
 bool CzVar::GetByName(const char* lpVarName) {
-	if(m_hVar) Delete();
+	if(m_hVar && m_AutoDelete) Delete();
 
 	if(!Attach(theAPI.var_GetVar(lpVarName)))
 		return false;
@@ -64,22 +64,17 @@ bool CzVar::Delete() {
 
 	bool rval = false;
 	
-	if(m_AutoDelete) {
-		rval = theAPI.var_Delete(m_hVar);
-	} else {
-		Release();
-		rval = true;
-	}
+	rval = theAPI.var_Delete(m_hVar);
 	
-	m_hVar = NULL;
+	m_hVar = 0;
 	return rval;
 }
 void CzVar::Release() {
-	m_hVar = NULL;
+	m_hVar = 0;
 }
 
 const char* CzVar::GetName() {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.var_GetName(m_hVar);
 }

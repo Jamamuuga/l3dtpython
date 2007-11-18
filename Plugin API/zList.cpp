@@ -5,7 +5,7 @@ extern CExtAPI theAPI;
 
 
 CzList::CzList() {
-	Create(NULL);
+	Create(0);
 }
 
 CzList::~CzList(void) {
@@ -21,14 +21,14 @@ long CzList::nItems() {
 	return theAPI.list_nItems(m_hVar);
 }
 ZVAR CzList::CreateItem(long VarID, const char* lpVarName) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.list_CreateItem(m_hVar, VarID, lpVarName);
 }
 ZVAR CzList::GetOrCreateItem(long VarID, const char* lpVarName) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
-	ZVAR TempVar = NULL;
+	ZVAR TempVar = 0;
 
 	if(TempVar = GetItem(lpVarName)) {
 		// var exists, now check type
@@ -40,12 +40,12 @@ ZVAR CzList::GetOrCreateItem(long VarID, const char* lpVarName) {
 	return CreateItem(VarID, lpVarName);
 }
 ZVAR CzList::GetItem(long index) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.list_GetItemI(m_hVar, index);
 }
 ZVAR CzList::GetItem(const char* lpVarName) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.list_GetItemA(m_hVar, lpVarName);
 }
@@ -106,22 +106,22 @@ bool CzList::SetItemValue(long index, long VarID, void* pValue) {
 }
 
 const char* CzList::GetItemName(int index) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	ZVAR hVar;
 	if(!(hVar = theAPI.list_GetItemI(m_hVar, index)))
-		return NULL;
+		return 0;
 
 	return theAPI.var_GetName(hVar);
 }
 
 bool CzList::Sort(long From, long To) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.list_SortI(m_hVar, From, To);
 }
 bool CzList::Sort(const char* lpItemName, long To) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.list_SortA(m_hVar, lpItemName, To);
 }

@@ -1,24 +1,19 @@
 #pragma once
 
-
-//#ifdef _MSC_VER
-//	#include "afx.h"
-//#else
-//	#include "windows.h"
-//#endif
-
 #include "extapi_defines.h"
 
 // app function handle defs
 
 typedef FARPROC (__stdcall* LPFNAPI_app_GetFuncHandle)(void* hID, const char* lpFuncHandle);
 typedef void (__stdcall* LPFNAPI_app_ReportError)(void* hID, const char* lpErrorStr);
+typedef void (__stdcall* LPFNAPI_app_WriteToLog)(void* hID, const char* lpMessage);
 
 // var function handle defs
 
 typedef ZVAR (__stdcall* LPFNAPI_var_Create)(void* hID, long VarID, const char* lpVarName);
 typedef ZVAR (__stdcall* LPFNAPI_var_CreateTemp)(void* hID, long VarID);
 typedef bool (__stdcall* LPFNAPI_var_Delete)(void* hID, ZVAR hVar);
+typedef bool (__stdcall* LPFNAPI_var_ReInit)(void* hID, ZVAR hVar, long VarID);
 typedef bool (__stdcall* LPFNAPI_var_Rename)(void* hID, ZVAR hVar, const char* lpNewName);
 typedef ZVAR (__stdcall* LPFNAPI_var_GetVar)(void* hID, const char* lpVarName);
 typedef const char* (__stdcall* LPFNAPI_var_GetName)(void* hID, ZVAR hVar);
@@ -94,7 +89,14 @@ typedef bool (__stdcall* LPFNAPI_map_SaveMosaicAs)(void* hID, ZMAP hMap, const c
 typedef bool (__stdcall* LPFNAPI_map_ExportMap)(void* hID, ZMAP hMap, const char* lpFileName, ZFORMAT hFormat, long nx, long ny);
 typedef bool (__stdcall* LPFNAPI_map_ExportMosaic)(void* hID, ZMAP hMap, const char* lpFileName, ZFORMAT hFormat, long nx, long ny, long TileSize, const char* lpProjMapName);
 typedef void*	(__stdcall* LPFNAPI_map_GetDataPtr)(void* hID, ZMAP hMap);
+typedef bool (__stdcall* LPFNAPI_map_LinInterp)(void* hID, ZMAP hMap, double dx, double dy, void* pValue);
 typedef void*	(__stdcall* LPFNAPI_map_GetMosaicTile)(void* hID, ZMAP hMap, long tx, long ty);
+//typedef bool (__stdcall* LPFNAPI_map_GenMipmaps)(void* hID, ZMAP hMap, long ResStep, long MaxLevel); // deprecated in v2.5.2, 11 Sept '07
+typedef bool (__stdcall* LPFNAPI_map_GenMipmaps2)(void* hID, ZMAP hMap, long ResStep, long MaxLevel, long TileSize);
+typedef bool (__stdcall* LPFNAPI_map_ClearMipmaps)(void* hID, ZMAP hMap);
+typedef ZMAP (__stdcall* LPFNAPI_map_GetMipmapLevel)(void* hID, ZMAP hMap, long MipLevel);
+typedef long (__stdcall* LPFNAPI_map_GetMipmapResStep)(void* hID, ZMAP hMap);
+typedef long (__stdcall* LPFNAPI_map_GetMipmapMaxLevel)(void* hID, ZMAP hMap);
 
 // mosaic tile function defs
 
@@ -127,6 +129,11 @@ typedef bool (__stdcall* LPFNAPI_progbox_ShowWnd)(void* hID, ZVAR hProgWnd);
 typedef bool (__stdcall* LPFNAPI_progbox_HideWnd)(void* hID, ZVAR hProgWnd);
 typedef bool (__stdcall* LPFNAPI_progbox_SetTitle)(void* hID, ZVAR hProgWnd, const char* lpTitleText);
 typedef bool (__stdcall* LPFNAPI_progbox_SetProgress)(void* hID, ZVAR hProgWnd, __int64 p, __int64 pmax);
+
+// file selector function handle defs
+
+typedef bool (__stdcall* LPFNAPI_filesel_InitFS)(void* hID, ZVAR hFileSel, bool OpenFileFlag, const char* lpFileName, const char* lpFilterStr, const char* lpDefaultExt, const char* lpDefaultDir);
+typedef const char* (__stdcall* LPFNAPI_filesel_GetFilename)(void* hID, ZVAR hFileSel);
 
 // combo box function handle defs
 
@@ -176,7 +183,9 @@ typedef bool (__stdcall* LPFNAPI_zeofunc_ExecuteThreaded)(void* hID, ZFUNC hFunc
 typedef bool (__stdcall* LPFNAPI_menu_InsertItem)(void* hID, const char* lpFnName, const char* lpOptionName);
 typedef bool (__stdcall* LPFNAPI_menu_InsertItemEx)(void* hID, const char* lpFnName, const char* lpOptionName, bool IsThreaded);
 
+// script functions
 
+typedef bool (__stdcall* LPFNAPI_script_Execute)(void* hID, LPCSTR lpLangName, LPCSTR lpScript, ZVAR hRval);
 
 
 // function for reporting API version to calling app
@@ -194,12 +203,14 @@ public:
 	// app functions
 
 	void	ReportError(const char* lpErrorMessage);
+	void	WriteToLog(const char* lpMessage);
 
 	// var functions
 
 	ZVAR	var_Create(long VarID, const char* lpVarName);
 	ZVAR	var_CreateTemp(long VarID);
-	bool	var_Delete(ZVAR hVar);
+	bool	var_Delete(ZVAR &hVar);
+	bool	var_ReInit(ZVAR hVar, long VarID);
 	bool	var_Rename(ZVAR hVar, const char* lpNewName);
 	ZVAR	var_GetVar(const char* lpVarName);
 	const char*	var_GetName(ZVAR hVar);
@@ -275,7 +286,14 @@ public:
 	bool	map_ExportMap(ZMAP hMap, const char* lpFileName, ZFORMAT hFormat, long nx, long ny);
 	bool	map_ExportMosaic(ZMAP hMap, const char* lpFileName, ZFORMAT hFormat, long nx, long ny, long TileSize, const char* lpProjMapName);
 	void*	map_GetDataPtr(ZMAP hMap);
+	bool	map_LinInterp(ZMAP hMap, double dx, double dy, void* pValue);
 	void*	map_GetMosaicTile(ZMAP hMap, long tx, long ty);
+	//bool	map_GenMipmaps(ZMAP hMap, long ResStep, long MaxLevel);
+	bool	map_GenMipmaps2(ZMAP hMap, long ResStep, long MaxLevel, long TileSize);
+	bool	map_ClearMipmaps(ZMAP hMap);
+	ZMAP	map_GetMipmapLevel(ZMAP hMap, long MipLevel);
+	long	map_GetMipmapResStep(ZMAP hMap);
+	long	map_GetMipmapMaxLevel(ZMAP hMap);
 
 	// mosaic tile functions
 
@@ -311,17 +329,24 @@ public:
 	bool progbox_SetTitle(ZVAR hProgWnd, const char* lpTitleText);
 	bool progbox_SetProgress(ZVAR hProgWnd, __int64 p, __int64 pmax);
 
+	// file selector functions
+
+	bool		filesel_InitFS(ZVAR hFileSel, bool OpenFileFlag, const char* lpFileName, const char* lpFilterStr, const char* lpDefaultExt, const char* lpDefaultDir);
+	const char* filesel_GetFilename(ZVAR hFileSel);
+
 	// combo box functions
 
-	bool	combosel_SetOptions(ZVAR hComboSel, const char* lpOptionsStr);
+	bool		combosel_SetOptions(ZVAR hComboSel, const char* lpOptionsStr);
 	const char*	combosel_GetOptions(ZVAR hComboSel);
-	bool	combosel_SetCurSel(ZVAR hComboSel, const char* lpCurSelStr);
+	bool		combosel_SetCurSel(ZVAR hComboSel, const char* lpCurSelStr);
 	const char*	combosel_GetCurSel(ZVAR hComboSel);
 
 	// project functions
 
 	bool	project_GetHeightfieldRange(float& minval, float& maxval);	// zeofunc wrapper
 	ZMAP	project_GetMap(const char* lpMapName);							// zeofunc wrapper
+	ZMAP	project_CreateMap(const char* lpMapName);						// zeofunc wrapper
+	ZMAP	project_GetOrCreateMap(const char* lpMapName);					// calls GetMap, then CreateMap
 	const char*	project_GetProjectFilename();								// zeofunc wrapper
 	ZLIST	project_GetSettingsList();									// zeofunc wrapper
 
@@ -357,13 +382,16 @@ public:
 	ZVAR	zeofunc_GetFunc(const char* lpFnName);
 	long	zeofunc_GetReturnTypeID(ZFUNC hFunc);
 	bool	zeofunc_GetArgListPrototype(ZFUNC hFunc, ZLIST hArgList);
-	ZVAR	zeofunc_Execute(ZFUNC hFunc, ZLIST hArgList);
+	//ZVAR	zeofunc_Execute(ZFUNC hFunc, ZLIST hArgList);
 	bool	zeofunc_Execute2(ZFUNC hFunc, ZLIST hArgList, ZVAR* ppRval);
 	bool	zeofunc_ExecuteThreaded(ZFUNC hFunc, ZLIST hArgList, bool DeleteArgs, long ThreadPriority);
 
 	// menu functions
 	bool	menu_InsertItem(const char* lpFnName, const char* lpOptionName);
 	bool	menu_InsertItemEx(const char* lpFnName, const char* lpOptionName, bool IsThreaded);
+
+	// script functions
+	bool	script_Execute(LPCSTR lpLangName, LPCSTR lpScript, ZVAR hRval = 0);
 
 protected:
 
@@ -379,12 +407,14 @@ protected:
 
 	LPFNAPI_app_GetFuncHandle	m_lpfnGetFuncHandle;
 	LPFNAPI_app_ReportError		m_lpfnReportError;
+	LPFNAPI_app_WriteToLog		m_lpfnWriteToLog;
 
 	// var function handles
 
 	LPFNAPI_var_Create			m_lpfn_var_Create;
 	LPFNAPI_var_CreateTemp		m_lpfn_var_CreateTemp;
 	LPFNAPI_var_Delete			m_lpfn_var_Delete;
+	LPFNAPI_var_ReInit			m_lpfn_var_ReInit;
 	LPFNAPI_var_Rename			m_lpfn_var_Rename;
 	LPFNAPI_var_GetVar			m_lpfn_var_GetVar;
 	LPFNAPI_var_GetName			m_lpfn_var_GetName;
@@ -461,6 +491,13 @@ protected:
 	LPFNAPI_map_ExportMosaic		m_lpfn_map_ExportMosaic;
 	LPFNAPI_map_GetDataPtr			m_lpfn_map_GetDataPtr;
 	LPFNAPI_map_GetMosaicTile		m_lpfn_map_GetMosaicTile;
+	//LPFNAPI_map_GenMipmaps			m_lpfn_map_GenMipmaps;
+	LPFNAPI_map_GenMipmaps2			m_lpfn_map_GenMipmaps2;
+	LPFNAPI_map_ClearMipmaps		m_lpfn_map_ClearMipmaps;
+	LPFNAPI_map_GetMipmapLevel		m_lpfn_map_GetMipmapLevel;
+	LPFNAPI_map_GetMipmapResStep	m_lpfn_map_GetMipmapResStep;
+	LPFNAPI_map_GetMipmapMaxLevel	m_lpfn_map_GetMipmapMaxLevel;
+	LPFNAPI_map_LinInterp			m_lpfn_map_LinInterp;
 
 	// mosaic tile function handles
 
@@ -492,6 +529,11 @@ protected:
 	LPFNAPI_progbox_HideWnd			m_lpfn_progbox_HideWnd;
 	LPFNAPI_progbox_SetTitle		m_lpfn_progbox_SetTitle;
 	LPFNAPI_progbox_SetProgress		m_lpfn_progbox_SetProgress;
+
+	// file selector function handles
+
+	LPFNAPI_filesel_InitFS			m_lpfn_filesel_InitFS;
+	LPFNAPI_filesel_GetFilename		m_lpfn_filesel_GetFilename;
 
 	// combo box function handles
 
@@ -540,4 +582,8 @@ protected:
 
 	LPFNAPI_menu_InsertItem					m_lpfn_menu_InsertItem;
 	LPFNAPI_menu_InsertItemEx				m_lpfn_menu_InsertItemEx;
+
+	// script function handles
+
+	LPFNAPI_script_Execute					m_lpfn_script_Execute;
 };

@@ -8,7 +8,7 @@ public:
 	CzBuffer(void);
 	~CzBuffer(void);
 
-	bool Create(const char* lpVarName = NULL);
+	bool Create(const char* lpVarName = 0);
 
 	bool	Init(long nItems, long ItemSize);
 	bool	Free();

@@ -4,7 +4,7 @@
 extern CExtAPI theAPI;
 
 CzProgBox::CzProgBox(void) {
-	Create(NULL);
+	Create(0);
 }
 
 CzProgBox::~CzProgBox(void) {

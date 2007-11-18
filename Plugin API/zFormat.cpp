@@ -34,13 +34,13 @@ bool CzFormat::SetInfoStr(const char* lpInfoStr) {
 	return theAPI.format_SetInfoStr(m_hVar, lpInfoStr);
 }
 const char* CzFormat::GetExt() {
-	if(!IsType(VarID_format))	return NULL;
+	if(!IsType(VarID_format))	return 0;
 
 	return theAPI.format_GetExt(m_hVar);
 
 }
 ZLIST CzFormat::GetOptionList() {
-	if(!IsType(VarID_format))	return NULL;
+	if(!IsType(VarID_format))	return 0;
 
 	return theAPI.format_GetOptionList(m_hVar);
 

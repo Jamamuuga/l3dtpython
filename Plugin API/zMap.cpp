@@ -3,7 +3,7 @@
 extern CExtAPI theAPI;
 
 CzMap::CzMap(void) {
-	Create(NULL);
+	Create(0);
 }
 
 CzMap::~CzMap(void) {
@@ -63,15 +63,40 @@ long CzMap::ny() {
 
 	return theAPI.map_GetHeight(m_hVar);
 }
+__int64 CzMap::nPixels() {
+	if(!m_hVar)	return 0;
+
+	return (__int64)nx() * (__int64)ny();
+}
 bool CzMap::GetPixel(long x, long y, void* pValue) {
 	if(!m_hVar)	return false;
 
 	return theAPI.map_GetPixel(m_hVar, x, y, pValue);
 }
+bool CzMap::GetPixel(__int64 k, void* pValue) {
+	if(!m_hVar)	return false;
+	
+	long tnx = nx();
+	if(tnx<=0)	return false;
+	long x = (long)(k%(__int64)tnx);
+	long y = (long)(k/(__int64)tnx);
+
+	return GetPixel(x, y, pValue);
+}
 bool CzMap::SetPixel(long x, long y, void* pValue) {
 	if(!m_hVar)	return false;
 
 	return theAPI.map_SetPixel(m_hVar, x, y, pValue);
+}
+bool CzMap::SetPixel(__int64 k, void* pValue) {
+	if(!m_hVar)	return false;
+	
+	long tnx = nx();
+	if(tnx<=0)	return false;
+	long x = (long)(k%(__int64)tnx);
+	long y = (long)(k/(__int64)tnx);
+
+	return SetPixel(x, y, pValue);
 }
 bool CzMap::GetMinMaxAlt(float& minval, float& maxval) {
 	if(!m_hVar)	return false;
@@ -119,7 +144,7 @@ bool CzMap::SetFlag(long FlagID, bool FlagValue) {
 	return theAPI.map_SetFlag(m_hVar, FlagID, FlagValue);
 }
 ZLIST CzMap::GetSettingsList() {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_GetSettingsList(m_hVar);
 }
@@ -156,7 +181,7 @@ bool CzMap::SaveMosaic() {
 }
 
 ZFORMAT CzMap::GetFormat() {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_GetFormat(m_hVar);
 }
@@ -166,37 +191,68 @@ bool CzMap::SetFormat(ZFORMAT hFormat) {
 	return theAPI.map_SetFormat(m_hVar, hFormat);
 }
 const char* CzMap::GetFilename() {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_GetFilename(m_hVar);
 }
 bool CzMap::CombineMosaic() {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_CombineMosaic(m_hVar);
 }
 bool CzMap::SplitToMosaic(const char* lpMosaicFileName, long TileSize, ZFORMAT hFormat, const char* lpProjMapName) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_SplitToMosaic(m_hVar, lpMosaicFileName, TileSize, hFormat, lpProjMapName);
 }
 bool CzMap::SaveMosaicAs(const char* lpFileName) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_SaveMosaicAs(m_hVar, lpFileName);
 }
 bool CzMap::ExportMap(const char* lpFileName, ZFORMAT hFormat, long nx, long ny) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_ExportMap(m_hVar, lpFileName, hFormat, nx, ny);
 }
 bool CzMap::ExportMosaic(const char* lpFileName, ZFORMAT hFormat, long nx, long ny, long TileSize, const char* lpProjMapName) {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_ExportMosaic(m_hVar, lpFileName, hFormat, nx, ny, TileSize, lpProjMapName);
 }
 void* CzMap::GetDataPtr() {
-	if(!m_hVar)	return NULL;
+	if(!m_hVar)	return 0;
 
 	return theAPI.map_GetDataPtr(m_hVar);
+}
+bool CzMap::LinInterp(double dx, double dy, void* pValue) {
+	if(!m_hVar)	return 0;
+
+	return theAPI.map_LinInterp(m_hVar, dx, dy, pValue);
+}
+
+bool CzMap::GenMipmaps(long ResStep, long MaxLevel, long TileSize) {
+	if(!m_hVar)	return false;
+
+	return theAPI.map_GenMipmaps2(m_hVar, ResStep, MaxLevel, TileSize);
+}
+bool CzMap::ClearMipmaps() {
+	if(!m_hVar)	return false;
+
+	return theAPI.map_ClearMipmaps(m_hVar);
+}
+ZMAP CzMap::GetMipmapLevel(long MipLevel) {
+	if(!m_hVar)	return 0;
+
+	return theAPI.map_GetMipmapLevel(m_hVar, MipLevel);
+}
+long CzMap::GetMipmapResStep() {
+	if(!m_hVar)	return 0;
+
+	return theAPI.map_GetMipmapResStep(m_hVar);
+}
+long CzMap::GetMipmapMaxLevel() {
+	if(!m_hVar)	return 0;
+
+	return theAPI.map_GetMipmapMaxLevel(m_hVar);
 }

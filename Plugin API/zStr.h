@@ -16,6 +16,10 @@ public:
 	int GetLength();
 	int Compare(const char* lpText);
 	int CompareNoCase(const char* lpText);
+	bool IsStr(const char* lpText);
+
+	const char* Append(const char* lpNewText);
+	const char* AppendChar(char c);
 
 	char GetAt(int index);
 

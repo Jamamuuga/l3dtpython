@@ -18,10 +18,13 @@ public:
 	bool	SetWrapFlag(bool WrapFlag);
 	bool	GetBusyFlag();
 	bool	SetBusyFlag(bool BusyFlag);
-	long	nx(); // get height
+	long	nx(); // get width
 	long	ny(); // get height
+	__int64 nPixels(); // width * height
 	bool	GetPixel(long x, long y, void* pValue);
+	bool	GetPixel(__int64 k, void* pValue); // linearised index
 	bool	SetPixel(long x, long y, void* pValue);
+	bool	SetPixel(__int64 k, void* pValue);  // linearised index
 	bool	GetMinMaxAlt(float& minval, float& maxval);
 	bool	SetMinMaxAlt(float& minval, float& maxval);
 	float	GetHorizScale();
@@ -46,5 +49,11 @@ public:
 	bool	SaveMosaicAs(const char* lpFileName);
 	bool	ExportMap(const char* lpFileName, ZFORMAT hFormat, long nx, long ny);
 	bool	ExportMosaic(const char* lpFileName, ZFORMAT hFormat, long nx, long ny, long TileSize, const char* lpProjMapName);
+	bool	LinInterp(double dx, double dy, void* pValue);
 	void*	GetDataPtr();
+	bool	GenMipmaps(long ResStep, long MaxLevel, long TileSize);
+	bool	ClearMipmaps();
+	ZMAP	GetMipmapLevel(long MipLevel);
+	long	GetMipmapResStep();
+	long	GetMipmapMaxLevel();
 };
