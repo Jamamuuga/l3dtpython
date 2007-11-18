@@ -50,7 +50,7 @@
 				PreprocessorDefinitions="STATIC_LINKED"
 				MinimalRebuild="false"
 				BasicRuntimeChecks="0"
-				RuntimeLibrary="2"
+				RuntimeLibrary="3"
 				UsePrecompiledHeader="0"
 				WarningLevel="3"
 				SuppressStartupBanner="false"
@@ -194,7 +194,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying plugin to L3DT extensions folder..."
-				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\Extensions\$(TargetFileName)&quot;&#x0D;&#x0A;cp &quot;$(ProjectDir)\zeolite.py&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\&quot;&#x0D;&#x0A;del &quot;D:\Install\Bundysoft\L3DT Standard 2.5 RC3\zeolite.pyc&quot;&#x0D;&#x0A;"
+				CommandLine="cp &quot;$(TargetPath)&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5\Extensions\$(TargetFileName)&quot;&#x0D;&#x0A;cp &quot;$(ProjectDir)\zeolite.py&quot; &quot;D:\Install\Bundysoft\L3DT Standard 2.5\&quot;&#x0D;&#x0A;del &quot;D:\Install\Bundysoft\L3DT Standard 2.5\zeolite.pyc&quot;&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
