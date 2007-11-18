@@ -41,7 +41,25 @@ link "/OUT:.\Release\cdPython.dll" /INCREMENTAL:NO /DLL "/DEF:cdPython.def" /SUB
 
 Rem bundle into zip file
 
-7z a -tzip cdPython.zip ".\Release\cdPython.dll"
-7z a -tzip cdPython.zip ".\cdPythonLicense.txt"
-7z a -tzip cdPython.zip ".\zeolite.py"
+cp ".\Release\cdPython.dll" "D:\Install\Bundysoft\L3DT Standard 2.5\Extensions\"
+cp ".\zeolite.py" "D:\Install\Bundysoft\L3DT Standard 2.5\"
+cp ".\License.txt" "D:\Install\Bundysoft\L3DT Standard 2.5\Extensions\cdPythonLicense.txt"
+del "D:\Install\Bundysoft\L3DT Standard 2.5\zeolite.pyc"
+
+cd "D:\Install\Bundysoft\L3DT Standard 2.5\"
+
+7z a -tzip cdPython.zip "Extensions\cdPython.dll"
+7z a -tzip cdPython.zip "Extensions\cdPythonLicense.txt"
+7z a -tzip cdPython.zip "zeolite.py"
+
+Rem Delete preinstall files so I have to test the zip file
+
+del "D:\Install\Bundysoft\L3DT Standard 2.5\Extensions\cdPython.dll"
+del "D:\Install\Bundysoft\L3DT Standard 2.5\Extensions\cdPythonLicense.txt"
+del "D:\Install\Bundysoft\L3DT Standard 2.5\zeolite.py"
+
+Rem Extract from zip
+
+7z x cdPython.zip
+
 
