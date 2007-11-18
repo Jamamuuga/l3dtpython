@@ -82,7 +82,8 @@ def processItem(file,item,prefix):
     if (hFunc$localname == NULL)
         hFunc$localname = theAPI.zeofunc_GetFunc("$name");
 
-    ZVAR hRetVar = theAPI.zeofunc_Execute(hFunc$localname, NULL);
+    ZVAR hRetVar = 0;
+    bool bExecResult = theAPI.zeofunc_Execute2(hFunc$localname, NULL, &hRetVar);
     $returncode
 }
 ''')
@@ -96,7 +97,8 @@ def processItem(file,item,prefix):
 
     ZLIST hArgs = theAPI.var_CreateTemp(VarID_varlist);
     $createallargs
-    ZVAR hRetVar = theAPI.zeofunc_Execute(hFunc$localname, hArgs);
+    ZVAR hRetVar = 0;
+    bool bExecResult = theAPI.zeofunc_Execute2(hFunc$localname, hArgs, &hRetVar);
     $returncode
 }
 
@@ -145,9 +147,13 @@ def processItem(file,item,prefix):
         if (func.GetReturnTypeID() != zeolite.VarID_void):
             returncodet = Template(
 '''
-    $rettypename retValue;
-    theAPI.var_GetValue(hRetVar, &retValue);
-    return retValue;
+    if (bExecResult)
+    {
+        $rettypename retValue;
+        theAPI.var_GetValue(hRetVar, &retValue);
+        return retValue;
+    }
+    return 0;
 ''')
             zeolite.cvar.theAPI.type_GetTypeName(func.GetReturnTypeID(), typename.GetZVAR());
             type = typename.GetText()
