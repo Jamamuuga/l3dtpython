@@ -4,7 +4,9 @@
 // An extension DLL for L3DT to provide Python scripting.
 //
 // $Id$
-
+//
+// $Log: $
+//
 
 #include "stdafx.h"
 #include <commdlg.h> // for open file dialog
